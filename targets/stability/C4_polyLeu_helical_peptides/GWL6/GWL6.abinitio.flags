@@ -1,0 +1,5 @@
+-parser:protocol /home/ralford/curie-benchmark/dataset_generation/peptide_abinitio.xml
+-in:file:fasta /home/ralford/curie-benchmark/test_datasets/pH-independent-insert/GWL6/GWL6.fasta
+-nstruct 1000
+-out:file:scorefile /home/ralford/curie-benchmark/test_datasets/pH-independent-insert/GWL6/GWL6_abinitio_wfrags.sc
+-run:multiple_processes_writing_to_one_directory 1

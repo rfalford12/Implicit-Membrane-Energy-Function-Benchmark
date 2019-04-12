@@ -1,0 +1,142 @@
+BLASTP 2.2.26 [Sep-21-2011]
+
+
+Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer, 
+Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), 
+"Gapped BLAST and PSI-BLAST: a new generation of protein database search
+programs",  Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Altschul, Stephen F., 
+John C. Wootton, E. Michael Gertz, Richa Agarwala, Aleksandr Morgulis,
+Alejandro A. Schaffer, and Yi-Kuo Yu (2005) "Protein database searches
+using compositionally adjusted substitution matrices", FEBS J. 272:5101-5109.
+
+
+Reference for composition-based statistics starting in round 2:
+Schaffer, Alejandro A., L. Aravind, Thomas L. Madden,
+Sergei Shavirin, John L. Spouge, Yuri I. Wolf,  
+Eugene V. Koonin, and Stephen F. Altschul (2001), 
+"Improving the accuracy of PSI-BLAST protein database searches with 
+composition-based statistics and other refinements",  Nucleic Acids Res. 29:2994-3005.
+
+Query= GL6
+         (15 letters)
+
+Database: uniref90.fasta 
+           43,405,259 sequences; 14,692,753,770 total letters
+
+Searching..................................................done
+
+
+
+ ***** No hits found ******
+
+Searching..................................................done
+
+
+
+ ***** No hits found ******
+
+  Database: uniref90.fasta
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,922,603
+  Number of sequences in database:  2,818,683
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.01
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,071,221,240
+  Number of sequences in database:  2,520,321
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.02
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,071,120,862
+  Number of sequences in database:  2,620,336
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.03
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,887,319
+  Number of sequences in database:  2,854,146
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.04
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,009,335
+  Number of sequences in database:  3,732,324
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.05
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,173,089
+  Number of sequences in database:  3,568,593
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.06
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,186,956
+  Number of sequences in database:  3,554,549
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.07
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,198,553
+  Number of sequences in database:  3,542,900
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.08
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,215,918
+  Number of sequences in database:  3,525,880
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.09
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,229,493
+  Number of sequences in database:  3,511,767
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.10
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,578,061
+  Number of sequences in database:  3,163,510
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.11
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,705,556
+  Number of sequences in database:  3,034,689
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.12
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 1,070,763,138
+  Number of sequences in database:  2,978,659
+  
+  Database: /Users/ralford/apps/blast-db/uniref90.fasta.13
+    Posted date:  Aug 14, 2016  4:52 PM
+  Number of letters in database: 775,541,647
+  Number of sequences in database:  1,978,902
+  
+Lambda     K      H
+   0.347    0.180    0.472 
+
+Lambda     K      H
+   0.267   0.0539    0.140 
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Number of Hits to DB: 1,128,130,581
+Number of Sequences: 43405259
+Number of extensions: 19703134
+Number of successful extensions: 294863
+Number of sequences better than 10.0: 0
+Number of HSP's better than 10.0 without gapping: 0
+Number of HSP's successfully gapped in prelim test: 0
+Number of HSP's that attempted gapping in prelim test: 294863
+Number of HSP's gapped (non-prelim): 0
+length of query: 15
+length of database: 14,692,753,770
+effective HSP length: 0
+effective length of query: 15
+effective length of database: 14,692,753,770
+effective search space: 220391306550
+effective search space used: 220391306550
+T: 11
+A: 40
+X1: 17 ( 8.5 bits)
+X2: 38 (14.6 bits)
+X3: 64 (24.7 bits)
+S1: 39 (22.0 bits)
+S2: 79 (34.6 bits)
