@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-07-05 17:35:06
+Total request time: 2.29 seconds.
+##############################################################################
+
+
+Sequence name: 2LOH_A
+Sequence length: 86 aa.
+Sequence:
+GSQKLVFFAEDVGSNKGAIIGLMVGGVVIATVIVITLVMLKKKGSQKLVFFAEDVGSNKG
+AIIGLMVGGVVIATVIVITLVMLKKK
+
+OCTOPUS predicted topology:
+ooooooooooooooooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiiiiii
+iMMMMMMMMMMMMMMMMMMMMMoooo

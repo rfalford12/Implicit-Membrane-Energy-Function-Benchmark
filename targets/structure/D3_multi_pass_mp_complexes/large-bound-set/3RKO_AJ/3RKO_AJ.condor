@@ -1,0 +1,9 @@
+#!/bin/bash
+# Automatically generated condor submission file for membrane benchmark
+Universe = vanilla
+output = 3RKO_AJ/3RKO_AJ.out
+error = 3RKO_AJ/3RKO_AJ.error
+notify_user = rfalford12@gmail.com
+Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
+Arguments = -in:file:s 3RKO_AJ/3RKO_AJ.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3RKO_AJ/3RKO_AJ.span -packing:pack_missing_sidechains 0 -docking:partners A_J -out:path:all 3RKO_AJ
+Queue 10

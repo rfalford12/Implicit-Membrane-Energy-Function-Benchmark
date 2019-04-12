@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-06-27 23:46:33
+Total request time: 1.88 seconds.
+##############################################################################
+
+
+Sequence name: 2J5D
+Sequence length: 90 aa.
+Sequence:
+RNTSVMKKGGIFSAEFLKVFLPSLLLSHLLAIGLGIYIGRRLTTSRNTSVMKKGGIFSAE
+FLKVFLPSLLLSHLLAIGLGIYIGRRLTTS
+
+OCTOPUS predicted topology:
+iiiiiiiiiiiiiiiiiiMMMMMMMMMMMMMMMMMMMMMooooooooooooooooooooo
+oooMMMMMMMMMMMMMMMMMMMMMiiiiii

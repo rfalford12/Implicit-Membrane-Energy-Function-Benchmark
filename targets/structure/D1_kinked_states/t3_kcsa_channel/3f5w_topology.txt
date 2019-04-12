@@ -1,0 +1,25 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2019-04-12 22:00:36
+Total request time: 12.27 seconds.
+##############################################################################
+
+
+Sequence name: 3f5w_ignorechain
+Sequence length: 352 aa.
+Sequence:
+GAATVLLVIVLLAGSYLAVLAERGAPGAQLITYPRALWWSVETATTVGYGDLYPVTLWGR
+CVAVVVMVAGITSFGLVTAALATWFVGQGAATVLLVIVLLAGSYLAVLAERGAPGAQLIT
+YPRALWWSVETATTVGYGDLYPVTLWGRCVAVVVMVAGITSFGLVTAALATWFVGQGAAT
+VLLVIVLLAGSYLAVLAERGAPGAQLITYPRALWWSVETATTVGYGDLYPVTLWGRCVAV
+VVMVAGITSFGLVTAALATWFVGQGAATVLLVIVLLAGSYLAVLAERGAPGAQLITYPRA
+LWWSVETATTVGYGDLYPVTLWGRCVAVVVMVAGITSFGLVTAALATWFVGQ
+
+OCTOPUS predicted topology:
+iMMMMMMMMMMMMMMMMMMMMMoooooooooooooooooRRRRRRRRooooooooooMMM
+MMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiirrrrrrrrrriiiiiiiiiiiiiii
+iiiiiiiiiiiiiiiiiiiiiiiiiiiMMMMMMMMMMMMMMMMMMMMMoooooooooooo
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooMMMMM
+MMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+iiiiiiiiiiiiiiiiiiiiiiiiMMMMMMMMMMMMMMMMMMMMMooooooo
+

@@ -1,0 +1,9 @@
+#!/bin/bash
+# Automatically generated condor submission file for membrane benchmark
+Universe = vanilla
+output = 1M0L_AC/1M0L_AC.out
+error = 1M0L_AC/1M0L_AC.error
+notify_user = rfalford12@gmail.com
+Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
+Arguments = -in:file:s 1M0L_AC/1M0L_AC.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 1M0L_AC/1M0L_AC.span -packing:pack_missing_sidechains 0 -docking:partners A_C -out:path:all 1M0L_AC
+Queue 10

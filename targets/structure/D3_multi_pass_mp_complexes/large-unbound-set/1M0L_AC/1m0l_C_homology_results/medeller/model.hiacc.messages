@@ -1,0 +1,183 @@
+ERROR: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Is loop structure present: False
+Loop region: N( 140,  142)  C( 142, 144)  Loop( 19,'LFFGFSMRPEVASTFKVLR')
+2wswA_155_19 : Anchor RMSD too large: 2.561
+1x0sA_150_19 : Anchor RMSD too large: 1.379
+1brrA_152_19 : Anchor RMSD too large: 1.428
+1qm8A_153_19 : Anchor RMSD too large: 1.461
+1oczR_32_19 : Anchor RMSD too large: 2.370
+2occR_28_19 : Anchor RMSD too large: 2.359
+3abmR_27_19 : Anchor RMSD too large: 2.368
+3ag4R_28_19 : Anchor RMSD too large: 2.379
+1brrC_153_19 : Anchor RMSD too large: 1.381
+0 decoys found
+Extending loop in both direction(s) to length 21
+Loop region: N( 139,  141)  C( 143, 145)  Loop( 21,'VLFFGFSMRPEVASTFKVLRN')
+2z55E_60_21 : Anchor RMSD too large: 1.516
+0 decoys found
+Extending loop in both direction(s) to length 23
+Loop region: N( 138,  140)  C( 144, 146)  Loop( 23,'YVLFFGFSMRPEVASTFKVLRNV')
+1qjqA_192_23 : Anchor RMSD too large: 2.439
+1by5A_193_23 : Anchor RMSD too large: 2.461
+1by3A_191_23 : Anchor RMSD too large: 2.477
+1fcpA_188_23 : Anchor RMSD too large: 2.468
+2fcpA_192_23 : Anchor RMSD too large: 2.468
+1qffA_188_23 : Anchor RMSD too large: 2.457
+0 decoys found
+Extending loop in both direction(s) to length 25
+Loop region: N( 137,  139)  C( 145, 147)  Loop( 25,'LYVLFFGFSMRPEVASTFKVLRNVT')
+3eamE_199_25 : Anchor RMSD too large: 2.401
+2bs4F_141_25 : Anchor RMSD too large: 2.204
+3cocB_147_25 : Anchor RMSD too large: 2.063
+3codB_147_25 : Anchor RMSD too large: 2.049
+3hanA_146_25 : Anchor RMSD too large: 2.030
+3haoB_146_25 : Anchor RMSD too large: 2.054
+1pxrB_146_25 : Anchor RMSD too large: 2.063
+1pxsB_147_25 : Anchor RMSD too large: 2.064
+1q5iB_147_25 : Anchor RMSD too large: 2.042
+1s52B_147_25 : Anchor RMSD too large: 2.029
+1tn5B_147_25 : Anchor RMSD too large: 2.042
+1vjmA_147_25 : Anchor RMSD too large: 2.241
+1ap9A_145_25 : Anchor RMSD too large: 2.033
+2bs2F_141_25 : Anchor RMSD too large: 2.239
+2bs3F_141_25 : Anchor RMSD too large: 2.233
+1cwqB_150_25 : Anchor RMSD too large: 2.161
+3emnX_239_25 : Anchor RMSD too large: 2.168
+0 decoys found
+Extending loop in both direction(s) to length 27
+Loop region: N( 136,  138)  C( 146, 148)  Loop( 27,'ILYVLFFGFSMRPEVASTFKVLRNVTV')
+3cocB_141_27 : Anchor RMSD too large: 2.037
+3codB_141_27 : Anchor RMSD too large: 2.037
+3hanA_140_27 : Anchor RMSD too large: 2.026
+3haoB_140_27 : Anchor RMSD too large: 1.999
+3hapA_140_27 : Anchor RMSD too large: 2.063
+3haqA_140_27 : Anchor RMSD too large: 2.068
+3harA_140_27 : Anchor RMSD too large: 2.045
+3hasA_140_27 : Anchor RMSD too large: 2.063
+1jv6A_123_27 : Anchor RMSD too large: 2.061
+1pxrB_140_27 : Anchor RMSD too large: 2.062
+1pxsB_141_27 : Anchor RMSD too large: 2.028
+1q5iB_141_27 : Anchor RMSD too large: 2.022
+1q5jB_141_27 : Anchor RMSD too large: 2.035
+1s51B_141_27 : Anchor RMSD too large: 2.028
+1s52B_141_27 : Anchor RMSD too large: 2.053
+1s53B_141_27 : Anchor RMSD too large: 2.043
+1s54B_141_27 : Anchor RMSD too large: 2.028
+1s8lA_132_27 : Anchor RMSD too large: 2.037
+1tn0B_141_27 : Anchor RMSD too large: 2.061
+1tn5B_141_27 : Anchor RMSD too large: 2.021
+1x0i1_127_27 : Anchor RMSD too large: 2.001
+1x0sA_141_27 : Anchor RMSD too large: 2.050
+1xjiA_140_27 : Anchor RMSD too large: 2.047
+2zfeA_141_27 : Anchor RMSD too large: 2.034
+2zzlA_141_27 : Anchor RMSD too large: 2.042
+1brrA_143_27 : Anchor RMSD too large: 1.994
+1jv7A_123_27 : Anchor RMSD too large: 2.038
+1s8jA_129_27 : Anchor RMSD too large: 2.054
+1vjmA_141_27 : Anchor RMSD too large: 2.040
+1brrC_144_27 : Anchor RMSD too large: 2.026
+3a7kB_172_27 : Anchor RMSD too large: 1.113
+3a7kD_172_27 : Anchor RMSD too large: 1.147
+3abwA_173_27 : Anchor RMSD too large: 1.082
+3abwD_173_27 : Anchor RMSD too large: 1.116
+1e12A_152_27 : Anchor RMSD too large: 1.120
+1ap9A_139_27 : Anchor RMSD too large: 1.963
+1cwqB_144_27 : Anchor RMSD too large: 1.964
+2qjpJ_58_27 : Anchor RMSD too large: 2.541
+2qjyP_58_27 : Anchor RMSD too large: 2.554
+1qm8A_144_27 : Anchor RMSD too large: 2.002
+0 decoys found
+Extending loop in both direction(s) to length 29
+Loop region: N( 135,  137)  C( 147, 149)  Loop( 29,'YILYVLFFGFSMRPEVASTFKVLRNVTVV')
+3a7kB_168_29 : Anchor RMSD too large: 1.540
+3a7kD_168_29 : Anchor RMSD too large: 1.480
+3abwA_169_29 : Anchor RMSD too large: 1.518
+3abwD_169_29 : Anchor RMSD too large: 1.486
+1e12A_148_29 : Anchor RMSD too large: 1.466
+3a7kD_24_29 : Anchor RMSD too large: 1.878
+3abwA_25_29 : Anchor RMSD too large: 1.886
+3abwD_25_29 : Anchor RMSD too large: 1.862
+3a7kB_171_29 : Anchor RMSD too large: 1.170
+3a7kD_171_29 : Anchor RMSD too large: 1.177
+3abwA_172_29 : Anchor RMSD too large: 1.135
+3abwD_172_29 : Anchor RMSD too large: 1.188
+1e12A_151_29 : Anchor RMSD too large: 1.181
+3ne2C_153_29 : Anchor RMSD too large: 1.203
+3ne2E_153_29 : Anchor RMSD too large: 1.205
+3ne2H_152_29 : Anchor RMSD too large: 1.192
+2r9rB_198_29 : DECOY FOUND: anchor rmsd=0.937 score=29
+2r9rH_175_29 : DECOY FOUND: anchor rmsd=0.946 score=29
+3cocB_16_29 : Anchor RMSD too large: 1.704
+3codB_16_29 : Anchor RMSD too large: 1.690
+3haoB_15_29 : Anchor RMSD too large: 1.642
+3hapA_15_29 : Anchor RMSD too large: 1.677
+3haqA_15_29 : Anchor RMSD too large: 1.699
+3harA_15_29 : Anchor RMSD too large: 1.670
+3hasA_15_29 : Anchor RMSD too large: 1.670
+1pxrB_15_29 : Anchor RMSD too large: 1.648
+1pxsB_16_29 : Anchor RMSD too large: 1.674
+1q5iB_16_29 : Anchor RMSD too large: 1.712
+1q5jB_16_29 : Anchor RMSD too large: 1.716
+1s51B_16_29 : Anchor RMSD too large: 1.704
+1s52B_16_29 : Anchor RMSD too large: 1.681
+1s53B_16_29 : Anchor RMSD too large: 1.703
+1s54B_16_29 : Anchor RMSD too large: 1.702
+1tn5B_16_29 : Anchor RMSD too large: 1.704
+1xjiA_15_29 : Anchor RMSD too large: 1.681
+2zfeA_16_29 : Anchor RMSD too large: 1.702
+2zzlA_16_29 : Anchor RMSD too large: 1.727
+1jv6A_12_29 : Anchor RMSD too large: 1.697
+1tn0B_16_29 : Anchor RMSD too large: 1.735
+1vjmA_16_29 : Anchor RMSD too large: 1.723
+1brrA_18_29 : Anchor RMSD too large: 1.640
+1brrC_19_29 : Anchor RMSD too large: 1.629
+3lnmB_201_29 : Anchor RMSD too large: 1.038
+1x0i1_13_29 : Anchor RMSD too large: 1.705
+1brxA_15_29 : Anchor RMSD too large: 1.689
+1c8rA_16_29 : Anchor RMSD too large: 1.680
+1c8sA_16_29 : Anchor RMSD too large: 1.675
+1cwqB_19_29 : Anchor RMSD too large: 1.616
+1f50A_16_29 : Anchor RMSD too large: 1.698
+2i20A_16_29 : Anchor RMSD too large: 1.680
+2i21A_16_29 : Anchor RMSD too large: 1.705
+1jv7A_12_29 : Anchor RMSD too large: 1.676
+1kg8A_16_29 : Anchor RMSD too large: 1.666
+1kg9A_16_29 : Anchor RMSD too large: 1.695
+3mbvA_16_29 : Anchor RMSD too large: 1.687
+1p8iA_16_29 : Anchor RMSD too large: 1.702
+1s8lA_17_29 : Anchor RMSD too large: 1.689
+1s8jA_17_29 : Anchor RMSD too large: 1.679
+1p8uA_16_29 : Anchor RMSD too large: 1.651
+2wjlA_16_29 : Anchor RMSD too large: 1.724
+1ap9A_14_29 : Anchor RMSD too large: 1.768
+2jafA_150_29 : Anchor RMSD too large: 1.492
+2jagA_150_29 : Anchor RMSD too large: 1.470
+1qm8A_19_29 : Anchor RMSD too large: 1.682
+1x0sA_16_29 : Anchor RMSD too large: 1.689
+3oaxB_222_29 : Anchor RMSD too large: 1.945
+2jafA_153_29 : Anchor RMSD too large: 1.256
+2jagA_153_29 : Anchor RMSD too large: 1.305
+2 decoys found
+Is loop structure present: False
+Loop region: N( 156,  158)  C( 158, 160)  Loop(  5,'GSEGA')
+Clash detected in decoy: 1ap9A_183_5
+1cwqB_188_5 : DECOY FOUND: anchor rmsd=0.284 score=30
+1jv6A_167_5 : DECOY FOUND: anchor rmsd=0.428 score=30
+1jv7A_167_5 : DECOY FOUND: anchor rmsd=0.414 score=30
+1kg9A_179_5 : DECOY FOUND: anchor rmsd=0.305 score=30
+1p8uA_180_5 : DECOY FOUND: anchor rmsd=0.262 score=30
+1q5iB_185_5 : DECOY FOUND: anchor rmsd=0.417 score=30
+1s8jA_173_5 : DECOY FOUND: anchor rmsd=0.205 score=30
+1s8lA_176_5 : DECOY FOUND: anchor rmsd=0.256 score=30
+1tn0B_185_5 : DECOY FOUND: anchor rmsd=0.401 score=30
+1vjmA_185_5 : DECOY FOUND: anchor rmsd=0.261 score=30
+2i20A_180_5 : DECOY FOUND: anchor rmsd=0.175 score=30
+2wjkA_168_5 : DECOY FOUND: anchor rmsd=0.267 score=30
+3haoB_184_5 : DECOY FOUND: anchor rmsd=0.414 score=30
+1c8rA_180_5 : DECOY FOUND: anchor rmsd=0.233 score=30
+1c8sA_163_5 : DECOY FOUND: anchor rmsd=0.000 score=30
+1f50A_180_5 : DECOY FOUND: anchor rmsd=0.242 score=30
+1kg8A_174_5 : DECOY FOUND: anchor rmsd=0.135 score=30
+10 decoys found
+WARNING: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Finished

@@ -1,0 +1,606 @@
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2018.10.post.dev+219.rfalford12.minimalmastermodifications.45420d5 45420d50022f91d2fe940278678c19770a2df5c9 git@github.com:RosettaCommons/main.git 2018-04-19T12:11:21
+core.init: command: condor_exec.exe -in:file:s 3TDP_AB/3TDP_AB.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3TDP_AB/3TDP_AB.span -packing:pack_missing_sidechains 0 -docking:partners A_B -out:path:all 3TDP_AB
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=-2077335942 seed_offset=0 real_seed=-2077335942
+core.init.random: RandomGenerator:init: Normal mode, seed=-2077335942 RG_type=mt19937
+core.init: Resolved executable path: /home/ralford/apps/Rosetta-stable/main/source/build/src/debug/linux/3.10/64/x86/gcc/4.8/default/docking_prepack_protocol.default.linuxgccdebug
+core.init: Looking for database based on location of executable: /home/ralford/apps/Rosetta-stable/main/database/
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/PairEPotential/pdb_pair_stats_fine
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015.wts
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 603 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 14.4 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed 3TDP_AB/3TDP_AB.pdb nstruct indices 1 - 10
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.JobDistributor: no more batches to process... 
+protocols.jd2.JobDistributor: 10 jobs considered, 0 jobs attempted in 0 seconds
+protocols.jd2.JobDistributor: no jobs were attempted, did you forget to pass -overwrite?
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2018.10.post.dev+219.rfalford12.minimalmastermodifications.45420d5 45420d50022f91d2fe940278678c19770a2df5c9 git@github.com:RosettaCommons/main.git 2018-04-19T12:11:21
+core.init: command: condor_exec.exe -in:file:s 3TDP_AB/3TDP_AB.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3TDP_AB/3TDP_AB.span -packing:pack_missing_sidechains 0 -docking:partners A_B -out:path:all 3TDP_AB
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=-1818618442 seed_offset=0 real_seed=-1818618442
+core.init.random: RandomGenerator:init: Normal mode, seed=-1818618442 RG_type=mt19937
+core.init: Resolved executable path: /home/ralford/apps/Rosetta-stable/main/source/build/src/debug/linux/3.10/64/x86/gcc/4.8/default/docking_prepack_protocol.default.linuxgccdebug
+core.init: Looking for database based on location of executable: /home/ralford/apps/Rosetta-stable/main/database/
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/PairEPotential/pdb_pair_stats_fine
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015.wts
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 603 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 14.34 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed 3TDP_AB/3TDP_AB.pdb nstruct indices 1 - 10
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB 3TDP_AB/3TDP_AB.pdb
+core.import_pose.import_pose: File '3TDP_AB/3TDP_AB.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CG  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CD  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CE  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  NZ  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 513
+protocols.membrane.AddMembraneMover: =====================================================================
+protocols.membrane.AddMembraneMover: ||           WELCOME TO THE WORLD OF MEMBRANE PROTEINS...          ||
+protocols.membrane.AddMembraneMover: =====================================================================
+protocols.membrane.AddMembraneMover: No membrane residue was found
+protocols.membrane.AddMembraneMover: Adding a new membrane residue to the pose
+protocols.membrane.AddMembraneMover: Adding a membrane residue representing the position of the membrane after residue 513
+protocols.membrane.AddMembraneMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+core.conformation.membrane.SpanningTopology: Filling membrane spanning topology from spanfile 3TDP_AB/3TDP_AB.span
+core.conformation.membrane.SpanningTopology: nres: 514
+core.conformation.membrane.SpanningTopology: nres_topo: 513
+core.conformation.membrane.SpanningTopology: total residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Pose is in pose numbering scheme.
+core.conformation.membrane.Span: [ WARNING ] LONG SPAN: SPAN IS 30 RESIDUES LONG!!!
+core.conformation.membrane.SpanningTopology: Total # of TM spans: 16
+core.conformation.membrane.SpanningTopology: Number of residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Span 1: start: 25, end: 48 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 2: start: 63, end: 79 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 3: start: 84, end: 93 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 4: start: 102, end: 130 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 5: start: 154, end: 176 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 6: start: 181, end: 198 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 7: start: 203, end: 212 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 8: start: 224, end: 252 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 9: start: 281, end: 304 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 10: start: 319, end: 335 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 11: start: 340, end: 349 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 12: start: 358, end: 386 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 13: start: 410, end: 433 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 14: start: 437, end: 454 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 15: start: 459, end: 468 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 16: start: 480, end: 509 orientation: 1
+protocols.membrane.AddMembraneMover: MembraneInfo:
+protocols.membrane.AddMembraneMover: MembraneInfo: Information about this Membrane Protein
+protocols.membrane.AddMembraneMover: Membrane Residue Num: 514
+protocols.membrane.AddMembraneMover: Membrane Fold Tree Jump: 2
+protocols.membrane.AddMembraneMover: Membrane Thickness: 15
+protocols.membrane.AddMembraneMover: Membrane core: 15
+protocols.membrane.AddMembraneMover: Membrane Steepness: 10
+protocols.membrane.AddMembraneMover: Membrane Spanning Topology 
+core.conformation.membrane.SpanningTopology: Total # of TM spans: 16
+core.conformation.membrane.SpanningTopology: Number of residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Span 1: start: 25, end: 48 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 2: start: 63, end: 79 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 3: start: 84, end: 93 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 4: start: 102, end: 130 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 5: start: 154, end: 176 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 6: start: 181, end: 198 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 7: start: 203, end: 212 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 8: start: 224, end: 252 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 9: start: 281, end: 304 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 10: start: 319, end: 335 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 11: start: 340, end: 349 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 12: start: 358, end: 386 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 13: start: 410, end: 433 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 14: start: 437, end: 454 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 15: start: 459, end: 468 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 16: start: 480, end: 509 orientation: 1
+protocols.membrane.SetMembranePositionMover: Calling SetMembranePositionMover
+protocols.membrane.SetMembranePositionMover: Starting foldtree: Is membrane fixed? 1
+protocols.membrane.SetMembranePositionMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.SetMembranePositionMover: Final foldtree: Is membrane fixed? 1
+protocols.membrane.SetMembranePositionMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.AddMembraneMover: Final foldtree: Is membrane fixed? 1
+protocols.membrane.AddMembraneMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.util: chainid 1 chain A
+protocols.membrane.util: com (-20.4329, 13.7949, 0.160371)
+protocols.membrane.util: chainid 2 chain B
+protocols.membrane.util: com (7.12636, 23.6008, -0.00986304)
+protocols.membrane.util: partners A_B
+protocols.membrane.util: mem rsd 514
+protocols.membrane.util: anchors[1] 85
+protocols.membrane.util:    Edge   	   Jump     Jump #
+          	0514--0085  001
+0085--0257
+          	0085--0341  002
+0341--0513
+0341--0258
+0085--0001
+
+core.conformation.membrane.MembraneInfo: Setting a new membrane jump number in MembraneInfo to 1.
+core.conformation.membrane.MembraneInfo: Use with caution!
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+core.scoring.etable: Using alternate parameters: LK_DGFREE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: MEMB_LK_DGFREE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: LK_DGREFCE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: MEMB_LK_DGREFCE in MembEtable construction.
+core.scoring.etable: Starting membrane specific energy table calculation
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating membrane specific energy tables.
+basic.io.database: Database file opened: scoring/score_functions/MembranePotential/CEN10_Menv_smooth_log.txt
+core.scoring.ramachandran: shapovalov_lib::shap_rama_smooth_level of 4( aka highest_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/rama/shapovalov/kappa25/all.ramaProb
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 63 to 79
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 84 to 93
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 102 to 130
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 154 to 176
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 181 to 198
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 203 to 212
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 224 to 252
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.6505, 5.5845, 0.75), normal: (0.496421, -0.264846, 0.826694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-12.868, 5.7465, 2.2205), normal: (0.45212, 0.239395, 0.859231)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.489, 19.835, -8.8405), normal: (0.494622, 0.592657, -0.635694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-28.4165, 10.8695, -0.8665), normal: (-0.0432895, -0.784126, 0.61909)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-16.9675, 20.499, -0.612), normal: (-0.426923, 0.446826, 0.786182)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-8.227, 10.329, 0.3755), normal: (-0.0835602, 0.532373, 0.842376)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.3695, 11.173, 8.229), normal: (-0.412286, -0.745081, 0.524285)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-22.506, 22.863, -0.183), normal: (-0.639068, -0.351306, 0.684234)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.3117, 13.3624, 0.134125), normal: (-0.0358194, -0.0738905, 0.996623)
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 319 to 335
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 340 to 349
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 358 to 386
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 410 to 433
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 437 to 454
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 459 to 468
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 480 to 509
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-2.732, 27.29, 0.7405), normal: (-0.112916, -0.548145, 0.828726)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (1.601, 14.112, 2.17), normal: (0.35933, -0.35215, 0.864218)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (12.7035, 25.6235, -8.7625), normal: (0.71967, -0.295029, -0.628516)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (1.6705, 30.477, -0.8335), normal: (-0.760249, -0.197535, 0.618871)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (15.2335, 20.8675, -0.6635), normal: (0.224037, 0.614871, 0.756135)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (7.3215, 11.23, 0.424), normal: (0.478537, 0.2366, 0.84559)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (2.6245, 28.691, 8.206), normal: (-0.837988, 0.158651, 0.522117)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (14.2415, 26.8165, -0.295), normal: (-0.482477, 0.571424, 0.663846)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (6.583, 23.1384, 0.12325), normal: (-0.0916922, 0.0419875, 0.994902)
+protocols.moves.RigidBodyMover: Translate: Jump (before): RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 29.1175 -2.39281 -12.412  
+protocols.moves.RigidBodyMover: Translate: Jump (after):  RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 -913.299 11.613 321.736  
+core.pack.task: Packer task: initialize from command line() 
+basic.io.database: Database file opened: scoring/score_functions/elec_cp_reps.dat
+core.scoring.elec.util: Read 40 countpair representative atoms
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib_fixes_enable option is true.
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.
+core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /home/ralford/apps/Rosetta-stable/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/ralford/apps/Rosetta-stable/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 1.6 seconds to load from binary
+core.pack.pack_rotamers: built 5679 rotamers at 514 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+core.pack.interaction_graph.interaction_graph_factory: IG: 5391492 bytes
+core.pack.annealer.FixbbSimAnnealer: pack_rotamers run final: RAHKETLDKLTNAAINKINLLNTSKVKYLVSSAFAGLYVGIGILLIFTIGGLLTDAGSPMTKIVMGLSFAIALSLVIMTGTELFTGNNMVMSAGMLNKGVSIKDTSKIWAYSWVGNLIGALVLGIIFVGTGLVDKGPVAEFFANTAASKASMPFTALFFRGILCNILVCVSVLCSFRTNSDTAKIIMIFLCLFAFITSGFEHSVANMTIYSVSLFSPTISTVTIGGAIYNLVAVTLGNIVGGALFMGLGTYILGKEKAHKETLDKLTNAAINKINLLNTSKVKYLVSSAFAGLYVGIGILLIFTIGGLLTDAGSPMTKIVMGLSFAIALSLVIMTGTELFTGNNMVMSAGMLNKGVSIKDTSKIWAYSWVGNLIGALVLGIIFVGTGLVDKGPVAEFFANTAASKASMPFTALFFRGILCNILVCVSVLCSFRTNSDTAKIIMIFLCLFAFITSGFEHSVANMTIYSVSLFSPTISTVTIGGAIYNLVAVTLGNIVGGALFMGLGTYILGKEKZ, best_energy: -624.751
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 63 to 79
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 84 to 93
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 102 to 130
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 154 to 176
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 181 to 198
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 203 to 212
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 224 to 252
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.6505, 5.5845, 0.75), normal: (0.496421, -0.264846, 0.826694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-12.868, 5.7465, 2.2205), normal: (0.45212, 0.239395, 0.859231)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.489, 19.835, -8.8405), normal: (0.494622, 0.592657, -0.635694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-28.4165, 10.8695, -0.8665), normal: (-0.0432895, -0.784126, 0.61909)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-16.9675, 20.499, -0.612), normal: (-0.426923, 0.446826, 0.786182)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-8.227, 10.329, 0.3755), normal: (-0.0835602, 0.532373, 0.842376)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.3695, 11.173, 8.229), normal: (-0.412286, -0.745081, 0.524285)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-22.506, 22.863, -0.183), normal: (-0.639068, -0.351306, 0.684234)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.3117, 13.3624, 0.134125), normal: (-0.0358194, -0.0738905, 0.996623)
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 319 to 335
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 340 to 349
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 358 to 386
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 410 to 433
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 437 to 454
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 459 to 468
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 480 to 509
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-942.569, -314.332, 0.7405), normal: (-0.112916, -0.548145, 0.828726)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-938.236, -327.51, 2.17), normal: (0.35933, -0.35215, 0.864218)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-927.134, -315.999, -8.7625), normal: (0.71967, -0.295029, -0.628516)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-938.167, -311.145, -0.8335), normal: (-0.760249, -0.197535, 0.618871)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-924.604, -320.755, -0.6635), normal: (0.224037, 0.614871, 0.756135)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-932.516, -330.392, 0.424), normal: (0.478537, 0.2366, 0.84559)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-937.213, -312.931, 8.206), normal: (-0.837988, 0.158651, 0.522117)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-925.596, -314.806, -0.295), normal: (-0.482477, 0.571424, 0.663846)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-933.254, -318.484, 0.12325), normal: (-0.0916922, 0.0419875, 0.994902)
+protocols.moves.RigidBodyMover: Translate: Jump (before): RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 -913.299 11.613 321.736  
+protocols.moves.RigidBodyMover: Translate: Jump (after):  RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 29.1175 -2.39281 -12.412  
+core.util.switchresiduetypeset: [ WARNING ] When switching to a fa_standard ResidueTypeSet:  Pose already contains fa_standard ResidueTypes.
+protocols.jd2.JobDistributor: 3TDP_AB_0001 reported success in 1137 seconds
+protocols.jd2.JobDistributor: no more batches to process... 
+protocols.jd2.JobDistributor: 10 jobs considered, 1 jobs attempted in 1138 seconds
+core.init: Checking for fconfig files in pwd and ./rosetta/flags 
+core.init: Rosetta version: 2018.10.post.dev+219.rfalford12.minimalmastermodifications.45420d5 45420d50022f91d2fe940278678c19770a2df5c9 git@github.com:RosettaCommons/main.git 2018-04-19T12:11:21
+core.init: command: condor_exec.exe -in:file:s 3TDP_AB/3TDP_AB.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3TDP_AB/3TDP_AB.span -packing:pack_missing_sidechains 0 -docking:partners A_B -out:path:all 3TDP_AB
+core.init: 'RNG device' seed mode, using '/dev/urandom', seed=-1681601362 seed_offset=0 real_seed=-1681601362
+core.init.random: RandomGenerator:init: Normal mode, seed=-1681601362 RG_type=mt19937
+core.init: Resolved executable path: /home/ralford/apps/Rosetta-stable/main/source/build/src/debug/linux/3.10/64/x86/gcc/4.8/default/docking_prepack_protocol.default.linuxgccdebug
+core.init: Looking for database based on location of executable: /home/ralford/apps/Rosetta-stable/main/database/
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+basic.io.database: Database file opened: scoring/score_functions/PairEPotential/pdb_pair_stats_fine
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBPoly1D.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBFadeIntervals.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/HBEval.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/DonStrength.csv
+basic.io.database: Database file opened: scoring/score_functions/hbonds/ref2015_params/AccStrength.csv
+core.scoring.ScoreFunctionFactory: SCOREFUNCTION: ref2015.wts
+core.chemical.GlobalResidueTypeSet: Finished initializing fa_standard residue type set.  Created 603 residue types
+core.chemical.GlobalResidueTypeSet: Total time to initialize 14.36 seconds.
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/all.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/rama/fd/prepro.ramaProb
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.all.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.gly.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.pro.txt
+basic.io.database: Database file opened: scoring/score_functions/omega/omega_ppdep.valile.txt
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/P_AA_n
+core.scoring.P_AA: shapovalov_lib::shap_p_aa_pp_smooth_level of 1( aka low_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/P_AA_pp/shapovalov/10deg/kappa131/a20.prop
+protocols.jd2.PDBJobInputter: Instantiate PDBJobInputter
+protocols.jd2.PDBJobInputter: PDBJobInputter::fill_jobs
+protocols.jd2.PDBJobInputter: pushed 3TDP_AB/3TDP_AB.pdb nstruct indices 1 - 10
+protocols.evaluation.ChiWellRmsdEvaluatorCreator: Evaluation Creator active ... 
+protocols.jd2.PDBJobInputter: PDBJobInputter::pose_from_job
+protocols.jd2.PDBJobInputter: filling pose from PDB 3TDP_AB/3TDP_AB.pdb
+core.import_pose.import_pose: File '3TDP_AB/3TDP_AB.pdb' automatically determined to be of type PDB
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CG  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CD  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  CE  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  NZ  on residue LYS:CtermProteinFull 257
+core.conformation.Conformation: [ WARNING ] missing heavyatom:  OXT on residue LYS:CtermProteinFull 513
+protocols.membrane.AddMembraneMover: =====================================================================
+protocols.membrane.AddMembraneMover: ||           WELCOME TO THE WORLD OF MEMBRANE PROTEINS...          ||
+protocols.membrane.AddMembraneMover: =====================================================================
+protocols.membrane.AddMembraneMover: No membrane residue was found
+protocols.membrane.AddMembraneMover: Adding a new membrane residue to the pose
+protocols.membrane.AddMembraneMover: Adding a membrane residue representing the position of the membrane after residue 513
+protocols.membrane.AddMembraneMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+core.conformation.membrane.SpanningTopology: Filling membrane spanning topology from spanfile 3TDP_AB/3TDP_AB.span
+core.conformation.membrane.SpanningTopology: nres: 514
+core.conformation.membrane.SpanningTopology: nres_topo: 513
+core.conformation.membrane.SpanningTopology: total residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Pose is in pose numbering scheme.
+core.conformation.membrane.Span: [ WARNING ] LONG SPAN: SPAN IS 30 RESIDUES LONG!!!
+core.conformation.membrane.SpanningTopology: Total # of TM spans: 16
+core.conformation.membrane.SpanningTopology: Number of residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Span 1: start: 25, end: 48 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 2: start: 63, end: 79 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 3: start: 84, end: 93 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 4: start: 102, end: 130 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 5: start: 154, end: 176 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 6: start: 181, end: 198 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 7: start: 203, end: 212 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 8: start: 224, end: 252 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 9: start: 281, end: 304 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 10: start: 319, end: 335 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 11: start: 340, end: 349 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 12: start: 358, end: 386 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 13: start: 410, end: 433 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 14: start: 437, end: 454 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 15: start: 459, end: 468 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 16: start: 480, end: 509 orientation: 1
+protocols.membrane.AddMembraneMover: MembraneInfo:
+protocols.membrane.AddMembraneMover: MembraneInfo: Information about this Membrane Protein
+protocols.membrane.AddMembraneMover: Membrane Residue Num: 514
+protocols.membrane.AddMembraneMover: Membrane Fold Tree Jump: 2
+protocols.membrane.AddMembraneMover: Membrane Thickness: 15
+protocols.membrane.AddMembraneMover: Membrane core: 15
+protocols.membrane.AddMembraneMover: Membrane Steepness: 10
+protocols.membrane.AddMembraneMover: Membrane Spanning Topology 
+core.conformation.membrane.SpanningTopology: Total # of TM spans: 16
+core.conformation.membrane.SpanningTopology: Number of residues in spanfile: 513
+core.conformation.membrane.SpanningTopology: Span 1: start: 25, end: 48 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 2: start: 63, end: 79 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 3: start: 84, end: 93 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 4: start: 102, end: 130 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 5: start: 154, end: 176 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 6: start: 181, end: 198 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 7: start: 203, end: 212 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 8: start: 224, end: 252 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 9: start: 281, end: 304 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 10: start: 319, end: 335 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 11: start: 340, end: 349 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 12: start: 358, end: 386 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 13: start: 410, end: 433 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 14: start: 437, end: 454 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 15: start: 459, end: 468 orientation: 1
+core.conformation.membrane.SpanningTopology: Span 16: start: 480, end: 509 orientation: 1
+protocols.membrane.SetMembranePositionMover: Calling SetMembranePositionMover
+protocols.membrane.SetMembranePositionMover: Starting foldtree: Is membrane fixed? 1
+protocols.membrane.SetMembranePositionMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.SetMembranePositionMover: Final foldtree: Is membrane fixed? 1
+protocols.membrane.SetMembranePositionMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.AddMembraneMover: Final foldtree: Is membrane fixed? 1
+protocols.membrane.AddMembraneMover:    Edge   	   Jump     Jump #
+          	0514--0001  002
+0001--0257
+          	0001--0258  001
+0258--0513
+
+protocols.membrane.util: chainid 1 chain A
+protocols.membrane.util: com (-20.4329, 13.7949, 0.160371)
+protocols.membrane.util: chainid 2 chain B
+protocols.membrane.util: com (7.12636, 23.6008, -0.00986304)
+protocols.membrane.util: partners A_B
+protocols.membrane.util: mem rsd 514
+protocols.membrane.util: anchors[1] 85
+protocols.membrane.util:    Edge   	   Jump     Jump #
+          	0514--0085  001
+0085--0257
+          	0085--0341  002
+0341--0513
+0341--0258
+0085--0001
+
+core.conformation.membrane.MembraneInfo: Setting a new membrane jump number in MembraneInfo to 1.
+core.conformation.membrane.MembraneInfo: Use with caution!
+core.scoring.etable: Starting energy table calculation
+core.scoring.etable: smooth_etable: changing atr/rep split to bottom of energy well
+core.scoring.etable: smooth_etable: spline smoothing lj etables (maxdis = 6)
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating energy tables.
+core.scoring.etable: Using alternate parameters: LK_DGFREE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: MEMB_LK_DGFREE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: LK_DGREFCE in MembEtable construction.
+core.scoring.etable: Using alternate parameters: MEMB_LK_DGREFCE in MembEtable construction.
+core.scoring.etable: Starting membrane specific energy table calculation
+core.scoring.etable: smooth_etable: spline smoothing solvation etables (max_dis = 6)
+core.scoring.etable: Finished calculating membrane specific energy tables.
+basic.io.database: Database file opened: scoring/score_functions/MembranePotential/CEN10_Menv_smooth_log.txt
+core.scoring.ramachandran: shapovalov_lib::shap_rama_smooth_level of 4( aka highest_smooth ) got activated.
+basic.io.database: Database file opened: scoring/score_functions/rama/shapovalov/kappa25/all.ramaProb
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 63 to 79
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 84 to 93
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 102 to 130
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 154 to 176
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 181 to 198
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 203 to 212
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 224 to 252
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.6505, 5.5845, 0.75), normal: (0.496421, -0.264846, 0.826694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-12.868, 5.7465, 2.2205), normal: (0.45212, 0.239395, 0.859231)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.489, 19.835, -8.8405), normal: (0.494622, 0.592657, -0.635694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-28.4165, 10.8695, -0.8665), normal: (-0.0432895, -0.784126, 0.61909)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-16.9675, 20.499, -0.612), normal: (-0.426923, 0.446826, 0.786182)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-8.227, 10.329, 0.3755), normal: (-0.0835602, 0.532373, 0.842376)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.3695, 11.173, 8.229), normal: (-0.412286, -0.745081, 0.524285)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-22.506, 22.863, -0.183), normal: (-0.639068, -0.351306, 0.684234)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.3117, 13.3624, 0.134125), normal: (-0.0358194, -0.0738905, 0.996623)
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 319 to 335
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 340 to 349
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 358 to 386
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 410 to 433
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 437 to 454
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 459 to 468
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 480 to 509
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-2.732, 27.29, 0.7405), normal: (-0.112916, -0.548145, 0.828726)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (1.601, 14.112, 2.17), normal: (0.35933, -0.35215, 0.864218)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (12.7035, 25.6235, -8.7625), normal: (0.71967, -0.295029, -0.628516)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (1.6705, 30.477, -0.8335), normal: (-0.760249, -0.197535, 0.618871)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (15.2335, 20.8675, -0.6635), normal: (0.224037, 0.614871, 0.756135)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (7.3215, 11.23, 0.424), normal: (0.478537, 0.2366, 0.84559)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (2.6245, 28.691, 8.206), normal: (-0.837988, 0.158651, 0.522117)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (14.2415, 26.8165, -0.295), normal: (-0.482477, 0.571424, 0.663846)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (6.583, 23.1384, 0.12325), normal: (-0.0916922, 0.0419875, 0.994902)
+protocols.moves.RigidBodyMover: Translate: Jump (before): RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 29.1175 -2.39281 -12.412  
+protocols.moves.RigidBodyMover: Translate: Jump (after):  RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 -913.299 11.613 321.736  
+core.pack.task: Packer task: initialize from command line() 
+basic.io.database: Database file opened: scoring/score_functions/elec_cp_reps.dat
+core.scoring.elec.util: Read 40 countpair representative atoms
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib_fixes_enable option is true.
+core.pack.dunbrack.RotamerLibrary: shapovalov_lib::shap_dun10_smooth_level of 1( aka lowest_smooth ) got activated.
+core.pack.dunbrack.RotamerLibrary: Binary rotamer library selected: /home/ralford/apps/Rosetta-stable/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin
+core.pack.dunbrack.RotamerLibrary: Using Dunbrack library binary file '/home/ralford/apps/Rosetta-stable/main/database/rotamer/shapovalov/StpDwn_0-0-0/Dunbrack10.lib.bin'.
+core.pack.dunbrack.RotamerLibrary: Dunbrack 2010 library took 1.56 seconds to load from binary
+core.pack.pack_rotamers: built 5679 rotamers at 514 positions.
+core.pack.interaction_graph.interaction_graph_factory: Instantiating DensePDInteractionGraph
+core.pack.interaction_graph.interaction_graph_factory: IG: 5391492 bytes
+core.pack.annealer.FixbbSimAnnealer: pack_rotamers run final: RAHKETLDKLTNAAINKINLLNTSKVKYLVSSAFAGLYVGIGILLIFTIGGLLTDAGSPMTKIVMGLSFAIALSLVIMTGTELFTGNNMVMSAGMLNKGVSIKDTSKIWAYSWVGNLIGALVLGIIFVGTGLVDKGPVAEFFANTAASKASMPFTALFFRGILCNILVCVSVLCSFRTNSDTAKIIMIFLCLFAFITSGFEHSVANMTIYSVSLFSPTISTVTIGGAIYNLVAVTLGNIVGGALFMGLGTYILGKEKAHKETLDKLTNAAINKINLLNTSKVKYLVSSAFAGLYVGIGILLIFTIGGLLTDAGSPMTKIVMGLSFAIALSLVIMTGTELFTGNNMVMSAGMLNKGVSIKDTSKIWAYSWVGNLIGALVLGIIFVGTGLVDKGPVAEFFANTAASKASMPFTALFFRGILCNILVCVSVLCSFRTNSDTAKIIMIFLCLFAFITSGFEHSVANMTIYSVSLFSPTISTVTIGGAIYNLVAVTLGNIVGGALFMGLGTYILGKEKZ, best_energy: -626.322
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 25 to 48
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 63 to 79
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 84 to 93
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 102 to 130
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 154 to 176
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 181 to 198
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 203 to 212
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 224 to 252
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.6505, 5.5845, 0.75), normal: (0.496421, -0.264846, 0.826694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-12.868, 5.7465, 2.2205), normal: (0.45212, 0.239395, 0.859231)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.489, 19.835, -8.8405), normal: (0.494622, 0.592657, -0.635694)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-28.4165, 10.8695, -0.8665), normal: (-0.0432895, -0.784126, 0.61909)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-16.9675, 20.499, -0.612), normal: (-0.426923, 0.446826, 0.786182)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-8.227, 10.329, 0.3755), normal: (-0.0835602, 0.532373, 0.842376)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-26.3695, 11.173, 8.229), normal: (-0.412286, -0.745081, 0.524285)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-22.506, 22.863, -0.183), normal: (-0.639068, -0.351306, 0.684234)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-20.3117, 13.3624, 0.134125), normal: (-0.0358194, -0.0738905, 0.996623)
+protocols.membrane.geometry.Embedding: Constructing Embedding object from topology and pose
+protocols.membrane.geometry.Embedding: Computing membrane embedding from TMspans: 
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 281 to 304
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 319 to 335
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 340 to 349
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 358 to 386
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 410 to 433
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 437 to 454
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 459 to 468
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] If your starting PDB is already translated into the 
+protocols.membrane.geometry.EmbeddingDef: [ WARNING ] membrane, then your TMspan does not span the membrane!
+protocols.membrane.geometry.EmbeddingDef: Computing membrane embedding from TMspan 480 to 509
+protocols.membrane.geometry.Embedding: Span Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-942.569, -314.332, 0.7405), normal: (-0.112916, -0.548145, 0.828726)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-938.236, -327.51, 2.17), normal: (0.35933, -0.35215, 0.864218)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-927.134, -315.999, -8.7625), normal: (0.71967, -0.295029, -0.628516)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-938.167, -311.145, -0.8335), normal: (-0.760249, -0.197535, 0.618871)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-924.604, -320.755, -0.6635), normal: (0.224037, 0.614871, 0.756135)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-932.516, -330.392, 0.424), normal: (0.478537, 0.2366, 0.84559)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-937.213, -312.931, 8.206), normal: (-0.837988, 0.158651, 0.522117)
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-925.596, -314.806, -0.295), normal: (-0.482477, 0.571424, 0.663846)
+protocols.membrane.geometry.Embedding: Total Embedding: 
+protocols.membrane.geometry.EmbeddingDef: Embedding: center: (-933.254, -318.484, 0.12325), normal: (-0.0916922, 0.0419875, 0.994902)
+protocols.moves.RigidBodyMover: Translate: Jump (before): RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 -913.299 11.613 321.736  
+protocols.moves.RigidBodyMover: Translate: Jump (after):  RT 0.324317 0.424494 0.845354 -0.725753 0.684834 -0.0654556 -0.606713 -0.59229 0.530181 29.1175 -2.39281 -12.412  
+core.util.switchresiduetypeset: [ WARNING ] When switching to a fa_standard ResidueTypeSet:  Pose already contains fa_standard ResidueTypes.
+protocols.jd2.JobDistributor: 3TDP_AB_0001 reported success in 1251 seconds
+protocols.jd2.JobDistributor: no more batches to process... 
+protocols.jd2.JobDistributor: 10 jobs considered, 1 jobs attempted in 1252 seconds

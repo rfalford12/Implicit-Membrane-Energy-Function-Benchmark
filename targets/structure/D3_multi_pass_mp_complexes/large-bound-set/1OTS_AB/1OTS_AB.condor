@@ -1,0 +1,9 @@
+#!/bin/bash
+# Automatically generated condor submission file for membrane benchmark
+Universe = vanilla
+output = 1OTS_AB/1OTS_AB.out
+error = 1OTS_AB/1OTS_AB.error
+notify_user = rfalford12@gmail.com
+Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
+Arguments = -in:file:s 1OTS_AB/1OTS_AB.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 1OTS_AB/1OTS_AB.span -packing:pack_missing_sidechains 0 -docking:partners A_B -out:path:all 1OTS_AB
+Queue 10

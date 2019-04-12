@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-07-05 17:15:01
+Total request time: 1.84 seconds.
+##############################################################################
+
+
+Sequence name: 2L9U_A
+Sequence length: 80 aa.
+Sequence:
+MGRTHLTMALTVIAGLVVIFMMLGGTFLYWRGRRHHHHHHMGRTHLTMALTVIAGLVVIF
+MMLGGTFLYWRGRRHHHHHH
+
+OCTOPUS predicted topology:
+oooooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiiMMMMMMMMMMMMMMM
+MMMMMMoooooooooooooo

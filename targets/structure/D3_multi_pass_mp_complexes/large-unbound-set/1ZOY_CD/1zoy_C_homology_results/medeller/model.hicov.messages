@@ -1,0 +1,3 @@
+ERROR: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+WARNING: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Finished
