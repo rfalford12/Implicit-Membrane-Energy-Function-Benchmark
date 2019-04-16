@@ -23,8 +23,8 @@ def read_config():
 
 	with open( configpath, 'rt' ) as f: 
 		contents = f.readlines()
-		contents = [ x.strip() for x in content ]
-		contents = [ x.split(" ") for x in content ]
+		contents = [ x.strip() for x in contents ]
+		contents = [ x.split(" ") for x in contents ]
 
 	config = BenchmarkConfig( contents[0][2], contents[1][2], contents[2][2], contents[3][2], contents[4][2] )
 	return config
