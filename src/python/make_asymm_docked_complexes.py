@@ -38,7 +38,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name, subset ):
   executable = config.rosetta_path + "mp_dock" + "." + config.platform + config.compiler + config.buildenv
 
   # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/" + energy_fxn + "/" + test_name 
+  outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name 
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
