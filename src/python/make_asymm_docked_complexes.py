@@ -48,7 +48,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     # Setup case-specific variables (pdbfile, spanfile)
     native = targets + "/" + target_ids[i] + "/" + target_pdbs[i]
     spanfile = targets + "/" + target_ids[i] + "/" + target_ids[i] + ".span"
-    prepacked = targets + "/" + target_ids[i] + "/" + target_ids + ".prepack.pdb"
+    prepacked = targets + "/" + target_ids[i] + "/" + target_ids[i] + ".prepack.pdb"
     partners = target_pdbs[i].split("_")[1][0] + "_" + target_pdbs[i].split("_")[1][1]
 
     casedir = outdir + "/" + target_pdbs[i]
