@@ -7,6 +7,8 @@
 #@email: 		rfalford12@gmail.com                                          
 ###################################################################
 
+import random, sys, os
+
 def make_jobfile( casedir, case, executable, arguments ): 
 
     jobfile = casedir + "/" + case + "_energy_landscape.sh"
