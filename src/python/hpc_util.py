@@ -38,7 +38,7 @@ def submit_condor_job( path, jobname, executable, arguments, queue_no=1, high_me
         f.write( "Queue " + str(queue_no) + "\n" )
 
     # Run the condor file
-    #os.system( "condor_submit " + filename )
+    os.system( "condor_submit " + filename )
 
 def submit_stampede_job( path, jobname, jobfile, num_nodes=1 ): 
   

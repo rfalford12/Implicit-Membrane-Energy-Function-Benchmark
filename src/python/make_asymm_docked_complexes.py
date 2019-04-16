@@ -13,7 +13,7 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-def run_docking_calc( energy_fxn, config, targets, test_name ): 
+def run_docking_calc( energy_fxn, config, targets, test_name, subset ): 
   """
     A function for assembling symmetric membrane protein complexes
 
@@ -42,6 +42,12 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
+
+  if ( subset != "" ): 
+    outdir = outdir + "/" + subset
+    if ( not os.path.isdir( outdir ) ): 
+        os.system( "mkdir " + outdir )
+        os.chdir( outdir )
 
   for i in range(0, len(target_ids)): 
 

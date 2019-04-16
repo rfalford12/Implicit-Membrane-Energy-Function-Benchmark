@@ -13,7 +13,7 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ): 
+def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct, subset="" ): 
   """
     A function for refining canddiate structures for the decoy discrimination test
 
@@ -43,6 +43,12 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
+
+  if ( subset != "" ): 
+    outdir = outdir + "/" + subset
+    if ( not os.path.isdir( outdir ) ): 
+      os.system( "mkdir " + outdir )
+      os.chdir( outdir )
 
   for i in range(0, len(target_ids)): 
 
