@@ -1,9 +1,0 @@
-#!/bin/bash
-# Automatically generated condor submission file for membrane benchmark
-Universe = vanilla
-output = 3TIJ_AC/3TIJ_AC.out
-error = 3TIJ_AC/3TIJ_AC.error
-notify_user = rfalford12@gmail.com
-Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
-Arguments = -in:file:s 3TIJ_AC/3TIJ_AC.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3TIJ_AC/3TIJ_AC.span -packing:pack_missing_sidechains 0 -docking:partners A_C -out:path:all 3TIJ_AC
-Queue 10

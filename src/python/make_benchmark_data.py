@@ -77,21 +77,19 @@ def main( args ):
 	if ( "structure" ):
 
 		# Make native refined structures
-		nstruct_refined = 20
-		run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml" )
-		run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml" )
+		nstruct_native_refined = 20
+		run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
+		run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/large-bound-set", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
+		#run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/large-unbound-set", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
 
+		# Make refined homology models 
+		#run_refinement_calc( Options.energy_fxn, )
 
         # Docking calculation for small homodimer set (Lomize et al. 2017)
-        #run_refined_native_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "small-homodimer-set", restore, include_lipids, False )
         #run_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "small-homodimer-set", restore, include_lipids, False )
-        #make_relaxed_homology_models( Options.energy_fxn, "small-homodimer-set", rosetta_exe_path, restore, include_lipids )
-
 
         # Docking calculation for large bound-bound set (Hurwitz et al. 2016)
-        #run_refined_native_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-bound-set", restore, include_lipids, False )
         #run_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-bound-set", restore, include_lipids, False )
-        #make_relaxed_homology_models( Options.energy_fxn, "large-bound-set", rosetta_exe_path, restore, include_lipids )
 
         # Docking calculation for large unbound set (simulated, Hurwitz et al. 2016)
         #make_relaxed_homology_models( Options.energy_fxn, "large-unbound-set", rosetta_exe_path, restore, include_lipids )

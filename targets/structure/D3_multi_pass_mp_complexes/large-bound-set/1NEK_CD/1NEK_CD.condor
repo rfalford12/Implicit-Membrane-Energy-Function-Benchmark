@@ -1,9 +1,0 @@
-#!/bin/bash
-# Automatically generated condor submission file for membrane benchmark
-Universe = vanilla
-output = 1NEK_CD/1NEK_CD.out
-error = 1NEK_CD/1NEK_CD.error
-notify_user = rfalford12@gmail.com
-Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
-Arguments = -in:file:s 1NEK_CD/1NEK_CD.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 1NEK_CD/1NEK_CD.span -packing:pack_missing_sidechains 0 -docking:partners C_D -out:path:all 1NEK_CD
-Queue 10
