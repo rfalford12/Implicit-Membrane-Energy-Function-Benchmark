@@ -24,7 +24,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
       test_name = Name of test
   """
 
-  print( "Predicting protein-protein complex structures for set", targets ) 
+  print "Predicting protein-protein complex structures for set", targets
 
   # Read list of energy landscape test cases
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
@@ -51,7 +51,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     prepacked = targets + "/" + target_ids[i] + "/" + target_ids[i] + ".prepack.pdb"
     partners = target_pdbs[i].split("_")[1][0] + "_" + target_pdbs[i].split("_")[1][1]
 
-    casedir = outdir + "/" + target_pdbs[i]
+    casedir = outdir + "/" + target_ids[i]
     if ( not os.path.isdir( casedir ) ): 
       os.system( "mkdir " + casedir )
       os.chdir( casedir )
@@ -61,6 +61,6 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     arguments = s.substitute( native=native, prepacked=prepacked, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir, partners=partners )
 
     # Write jobfile and submit to the HPC
-    print("Submitting docking calculations for case:", target_ids[i] ) 
+    print "Submitting docking calculations for case:", target_ids[i] 
     jobname = target_ids[i] + "_docking"
     hpc_util.submit_condor_job( casedir, jobname, executable, arguments )

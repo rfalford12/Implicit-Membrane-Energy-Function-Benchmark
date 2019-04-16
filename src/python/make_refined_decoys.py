@@ -24,7 +24,7 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
       test_name = Name of test
   """
 
-  print( "Refining candidate structures for dataset", targets )
+  print "Refining candidate structures for dataset", targets
 
   # Read list of test case IDs and PDBs
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
@@ -36,10 +36,10 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
 
   # Generate path to executable
   executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
-  xml_script =  config.benchmark_path + "/src/xml/" + xml
+  xml_script =  config.benchmark_path + "src/xml/" + xml
 
   # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/" + energy_fxn + "/" + test_name 
+  outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name 
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
@@ -60,6 +60,6 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
     arguments = s.substitute( model=native, span=spanfile, xml=xml_script, sfxn=energy_fxn, native=native, outdir=casedir, nmodels=nstruct)
 
     # Write jobfile and submit to the HPC
-    print("Submitting refinement calculations for case:", target_ids[i] ) 
+    print "Submitting refinement calculations for case:", target_ids[i] 
     jobname = target_ids[i] + "_refine"
     hpc_util.submit_condor_job( casedir, jobname, executable, arguments )
