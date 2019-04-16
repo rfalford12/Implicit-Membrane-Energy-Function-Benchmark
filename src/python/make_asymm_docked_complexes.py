@@ -24,7 +24,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
 			test_name = Name of test
 	"""
 
-	print( "Predicting protein-protein complex structures for set", targets ): 
+	print( "Predicting protein-protein complex structures for set", targets ) 
 
   # Read list of energy landscape test cases
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
