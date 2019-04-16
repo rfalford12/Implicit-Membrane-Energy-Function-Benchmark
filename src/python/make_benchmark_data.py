@@ -61,7 +61,7 @@ def main( args ):
 
 	# Read path configuration file
 	config = read_config.read_config()
-	create_outdirs( config )
+	create_outdirs( Options.energy_fxn, config )
 
 	# Check test categories
 	all_categories = [ "orientation", "stability", "structure", "design" ]
