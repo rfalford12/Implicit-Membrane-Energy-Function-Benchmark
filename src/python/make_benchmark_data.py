@@ -34,6 +34,7 @@ def create_outdirs( energy_fxn, config ):
 
 def main( args ): 
 
+	# Read options from the command line
 	parser = OptionParser(usage="usage %prog --energy_fxn membrane_v0 --which_tests all --restore false" )
 	parser.set_description(main.__doc__)
 
@@ -49,11 +50,55 @@ def main( args ):
         action="store", 
         help="Restore talaris behavior using tthe flag -restore_talaris_behavior for reference runs")
 
+    (options, args) = parser.parse_args(args=args[1:])
+    global Options
+    Options = options
+
+    # Check that required options have been provided
+    if ( not Options.energy_fxn or not Options.which_tests ): 
+    	print("Missing required options --energy_fxn and/or --which_tests" )
+    	sys.exit()
+
 	# Read path configuration file
 	config = read_config.read_config()
 	create_outdirs( config )
 
+	# Check test categories
+	all_categories = [ "orientation", "stability", "structure", "design" ]
+	categories = []
+	if ( Options.which_tests == "all" ): 
+		categories = all_categories
+	else: 
+		types = Options.which_tests.split(",")
+		for t in types: 
+			categories.append( t )
 
+	# Generate benchmark data for structure features tests
+	if ( "structure" ):
+
+		# Make native refined structures
+		nstruct_refined = 20
+		run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml" )
+		run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml" )
+
+
+        # Docking calculation for small homodimer set (Lomize et al. 2017)
+        #run_refined_native_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "small-homodimer-set", restore, include_lipids, False )
+        #run_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "small-homodimer-set", restore, include_lipids, False )
+        #make_relaxed_homology_models( Options.energy_fxn, "small-homodimer-set", rosetta_exe_path, restore, include_lipids )
+
+
+        # Docking calculation for large bound-bound set (Hurwitz et al. 2016)
+        #run_refined_native_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-bound-set", restore, include_lipids, False )
+        #run_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-bound-set", restore, include_lipids, False )
+        #make_relaxed_homology_models( Options.energy_fxn, "large-bound-set", rosetta_exe_path, restore, include_lipids )
+
+        # Docking calculation for large unbound set (simulated, Hurwitz et al. 2016)
+        #make_relaxed_homology_models( Options.energy_fxn, "large-unbound-set", rosetta_exe_path, restore, include_lipids )
+        #find_lowest_scoring_relaxed_native( Options.energy_fxn, "large-unbound-set" )
+        #make_prepacked_docking_input( Options.energy_fxn, "large-unbound-set", rosetta_exe_path, restore, include_lipids )
+        #run_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-unbound-set", restore, include_lipids, False )
+    
 
 
 if __name__ == "__main__" : main(sys.argv)

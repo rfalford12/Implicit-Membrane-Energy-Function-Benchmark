@@ -1,9 +1,0 @@
-#!/bin/bash
-# Automatically generated condor submission file for membrane benchmark
-Universe = vanilla
-output = 3CHX_BJ/3CHX_BJ.out
-error = 3CHX_BJ/3CHX_BJ.error
-notify_user = rfalford12@gmail.com
-Executable = /home/ralford/apps/Rosetta-stable/main/source/bin/docking_prepack_protocol.linuxgccdebug
-Arguments = -in:file:s 3CHX_BJ/3CHX_BJ.pdb -nstruct 10 -score:weights ref2015.wts -mp:setup:spanfiles 3CHX_BJ/3CHX_BJ.span -packing:pack_missing_sidechains 0 -docking:partners B_J -out:path:all 3CHX_BJ
-Queue 10
