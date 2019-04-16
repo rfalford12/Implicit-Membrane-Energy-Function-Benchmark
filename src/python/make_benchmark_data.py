@@ -76,27 +76,20 @@ def main( args ):
 	# Generate benchmark data for structure features tests
 	if ( "structure" ):
 
+		##### Test: Protein-protein docking ########
+
 		# Make native refined structures
 		nstruct_native_refined = 20
-		run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
+		run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking/", "mp_relax.xml", nstruct_native_refined )
 		run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/large-bound-set", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
 		#run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/large-unbound-set", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined )
 
 		# Make refined homology models 
 		#run_refinement_calc( Options.energy_fxn, )
 
-        # Docking calculation for small homodimer set (Lomize et al. 2017)
-        #run_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "small-homodimer-set", restore, include_lipids, False )
-
-        # Docking calculation for large bound-bound set (Hurwitz et al. 2016)
-        #run_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-bound-set", restore, include_lipids, False )
-
-        # Docking calculation for large unbound set (simulated, Hurwitz et al. 2016)
-        #make_relaxed_homology_models( Options.energy_fxn, "large-unbound-set", rosetta_exe_path, restore, include_lipids )
-        #find_lowest_scoring_relaxed_native( Options.energy_fxn, "large-unbound-set" )
-        #make_prepacked_docking_input( Options.energy_fxn, "large-unbound-set", rosetta_exe_path, restore, include_lipids )
-        #run_heterodimer_docking_calc( Options.energy_fxn, rosetta_exe_path, Options.cluster_type, "large-unbound-set", restore, include_lipids, False )
-    
+		# Make protein-protein complex models via rigid body docking
+		run_docking_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking" )
+		run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes", "protein-protein-docking" )
 
 
 if __name__ == "__main__" : main(sys.argv)
