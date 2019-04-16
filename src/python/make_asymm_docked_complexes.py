@@ -63,5 +63,4 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     # Write jobfile and submit to the HPC
     print("Submitting docking calculations for case:", target_pdbs[i] ) 
     jobname = case + "_docking"
-    jobfile = hpc_util.make_jobfile( casedir, target_pdbs[i], executable, arguments )
-    hpc_util.submit_condor_job( config.benchmark_path, jobname, executable, arguments )
+    hpc_util.submit_condor_job( casedir, jobname, executable, arguments )
