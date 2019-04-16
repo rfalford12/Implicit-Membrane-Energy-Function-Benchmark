@@ -12,7 +12,7 @@ import sys, os
 configpath = "../../config.txt"
 
 class BenchmarkConfig(): 
-	def __init__( benchmark_path, rosetta_path, platform, buildenv, compiler ): 
+	def __init__( self, benchmark_path, rosetta_path, platform, buildenv, compiler ): 
 		self.benchmark_path = benchmark_path
 		self.rosetta_path = rosetta_path
 		self.platform = platform
