@@ -2,9 +2,9 @@
 ###################################################################
 #@file:         make_asymm_docked_complexes.py                                                                                   
 #@description:  Assemble membrane protein complexes                                             
-#@args:			    --energy_fxn (wts) --targets (list of targets)                                                          
-#@author: 		  Rebecca F. Alford                   
-#@email: 		    rfalford12@gmail.com                                          
+#@args:         --energy_fxn (wts) --targets (list of targets)                                                          
+#@author:       Rebecca F. Alford                   
+#@email:        rfalford12@gmail.com                                          
 ###################################################################
 
 import random
@@ -14,17 +14,17 @@ from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
 def run_docking_calc( energy_fxn, config, targets, test_name ): 
-	"""
-		A function for assembling symmetric membrane protein complexes
+  """
+    A function for assembling symmetric membrane protein complexes
 
-		Arguments: 
-			energy_fxn = energy function to use for calculations (typically, name of the weights file)
-			config = path to benchmark, Rosetta executables
-			targets = list of targets
-			test_name = Name of test
-	"""
+    Arguments: 
+      energy_fxn = energy function to use for calculations (typically, name of the weights file)
+      config = path to benchmark, Rosetta executables
+      targets = list of targets
+      test_name = Name of test
+  """
 
-	print( "Predicting protein-protein complex structures for set", targets ) 
+  print( "Predicting protein-protein complex structures for set", targets ) 
 
   # Read list of energy landscape test cases
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
@@ -53,15 +53,15 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
 
     casedir = outdir + "/" + target_pdbs[i]
     if ( not os.path.isdir( casedir ) ): 
-    	os.system( "mkdir " + casedir )
-    	os.chdir( casedir )
+      os.system( "mkdir " + casedir )
+      os.chdir( casedir )
 
     # Generate a string of arguments from the case-specific variables
     s = Template( " -in:file:s $prepacked -in:file:native $native -mp:setup:spanfiles $spanfile -score:weights $sfxn -run:multiple_processes_writing_to_one_directory -docking:partners $partners -docking:dock_pert 3 8 -packing:pack_missing_sidechains 0 -nstruct 1000 -out:path:all $outdir -mp:lipids:composition DLPC -mp:pore:accomodate_pore true" )
     arguments = s.substitute( native=native, prepacked=prepacked, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir, partners=partners )
 
-		# Write jobfile and submit to the HPC
-  	print("Submitting docking calculations for case:", target_pdbs[i] ) 
-  	jobname = case + "_docking"
-		jobfile = hpc_util.make_jobfile( casedir, target_pdbs[i], executable, arguments )
-		hpc_util.submit_condor_job( config.benchmark_path, jobname, executable, arguments )
+    # Write jobfile and submit to the HPC
+    print("Submitting docking calculations for case:", target_pdbs[i] ) 
+    jobname = case + "_docking"
+    jobfile = hpc_util.make_jobfile( casedir, target_pdbs[i], executable, arguments )
+    hpc_util.submit_condor_job( config.benchmark_path, jobname, executable, arguments )
