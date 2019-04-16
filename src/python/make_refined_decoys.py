@@ -56,8 +56,8 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
       os.chdir( casedir )
 
     # Generate a string of arguments from the case-specific variables
-    s = Template( "-overwrite -in:file:native $native -relax:constrain_relax_to_start_coords -in:file:l $modellist -mp:setup:spanfiles $span -parser:script_vars sfxn_weights=$sfxn -parser:protocol $xml -out:file:scorefile refined_models.sc -out:path:all $outdir -nstruct $nmodels")
-    arguments = s.substitute( modellist=pdblist, span=spanfile, xml=xml_script, sfxn=energy_fxn, native=native, outdir=casedir, nmodels=nstruct)
+    s = Template( "-overwrite -in:file:native $native -relax:constrain_relax_to_start_coords -in:file:s $model -mp:setup:spanfiles $span -parser:script_vars sfxn_weights=$sfxn -parser:protocol $xml -out:file:scorefile refined_models.sc -out:path:all $outdir -nstruct $nmodels")
+    arguments = s.substitute( model=native, span=spanfile, xml=xml_script, sfxn=energy_fxn, native=native, outdir=casedir, nmodels=nstruct)
 
     # Write jobfile and submit to the HPC
     print("Submitting refinement calculations for case:", target_pdbs[i] ) 
