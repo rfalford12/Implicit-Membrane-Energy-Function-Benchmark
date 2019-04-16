@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-07-05 16:03:48
+Total request time: 1.53 seconds.
+##############################################################################
+
+
+Sequence name: 2HAC_A
+Sequence length: 66 aa.
+Sequence:
+DSKLCYLLDGILFIYGVILTALFLRVKFSRSADDSKLCYLLDGILFIYGVILTALFLRVK
+FSRSAD
+
+OCTOPUS predicted topology:
+oooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiMMMMMMMMMMMMMMMMMMMMMoo
+oooooo
