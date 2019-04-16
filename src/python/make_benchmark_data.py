@@ -42,22 +42,22 @@ def main( args ):
         action="store",
         help="Name of energy function weights file", )
 
-    parser.add_option( '--which_tests', '-w', 
+        parser.add_option( '--which_tests', '-w', 
         action="store", 
         help="Specify which test groups to run. Options are: ddG, landscape, prediction", )
 
-    parser.add_option( '--restore_talaris', '-r', 
+        parser.add_option( '--restore_talaris', '-r', 
         action="store", 
         help="Restore talaris behavior using tthe flag -restore_talaris_behavior for reference runs")
 
-    (options, args) = parser.parse_args(args=args[1:])
-    global Options
-    Options = options
+        (options, args) = parser.parse_args(args=args[1:])
+        global Options
+        Options = options
 
-    # Check that required options have been provided
-    if ( not Options.energy_fxn or not Options.which_tests ): 
-    	print("Missing required options --energy_fxn and/or --which_tests" )
-    	sys.exit()
+        # Check that required options have been provided
+        if ( not Options.energy_fxn or not Options.which_tests ): 
+            print("Missing required options --energy_fxn and/or --which_tests" )
+            sys.exit()
 
 	# Read path configuration file
 	config = read_config.read_config()
