@@ -80,12 +80,12 @@ def main( args ):
 
 		# Make native refined structures
 		nstruct_native_refined = 20
-		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking/", "mp_relax.xml", nstruct_native_refined )
-		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "bound" )
-		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "unbound" )
+		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking/", "mp_relax.xml", nstruct_native_refined, "D2_single_tm" )
+		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "D3_bound" )
+		make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "D3_unbound" )
 
 		# Make protein-protein complex models via rigid body docking
-		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "D2_single_tm" )
 		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes/", "protein-protein-docking", "bound" )
 		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes/", "protein-protein-docking", "unbound" )
 
