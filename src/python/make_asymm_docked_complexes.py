@@ -61,6 +61,6 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     arguments = s.substitute( native=native, prepacked=prepacked, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir, partners=partners )
 
     # Write jobfile and submit to the HPC
-    print("Submitting docking calculations for case:", target_pdbs[i] ) 
+    print("Submitting docking calculations for case:", target_ids[i] ) 
     jobname = case + "_docking"
     hpc_util.submit_condor_job( casedir, jobname, executable, arguments )

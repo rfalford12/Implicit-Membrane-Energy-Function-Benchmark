@@ -60,6 +60,6 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
     arguments = s.substitute( model=native, span=spanfile, xml=xml_script, sfxn=energy_fxn, native=native, outdir=casedir, nmodels=nstruct)
 
     # Write jobfile and submit to the HPC
-    print("Submitting refinement calculations for case:", target_pdbs[i] ) 
+    print("Submitting refinement calculations for case:", target_ids[i] ) 
     jobname = target_ids[i] + "_refine"
     hpc_util.submit_condor_job( casedir, jobname, executable, arguments )
