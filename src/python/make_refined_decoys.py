@@ -7,7 +7,7 @@
 #@email:    rfalford12@gmail.com                                          
 ###################################################################
 
-import random
+import random, os, sys
 import hpc_util, read_config
 from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
