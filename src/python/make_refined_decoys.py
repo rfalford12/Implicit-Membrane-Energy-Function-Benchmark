@@ -36,7 +36,7 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
 
   # Generate path to executable
   executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
-  xml_script =  config.benchmark_path + "/src/xml/" + xml_protocol
+  xml_script =  config.benchmark_path + "/src/xml/" + xml
 
   # Change directories to a data analysis dir
   outdir = config.benchmark_path + "/data/" + energy_fxn + "/" + test_name 
