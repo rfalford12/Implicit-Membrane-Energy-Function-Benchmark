@@ -24,7 +24,7 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct ):
       test_name = Name of test
   """
 
-  print( "Refining candidate structures for dataset", targets ): 
+  print( "Refining candidate structures for dataset", targets )
 
   # Read list of test case IDs and PDBs
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
