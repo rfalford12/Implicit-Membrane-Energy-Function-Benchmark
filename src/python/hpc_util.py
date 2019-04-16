@@ -133,5 +133,5 @@ def submit_marcc_job( path, jobname, jobfile, num_nodes=1 ):
         f.close()
 
     # Run the slurm job file
-    sbatch_command = "sbatch " + filename
-    os.system( sbatch_command )
+    #sbatch_command = "sbatch " + filename
+    #os.system( sbatch_command )
