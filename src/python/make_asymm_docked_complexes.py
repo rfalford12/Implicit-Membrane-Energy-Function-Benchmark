@@ -13,15 +13,6 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-
-        if ( restore == True ): 
-            arguments = arguments + " -restore_talaris_behavior"
-        if ( implicit_lipids == True ): 
-            arguments = arguments + " -mp:lipids:use_implicit_lipids true -mp:lipids:temperature 37.0 -mp:lipids:composition DLPC"
-        if ( aqueous_pore == True ): 
-            arguemnts = arguments + " -mp:pore:accomodate_pore true"
-
-
 def run_docking_calc( energy_fxn, config, targets, test_name ): 
 	"""
 		A function for assembling symmetric membrane protein complexes
@@ -66,7 +57,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name ):
     	os.chdir( casedir )
 
     # Generate a string of arguments from the case-specific variables
-    s = Template( " -in:file:s $prepacked -in:file:native $native -mp:setup:spanfiles $spanfile -score:weights $sfxn -run:multiple_processes_writing_to_one_directory -docking:partners $partners -docking:dock_pert 3 8 -packing:pack_missing_sidechains 0 -nstruct 1000 -out:path:all $outdir" )
+    s = Template( " -in:file:s $prepacked -in:file:native $native -mp:setup:spanfiles $spanfile -score:weights $sfxn -run:multiple_processes_writing_to_one_directory -docking:partners $partners -docking:dock_pert 3 8 -packing:pack_missing_sidechains 0 -nstruct 1000 -out:path:all $outdir -mp:lipids:composition DLPC -mp:pore:accomodate_pore true" )
     arguments = s.substitute( native=native, prepacked=prepacked, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir, partners=partners )
 
 		# Write jobfile and submit to the HPC
