@@ -9,9 +9,9 @@
 
 import sys, os, random
 import hpc_util, read_config
-import make_asymm_docked_complexes, make_asymm_docked_complexes
-import make_designed_protein_scaffolds, make_hybridized_kink_ensembles
-import make_peptide_energy_landscape, make_protein_energy_landscape
+import make_asymm_docked_complexes
+#import make_designed_protein_scaffolds, make_hybridized_kink_ensembles
+#import make_peptide_energy_landscape, make_protein_energy_landscape
 import make_refined_decoys
 
 from string import Template
