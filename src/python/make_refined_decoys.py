@@ -24,7 +24,7 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct, s
       test_name = Name of test
   """
 
-  print "Refining candidate structures for dataset", targets
+  print("Refining candidate structures for dataset", targets)
 
   # Read list of test case IDs and PDBs
   list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
@@ -66,6 +66,8 @@ def run_refinement_calc( energy_fxn, config, targets, test_name, xml, nstruct, s
     arguments = s.substitute( model=native, span=spanfile, xml=xml_script, sfxn=energy_fxn, native=native, outdir=casedir, nmodels=nstruct)
 
     # Write jobfile and submit to the HPC
-    print "Submitting refinement calculations for case:", target_ids[i] 
+    print("Submitting refinement calculations for case:", target_ids[i])
     jobname = target_ids[i] + "_refine"
     hpc_util.submit_condor_job( casedir, jobname, executable, arguments )
+
+

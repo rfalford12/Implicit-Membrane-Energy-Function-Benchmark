@@ -9,7 +9,7 @@
 
 import sys, os
 
-configpath = "../../config.txt"
+configpath = "config.txt"
 
 class BenchmarkConfig(): 
 	def __init__( self, benchmark_path, rosetta_path, platform, buildenv, compiler ): 
