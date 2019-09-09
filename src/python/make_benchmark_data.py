@@ -9,7 +9,10 @@
 
 import sys, os, random
 import hpc_util, read_config
+import make_peptide_energy_landscape
+import make_protein_energy_landscape
 import make_refined_decoys
+import predict_hydrophobic_length
 
 ## TODO for later
 #import make_asymm_docked_complexes
@@ -33,12 +36,10 @@ def create_outdirs( energy_fxn, config, list_of_tests ):
 	# Create test data directories
 	for test in list_of_tests: 
 		testdir = datadir + test + "/"
-		print(testdir)
 		if ( not os.path.isdir(testdir) ): 
 			os.system( "mkdir " + testdir )
 
 		efxndir = testdir + energy_fxn
-		print(efxndir)
 		if ( not os.path.isdir(efxndir) ): 
 			os.system( "mkdir " + efxndir )
 
@@ -61,6 +62,11 @@ def main( args ):
 		print("Missing required options --energy_fxn and/or --which_tests" )
 		sys.exit()
 
+	# Set restore variable based on energy function type
+	restore = True
+	if ( Options.energy_fxn != "franklin2019" or Options.energy_fxn != "ref2015" ): 
+		restore = False 
+
 	# Read path configuration file
 	config = read_config.read_config()
 
@@ -73,10 +79,47 @@ def main( args ):
 		# check that all names are valid
 		for name in test_names: 
 			if name not in all_tests: 
-				sys.exit( "No such test " + name + ". Available tests are " + all_tests + ". Exiting!" )
+				sys.exit( "No such test " + name + ". Exiting!" )
 
 	# Create directories based on test names and user-specified energy function
 	create_outdirs( Options.energy_fxn, config, test_names )
+
+	# Test ##: Generate benchamrk data for hydrophobic length test
+	if ( "hydrophobic-length" in test_names ): 
+
+		predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
+
+	# Test ##: Generate benchamrk data for peptide tilt and rotation angle test
+	if ( "peptide-tilt-angle" in test_names ): 
+
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A1_native_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A3_designed_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+
+	# Test ##: Generate benchamrk data for protein energy landscape test
+	if ( "protein-tilt-angle" in test_names ): 
+
+		make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
+
+	# Test ##: Generate benchamrk data for pH-sensitive insertion
+	if ( "ddG-of-pH-insertion" in test_names ): 
+
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
+
+	# Test ##: Generate benchamrk data for constant pH insertion
+	if ( "ddG-of-insertion" in test_names ): 
+
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+
+	# Test ##: Generate benchmark data for decoy-discrimination tests
+	if ( "decoy-discrimination" in test_names ): 
+
+		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "hires", "mp_relax.xml" ) 
+		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "lowres", "mp_relax.xml" )
+
+
 
 	# Generate benchmark data for structure features tests
 	# if ( "structure" ):
