@@ -132,6 +132,7 @@ def main( args ):
         
     # Test ##: Generate benchmark data for side chain distribution test
     if ( "sc-distribution" in test_names ): 
+    	
         path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
         predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
 
