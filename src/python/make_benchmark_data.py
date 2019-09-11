@@ -130,10 +130,10 @@ def main( args ):
 
 		make_helix_kink_ensembles.run_nma_ensemble_calc( config, "nma.xml")
         
-        # Test ##: Generate benchmark data for side chain distribution test
-        if ( "sc-distribution" in test_names ): 
-                path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
-                predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
+    # Test ##: Generate benchmark data for side chain distribution test
+    if ( "sc-distribution" in test_names ): 
+        path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
+        predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
 
 	# Test ##: Generate benchmark data for docking test
 	if ( "protein-protein-docking" in test_names ): 
@@ -157,14 +157,6 @@ def main( args ):
 		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
 		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
 		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
-
-<<<<<<< HEAD
-=======
-		# Make protein-protein complex models via rigid body docking
-		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "D2_single_tm" )
-		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes/", "protein-protein-docking", "D3_bound" )
-		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes/", "protein-protein-docking", "D3_unbound" )
->>>>>>> 7a37ab5789a2dc125cba0c57befd1068ceb2aeba
 
 
 if __name__ == "__main__" : main(sys.argv)
