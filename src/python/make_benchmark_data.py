@@ -16,7 +16,7 @@ import make_asymm_docked_complexes
 import make_refined_decoys
 import predict_hydrophobic_length
 import predict_ddG
-import predict_side_chain_distributions
+import predict_side_chain_distribution
 
 from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
@@ -135,7 +135,7 @@ def main( args ):
 
 		path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
 		predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
-		
+
 	# Test ##: Generate benchmark data for docking test
 	if ( "protein-protein-docking" in test_names ): 
 
