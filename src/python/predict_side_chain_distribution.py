@@ -35,7 +35,7 @@ def compute_side_chain_distribution( config, native_pdbs, designed_pdbs ):
 
 	# Read pdblist and write to src file for designed pdbs
 	designed_poses = read_pdbs( designed_pdbs )
-	get_side_chain_distribution( designed_pdbs, "design" )
+	get_side_chain_distribution( designed_poses, "design" )
 
 def read_pdbs( pdbfile_list ): 
 
@@ -84,7 +84,7 @@ def get_side_chain_distribution( pdblist, src ):
 	bar = Bar('Reading amino acids in PDB files', max=len(pdblist))
 
 	# Loop through each PDB and encode case statement
-	for pdb in range(1, len(pdblist)): 
+	for pdb in pdblist: 
 		for i in range(1, pdb.total_residue()+1): 
 
 			if ( pdb.residue(i).name1() == "A" ): 
