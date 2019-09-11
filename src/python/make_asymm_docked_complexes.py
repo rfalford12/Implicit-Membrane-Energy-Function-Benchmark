@@ -80,11 +80,7 @@ def run_prepack_calc( energy_fxn, config, targets, test_name ):
   executable = config.rosetta_path + "docking_prepack_protocol" + "." + config.platform + config.compiler + config.buildenv
 
   # Change directories to a data analysis dir
-<<<<<<< HEAD
   outdir = config.benchmark_path + "/data/protein-protein-docking/" 
-=======
-  outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name 
->>>>>>> 7a37ab5789a2dc125cba0c57befd1068ceb2aeba
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
