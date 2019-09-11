@@ -134,7 +134,7 @@ def main( args ):
 	if ( "sc-distribution" in test_names ): 
 
 		path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
-		predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
+		predict_side_chain_distribution.compute_side_chain_distribution( config, path + "/natives.list", path + "/redesigned_allpath.list" )
 
 	# Test ##: Generate benchmark data for docking test
 	if ( "protein-protein-docking" in test_names ): 
