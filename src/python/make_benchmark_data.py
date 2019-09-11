@@ -9,21 +9,20 @@
 
 import sys, os, random
 import hpc_util, read_config
+import make_helix_kink_ensembles
 import make_peptide_energy_landscape
 import make_protein_energy_landscape
+import make_asymm_docked_complexes
 import make_refined_decoys
 import predict_hydrophobic_length
-
-## TODO for later
-#import make_asymm_docked_complexes
-#import make_designed_protein_scaffolds, make_hybridized_kink_ensembles
-#import make_peptide_energy_landscape, make_protein_energy_landscape
+import predict_ddG
+import predict_side_chain_distributions
 
 from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-all_tests = [ "aro-distribution", "charge-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "energy-function-landscape", "helix-kinks", "hydrophobic-length", "peptide-tilt-angle", "protein-protein-dokcing", "protein-tilt-angle", "sequence-recovery", "symmetric-protein-docking" ]
+all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "energy-function-landscape", "helix-kinks", "hydrophobic-length", "peptide-tilt-angle", "protein-protein-docking", "protein-tilt-angle", "sequence-recovery", "symmetric-protein-docking" ]
 
 def create_outdirs( energy_fxn, config, list_of_tests ): 
 
@@ -113,29 +112,52 @@ def main( args ):
 
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
 
+	# Test ##: Generate benchamrk data for ddG of mutation predictions
+	if ( "ddG-of-mutation" in test_names ): 
+
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
+
 	# Test ##: Generate benchmark data for decoy-discrimination tests
 	if ( "decoy-discrimination" in test_names ): 
 
 		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "hires", "mp_relax.xml" ) 
 		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "lowres", "mp_relax.xml" )
 
+	# Test ##: Generate benchmark data for docking test
+	if ( "helix-kinks" in test_names ): 
 
+		make_helix_kink_ensembles.run_nma_ensemble_calc( config, "nma.xml")
+        
+        # Test ##: Generate benchmark data for side chain distribution test
+        if ( "sc-distribution" in test_names ): 
+                path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
+                predict_side_chain_distribution.compute_side_chain_distribution( config, path + "natives.list", path + "redesigned_allpath.list" )
 
-	# Generate benchmark data for structure features tests
-	# if ( "structure" ):
+	# Test ##: Generate benchmark data for docking test
+	if ( "protein-protein-docking" in test_names ): 
 
-	# 	##### Test: Protein-protein docking ########
+		# Substep ##1 - Generate prepacked structures
+		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking" )
+		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-	# 	# Make native refined structures
-	# 	nstruct_native_refined = 20
-	# 	make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking/", "mp_relax.xml", nstruct_native_refined, "D2_single_tm" )
-	# 	make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "D3_bound" )
-	# 	make_refined_decoys.run_refinement_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes", "protein-protein-docking", "mp_relax.xml", nstruct_native_refined, "D3_unbound" )
+		# Substep ##2 - Remove "MEM" from the PDB
+		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True )
+		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-	# 	# Make protein-protein complex models via rigid body docking
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D2_singe_pass_mp_complexes", "protein-protein-docking", "D2_single_tm" )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/bound-complexes/", "protein-protein-docking", "bound" )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "structure/D3_multi_pass_mp_complexes/unbound-complexes/", "protein-protein-docking", "unbound" )
+		# Substep ##3 - Generate 5K docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
+
+		# Substep ##4 - Generate 100 refined native docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
+
 
 
 if __name__ == "__main__" : main(sys.argv)

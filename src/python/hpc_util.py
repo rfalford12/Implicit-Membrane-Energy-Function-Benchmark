@@ -9,9 +9,9 @@
 
 import random, sys, os
 
-def make_jobfile( casedir, case, executable, arguments ): 
+def make_jobfile( casedir, case, executable, arguments, suffix="_energy_landscape.sh" ): 
 
-    jobfile = casedir + "/" + case + "_energy_landscape.sh"
+    jobfile = casedir + "/" + case + suffix
     with open( jobfile, 'a' ) as f: 
         f.write( "#!/bin/bash\n" )
         f.write( executable + " " + arguments + "\n" )
