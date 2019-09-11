@@ -88,45 +88,45 @@ def get_side_chain_distribution( pdblist, src ):
 		for i in range(1, pdb.total_residue()+1): 
 
 			if ( pdb.residue(i).name1() == "A" ): 
-				ala.coords.append( pdb.residue(i).xyz("CA").z() )
+				ala.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "C" ): 
-				cys.coords.append( pdb.residue(i).xyz("CA").z() )
+				cys.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "D" ): 
-				asp.coords.append( pdb.residue(i).xyz("CA").z() )
+				asp.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "E" ): 
-				glu.coords.append( pdb.residue(i).xyz("CA").z() )
+				glu.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "F" ): 
-				phe.coords.append( pdb.residue(i).xyz("CA").z() )
+				phe.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "G" ): 
-				gly.coords.append( pdb.residue(i).xyz("CA").z() )
+				gly.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "H" ): 
-				his.coords.append( pdb.residue(i).xyz("CA").z() )
+				his.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "I" ): 
-				ile.coords.append( pdb.residue(i).xyz("CA").z() )
+				ile.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "K" ): 
-				lys.coords.append( pdb.residue(i).xyz("CA").z() )
+				lys.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "L" ): 
-				leu.coords.append( pdb.residue(i).xyz("CA").z() )
+				leu.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "M" ):
-				met.coords.append( pdb.residue(i).xyz("CA").z() )
+				met.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "N" ): 
-				asn.coords.append( pdb.residue(i).xyz("CA").z() )
+				asn.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "P" ): 
-				pro.coords.append( pdb.residue(i).xyz("CA").z() )
+				pro.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "Q" ): 
-				gln.coords.append( pdb.residue(i).xyz("CA").z() )
+				gln.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "R" ): 
-				arg.coords.append( pdb.residue(i).xyz("CA").z() )
+				arg.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "S" ): 
-				ser.coords.append( pdb.residue(i).xyz("CA").z() )
+				ser.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "T" ): 
-				thr.coords.append( pdb.residue(i).xyz("CA").z() )
+				thr.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "V" ): 
 				val.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "W" ): 
-				trp.coords.append( pdb.residue(i).xyz("CA").z() )
+				trp.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "Y" ): 
-				tyr.coords.append( pdb.residue(i).xyz("CA").z() )
+				tyr.coords.append( pdb.residue(i).xyz("CA").z )
 
 		bar.next()
 	bar.finish()
