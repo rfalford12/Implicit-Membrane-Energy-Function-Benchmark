@@ -122,7 +122,7 @@ def get_side_chain_distribution( pdblist, src ):
 			elif ( pdb.residue(i).name1() == "T" ): 
 				thr.coords.append( pdb.residue(i).xyz("CA").z() )
 			elif ( pdb.residue(i).name1() == "V" ): 
-				val.coords.append( pdb.residue(i).xyz("CA").z() )
+				val.coords.append( pdb.residue(i).xyz("CA").z )
 			elif ( pdb.residue(i).name1() == "W" ): 
 				trp.coords.append( pdb.residue(i).xyz("CA").z() )
 			elif ( pdb.residue(i).name1() == "Y" ): 
