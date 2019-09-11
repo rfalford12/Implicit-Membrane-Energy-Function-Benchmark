@@ -52,7 +52,7 @@ def read_pdbs( pdbfile_list ):
 		else: 
 			sys.exit( "PDB File " + pdbfile + " not found!" )
 	
-	return pdb
+	return pdbs
 
 def get_side_chain_distribution( pdblist, src ): 
 
