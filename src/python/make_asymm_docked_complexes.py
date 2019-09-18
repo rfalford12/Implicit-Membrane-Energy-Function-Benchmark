@@ -181,3 +181,80 @@ def run_docking_calc( energy_fxn, config, targets, test_name, local_refine, tran
     print("Submitting docking calculations for case:", target_ids[i])
     jobfile = hpc_util.make_jobfile( casedir, target_ids[i], executable, arguments, suffix )
     hpc_util.submit_condor_job( casedir, jobname, jobfile, "", 100 )
+
+def analyze_interfaces( energy_fxn, config, targets, test_name, local_refine, transformed=False ): 
+  """
+  A function for analyzing properties of the interfaces of docked models
+
+  Arguments: 
+    energy_fxn = energy function to use for calculations (typically, name of the weights file)
+    config = path to benchmark, Rosetta executables
+    targets = list of targets to use (homodimers, hetero-dimers unbound, hetero-dimers bound)
+  """
+
+  print("Analyzing interfaces protein-protein complex set", targets)
+
+  # Read list of energy landscape test cases
+  list_of_targets = config.benchmark_path + "targets/structure/" + targets + "/targets.list"
+  with open( list_of_targets, 'rt' ) as f: 
+      temp = f.readlines()
+      temp = [ x.strip() for x in temp ]
+      target_ids = [ x.split("/")[0] for x in temp ]
+      target_pdbs = [ x.split("/")[1] for x in temp ]
+
+  # Generate path to executable
+  executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
+  xml_script = config.benchmark_path + "/src/xml/interface.xml"  
+
+  # Change directories to a data analysis dir
+  outdir = config.benchmark_path + "/data/protein-protein-docking/" + energy_fxn + "/" + targets + "/"
+  if ( not os.path.isdir( outdir ) ): 
+    sys.exit()
+
+  for i in range(0, len(target_ids)): 
+
+    # Setup case-specific variables (pdbfile, spanfile)
+    native = config.benchmark_path + "targets/structure/" + targets + "/" + target_ids[i] + "/" + target_pdbs[i]
+    spanfile = config.benchmark_path + "targets/structure/" + targets + "/" + target_ids[i] + "/" + target_ids[i] + ".span" 
+    partners = target_pdbs[i].split("_")[1][0] + "_" + target_pdbs[i].split("_")[1][1]
+
+    casedir = outdir + "/" + target_ids[i]
+    os.chdir( casedir )
+
+    # Setup the scorefile name
+    scorefile = casedir + "/" + target_ids[i] + "_interfaces.sc"
+    if ( local_refine ): 
+      scorefile = casedir + "/" + target_ids[i] + "interfaces_local.sc" 
+
+    # Make list of models
+    models_list = casedir + "/models.list" 
+    structure_prefix =  casedir + "/" + target_ids[i] + "_0001_" + partners.split("_")[0] + partners.split("_")[1] + "*.pdb"
+    if ( transformed ): 
+      structure_prefix = casedir + "/" + target_ids[i] + "_tr_0001_" + target_pdbs[i].split("_")[1].split(".")[0] + "*.pdb"
+    os.system( "ls " + structure_prefix + " > " + models_list )
+
+    # Make a list of local refinement models
+    local_models_list = casedir + "/models.list" 
+    local_structure_prefix =  casedir + "/" + target_ids[i] + "_0001_" + partners.split("_")[0] + partners.split("_")[1] +  "*.pdb"
+    if ( transformed ): 
+      local_structure_prefix = casedir + "/" + target_ids[i] + "_tr_0001_" + target_pdbs[i].split("_")[1] + "*.pdb"
+    os.system( "ls " + local_structure_prefix + " > " + local_models_list )
+ 
+    # Generate a string of arguments from the case-specific variables
+    s = Template( " -in:file:native $native -mp:setup:spanfiles $spanfile -score:weights $sfxn -out:file:scorefile $scorefile -out:file:score_only -parser:script_vars interface=$partners -packing:pack_missing_sidechains 0 -out:path:all $outdir -mp:lipids:composition DLPC -mp:lipids:has_pore false -parser:protocol $xml" )
+    arguments = s.substitute( native=native, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir, partners=partners, scorefile=scorefile, xml=xml_script )
+
+    # Add argument for local refine if applicable
+    suffix = "_interface_analysis.sh"
+    jobname = target_ids[i] + "_interface_analysis"
+    if ( local_refine ): 
+      suffix = "_interface_analysis.sh" 
+      jobname = target_ids[i] + "_interface_analysis_locals"
+      arguments = arguments + " -in:file:l " + local_models_list
+    else: 
+      arguments = arguments + " -in:file:l " + models_list
+
+    # Write jobfile and submit to the HPC
+    print("Submitting docking calculations for case:", target_ids[i])
+    jobfile = hpc_util.make_jobfile( casedir, target_ids[i], executable, arguments, suffix )
+    hpc_util.submit_condor_job( casedir, jobname, jobfile, "", 1 )
