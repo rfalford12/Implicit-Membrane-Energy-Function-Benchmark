@@ -248,8 +248,8 @@ def analyze_interfaces( energy_fxn, config, targets, test_name, local_refine, tr
     suffix = "_interface_analysis.sh"
     jobname = target_ids[i] + "_interface_analysis"
     if ( local_refine ): 
-      suffix = "_interface_analysis.sh" 
-      jobname = target_ids[i] + "_interface_analysis_locals"
+      suffix = "_interface_analysis_local.sh" 
+      jobname = target_ids[i] + "_interface_analysis_local"
       arguments = arguments + " -in:file:l " + local_models_list
     else: 
       arguments = arguments + " -in:file:l " + models_list
