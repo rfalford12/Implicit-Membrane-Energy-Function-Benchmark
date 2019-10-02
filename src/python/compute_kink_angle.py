@@ -1,134 +1,180 @@
-"""
-MeasureDegreeKink:
-1.   Method to find the dotproduct of vectors
-2.   Method to find the length of a vector
-3.   Method to find the angle between two vectors
-4.   Method to find the kink point or hinge residue within a helix
-5.   Method to find the backbone coordinates of the helix
-6.   Method to find the angle of the kink
-"""
-import rosetta
+#!/usr/bin/env python
+# @file: compute_kink_angle.py
+# @author: Rebecca F. Alford (ralford3@jhu.edu), adapted from B. Lasher
+# #brief: Compute the degree of kinking for a particular helix
+
+
 from pyrosetta import*
-init()
 from pyrosetta import toolbox
 from pyrosetta.rosetta.protocols.membrane import*
+import rosetta
+
 from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
 import numpy as np
 import math
-class MeasureDegreeKink():
-    """Measures the degree to which a residue kinks"""
-    def __init__(self, file):
-        """Construct the class"""
-        self.file=file
-        self.pose=pose_from_file(self.file)
-    def dotproduct(self,v1,v2):
-        """ Dot product of two vectors"""
-        # 1. Input vectors to find the dot product
-        return sum((a*b) for a, b in zip(v1, v2))
-    def length(self,v):
-        """ Length of a vector """
-        # 2. Input a vector and return its length
-        return math.sqrt(MeasureDegreeKink(self.file).dotproduct(v, v))
-    def angle(self,v1, v2):
-        """ Angle between two vectors """
-        # 3. Take two vectors and output the angle between them
-        return math.acos(MeasureDegreeKink(self.file).dotproduct(v1, v2) / (MeasureDegreeKink(self.file).length(v1) * MeasureDegreeKink(self.file).length(v2)))
-    def kink_point(self):
-        """ Determines the kink point within a helix """
-        # 4. Determine the hinge residue for kinking within a helix
-        #    by finding which residue has the greatest phi and psi
-        #    change from the ideal dihedral angles of an alpha helix
-        phi_ave = -64.0
-        psi_ave = -41.0
-        set=0
-        res_num=1
-        end=self.pose.total_residue()+1
-        for x in xrange(1,end):
-            phi=self.pose.phi(x)
-            psi=self.pose.psi(x)
-            dif_phi = math.fabs(phi_ave-phi)
-            dif_psi = math.fabs(psi_ave-psi)
-            tot=dif_phi+dif_psi
-            #print tot
-            if tot > set and x >= 5 and x <= self.pose.total_residue()-4:
-                res_num = x
-                set = dif_phi+dif_psi
-            else:
-                set=set
-                res_num=res_num
-        return res_num
-        #print res_num
-    def direction(self):
-        """ Find the direction of PCA vectors """
-        # 4. Using vectors from the start to kink coords or the kink to end coords
-        #    the angle can be found to determine if the PCA vectors 1 and 2 are
-        #    pointing in the right direction
-        coord = MeasureDegreeKink(self.file).count(0,self.pose.total_residue())
-        kink_point = MeasureDegreeKink(self.file).kink_point()
-        point1 = np.array(coord[0])
-        point2 = np.array(coord[kink_point-1])
-        point3 = np.array(coord[-1])
-        vector12 = point2-point1
-        vector23 = point3-point2
-        coord1 = coord[0:kink_point+1]
-        coord2 = coord[kink_point:len(coord)+1]
-        pca1 = PCA(n_components=1)
-        pca2 = PCA(n_components=1)
-        pca1.fit(coord1)
-        pca2.fit(coord2)
-        Vpca1 = pca1.components_[0]
-        Vpca2 = pca2.components_[0]
-        diff1 = MeasureDegreeKink(self.fragfile).angle(vector12,Vpca1)*180/3.14
-        diff2 = MeasureDegreeKink(self.fragfile).angle(vector23,Vpca2)*180/3.14
-        diffs=[diff1,diff2]
-        return diffs
-    def count(self, start, end):
-        """ Find the coordinates for the backbone atoms of the helix"""
-        # 5. Find the backbone coordinates of the helix by looping through
-        #    each residue and finding the coordinates of the Calpha, the N
-        #    and C of each residue
-        coord=[]
-        for x in xrange(start,end):
-            CA=self.pose.residue(x).xyz("CA")
-            N=self.pose.residue(x).xyz("N")
-            C=self.pose.residue(x).xyz("C")
-            x1=[CA[0],CA[1],CA[2]]
-            x2=[N[0],N[1],N[2]]
-            x3=[C[0],C[1],C[2]]
-            coord.append(x1)
-            coord.append(x2)
-            coord.append(x3)
-        coord=np.array(coord)
-        return coord
-    def kink_angle(self):
-        """ Determines the kink angle of a helix by using PCA"""
-        # 6. Use Principle Component Analysis (PCA)to find a vector
-        #    that points in the direction of the helix before the
-        #    hinge point, and a vector that points in the direction
-        #    of the helix after the hinge point. Using the two vectors
-        #    find the angle between the two vectors
-        #print "this"
-        start = MeasureDegreeKink(self.file).kink_point()
-        #print start
-        end = MeasureDegreeKink(self.file).kink_point()+1
-        #print end
-        coord1 = MeasureDegreeKink(self.file).count(1,end)
-        #print coord1
-        coord2 = MeasureDegreeKink(self.file).count(start,self.pose.total_residue())
-        pca1 = PCA(n_components=1)
-        pca2 = PCA(n_components=1)
-        pca1.fit(coord1)
-        pca2.fit(coord2)
-        vector1 = pca1.components_[0]
-        vector2 = pca2.components_[0]
-        #print vector1
-        #print vector2
-        angle=MeasureDegreeKink(self.file).angle(vector1,vector2)*180/3.14
-        #print angle
-        if angle >= 90:
-            angle=math.fabs(180-angle)
-        else:
-            angle=angle
-        print "Angle (degree): "+ str(angle)
-MeasureDegreeKink("/Users/Maestro/apps/PyRosetta4/3f5wEndHelix.pdb").kink_angle()
+
+init()
+
+def get_dot_product(v1,v2):
+    """
+    Compute the dot product of two vectors
+      - inputs: two vectors, v1 and v2
+    """
+    return sum((a*b) for a, b in zip(v1, v2))
+
+def get_length(v):
+    """
+    Compute the length of a vector
+      - inputs: one vector (v)
+    """
+    return math.sqrt(get_dot_product(v, v))
+
+def angle(v1, v2):
+    """
+    Compute the angle between two vectors
+      - inputs: two vectors, v1 and v2
+    """
+    return math.acos(get_dot_product(v1, v2) / (get_length(v1) * get_length(v2)))
+
+def get_kink_point(pose, helix_start, helix_end):
+    """
+    Compute the hinge point within a helix 
+    @details Determine the hing residue for a helix by finding
+        the residue with the largest phi and psi change from 
+        ideal dihedral angles
+    """
+
+    # Ideal phi and psi angles 
+    phi_ave = -64.0
+    psi_ave = -41.0
+
+    ## not sure what this does
+    current_diff = 0
+    hinge_residue = 1
+
+    for x in xrange(helix_start, helix_end+1): 
+
+        # Calculate phi and psi of the current residue
+        curr_phi = pose.phi(x)
+        curr_psi = pose.psi(x)
+
+        # Compute teh difference between the ideal and current phi/psi
+        diff_phi = math.fabs(phi_ave-curr_phi)
+        diff_psi = math.fabs(psi_ave-curr_psi)
+        total_diff = diff_phi + diff_psi 
+
+        # todo - adjust this line
+        if (total_diff > set) and (x >= 5) and (x <=pose.total_residue()-4): 
+            hinge_residue = x
+            current_diff = total_diff
+
+    return hinge_residue
+
+def get_coords(pose, start, end):
+    """
+    Find the coordinates for the backbone atom for a specific residue
+    @details Get the backbone coordinates by looping through each residue
+        and storing the Calpha, N, and C coordinates of each residue
+    """
+
+    # List to store coordiantes
+    coord_list = []
+
+    # Loop through the residues and store the coordinates
+    for x in xrange(start, end):
+
+        # Grab the xyz coordiantes from the pose
+        CA_xyz = pose.residue(x).xyz("CA")
+        N_xyz = pose.residue(x).xyz("N")
+        C_xyz = pose.residue(x).xyz("C")
+
+        # Store the coordinates in individual vectors
+        x1 = [ CA_xyz[0], CA_xyz[1], CA_xyz[2] ]
+        x2 = [ N_xyz[0], N_xyz[1], N_xyz[2] ]
+        x3 = [ C_xyz[0], C_xyz[1], C_xyz[2] ]
+
+        # Append coordinates to the list 
+        coord.append(x1)
+        coord.append(x2)
+        coord.append(x3)
+
+    coord_list = np.array(coord_list)
+    return coord_list
+
+def direction(pose, helix_start, helix_end): 
+    """
+    Find the direction of PCA vectors
+    @details Using vectors that represent the hinge to start or end residues, 
+        the angle can be found to determine of the PCA vectors 1 and 2 are
+        pointing in the right direction
+    """
+
+    ### this is definitely the messiest
+
+    # Get list of helix coordinates
+    coord_list = get_coords(pose, helix_start, helix_end)
+    kink_point = get_kink_point(pose, helix_start, helix_end)
+
+    # Calculate the hinge point and the +1 and -1 positions
+    point1 = np.array(coord_list[0])
+    point2 = np.array(coord_list[kink_point-1])
+    point3 = np.array(coord_list[-1])
+    vector12 = point2-point1
+    vector23 = point3-point2
+    coord1 = coord_list[0:kink_point+1]
+    coord2 = coord_list[kink_point:len(coord)+1]
+    pca1 = PCA(n_components=1)
+    pca2 = PCA(n_components=1)
+    pca1.fit(coord1)
+    pca2.fit(coord2)
+    Vpca1 = pca1.components_[0]
+    Vpca2 = pca2.components_[0]
+    diff1 = angle(vector12,Vpca1)*180/3.14
+    diff2 = angle(vector23,Vpca2)*180/3.14
+    diffs=[diff1,diff2]
+    return diffs
+
+def compute_kink_angle(pdbfile, helix_no): 
+    """
+    Calculate the helix kink angle using PCA
+    @details Using principle component analysis (PCA), find a vector
+        that points in the direction of the helix before and after 
+        the hinge point. Then, find the angle between the two PCA vectors. 
+    """
+
+    # Initialize pose from PDB file
+    if ( not os.path.isfile(pdbfile) ): 
+        sys.exit( "User specified pdb file does not exist! Exiting...")
+    pose = pose_from_file(pdbfile)
+
+    # Initialize the membrane framework
+    add_memb = AddMembraneMover()
+    add_memb.apply( pose )
+
+    # Calculate the start and end position of the helix
+    topology = pose.conformation().membrane_info().spanning_topology()
+    span = topology.span( helix_no )
+    helix_start = span.start()
+    helix_end = span.end()
+
+    # Compute the kink point start/end coordinates
+    hinge_start = get_kink_point(pose, helix_start, helix_end)
+    hinge_end = start_point+1
+    coord1 = get_coords(pose, helix_start, hinge_end)
+    coord2 = get_coords(pose, hinge_start, helix_end)
+
+    # Setup and compute principal components
+    pca1 = PCA(n_components=1)
+    pca2 = PCA(n_components=1)
+    pca1.fit(coord1)
+    pca2.fit(coord2)
+    vector1 = pca1.components_[0]
+    vector2 = pca2.components_[0]
+
+    # Compute the angle between the two vectors
+    angle = get_angle(vector1,vector2)*180/3.14
+    if angle >= 90:
+        angle = math.fabs(180-angle)
+    else:
+        angle = angle
+    print "Angle (degree): "+ str(angle)
