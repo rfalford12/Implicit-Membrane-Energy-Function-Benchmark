@@ -6,8 +6,9 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 ## Manifest
 
- - `src/` - Scientific benchmark and analysis scripts
+ - `src/` - Scientific benchmark scripts
  - `targets/` - Experimental and model datasets for testing
+ - `analysis/` - Benchmark analysis scripts
  - `LICENSE` - MIT license for benchmark code
  - `config.txt` - Path and platform information for Rosetta
 
@@ -37,6 +38,12 @@ You can then use conda to install PyRosetta.
 conda config --add channels "https://USERNAME:PASSWORD@conda.graylab.jhu.edu"
 conda install pyrosetta
 ```
+
+```
+TODO: Include prerequisite of KinkFinder for helix kink calculations
+```
+
+Finally, the analysis code requires R version 3.0 or greater. You can download R here: https://www.r-project.org/. 
 
 ## Setup
 
