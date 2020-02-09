@@ -48,6 +48,8 @@ def read_pdbs( pdbfile_list ):
 	for pdbfile in contents: 
 		if ( os.path.isfile( pdbfile ) ): 
 			pdb = pose_from_pdb( pdbfile )
+			add_memb = pyrosetta.rosetta.protocols.membrane.AddMembraneMover( "from_structure" )
+			add_memb.apply( pdb )
 			pdbs.append( pdb )
 		else: 
 			sys.exit( "PDB File " + pdbfile + " not found!" )
@@ -87,46 +89,50 @@ def get_side_chain_distribution( pdblist, src ):
 	for pdb in pdblist: 
 		for i in range(1, pdb.total_residue()+1): 
 
-			if ( pdb.residue(i).name1() == "A" ): 
-				ala.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "C" ): 
-				cys.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "D" ): 
-				asp.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "E" ): 
-				glu.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "F" ): 
-				phe.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "G" ): 
-				gly.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "H" ): 
-				his.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "I" ): 
-				ile.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "K" ): 
-				lys.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "L" ): 
-				leu.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "M" ):
-				met.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "N" ): 
-				asn.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "P" ): 
-				pro.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "Q" ): 
-				gln.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "R" ): 
-				arg.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "S" ): 
-				ser.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "T" ): 
-				thr.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "V" ): 
-				val.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "W" ): 
-				trp.coords.append( pdb.residue(i).xyz("CA").z )
-			elif ( pdb.residue(i).name1() == "Y" ): 
-				tyr.coords.append( pdb.residue(i).xyz("CA").z )
+			# Get the hydration value for each side chain
+			hyd = pdb.conformation().membrane_info().implicit_lipids().f_hydration( pdb.residue(i).xyz("CA") )
+			if ( hyd > 0.5 ):
+
+				if ( pdb.residue(i).name1() == "A" ): 
+					ala.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "C" ): 
+					cys.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "D" ): 
+					asp.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "E" ): 
+					glu.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "F" ): 
+					phe.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "G" ): 
+					gly.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "H" ): 
+					his.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "I" ): 
+					ile.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "K" ): 
+					lys.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "L" ): 
+					leu.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "M" ):
+					met.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "N" ): 
+					asn.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "P" ): 
+					pro.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "Q" ): 
+					gln.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "R" ): 
+					arg.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "S" ): 
+					ser.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "T" ): 
+					thr.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "V" ): 
+					val.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "W" ): 
+					trp.coords.append( pdb.residue(i).xyz("CA").z )
+				elif ( pdb.residue(i).name1() == "Y" ): 
+					tyr.coords.append( pdb.residue(i).xyz("CA").z )
 
 		bar.next()
 	bar.finish()

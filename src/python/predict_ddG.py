@@ -87,7 +87,7 @@ def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutat
 
     # Initialize Pyrosetta with const options
     option_string = "-run:constant_seed -in:ignore_unrecognized_res"
-    option_string = option_string + " -mp:lipids:temperature 37.0 -mp:lipids:composition DLPC -mp:lipids:has_pore false"
+    option_string = option_string + " -mp:lipids:temperature 37.0 -mp:lipids:composition DLPC -mp:lipids:has_pore false -ex1 -ex2 -ex1aro -ex2aro"
 
     init( extra_options=option_string )
 
