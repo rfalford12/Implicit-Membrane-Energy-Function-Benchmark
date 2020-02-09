@@ -23,5 +23,22 @@ To get Rosetta, obtain a license and download the package at <https://www.rosett
 
 Here, "XX" is the number of processors you would like to compile with. For most users compiling on a laptop, the recommended number of processors is 1. If you are working on a larger workstation, we recommend scaling between 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
 
+To get PyRosetta, install miniconda first. On OSX or Linux, this is: 
+
+```
+wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
+bash Miniconda2-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:${PATH}""
+
+```
+
+You can then use conda to install PyRosetta. 
+
+```
+conda config --add channels "https://USERNAME:PASSWORD@conda.graylab.jhu.edu"
+conda install pyrosetta
+```
+
+
 
 
