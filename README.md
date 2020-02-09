@@ -43,14 +43,16 @@ conda install pyrosetta
 To begin, modify the `config.txt` file to include information about your Rosetta installation, the location of this repository, and the platform. Each variable is described in the example below. 
 
 ```
-benchmark = /path/to/benchmark  # Path to this repo
-rosettadir = /path/to/rosetta   # Path to Rosetta bin
+benchmark = /path/to/benchmark  	# Path to this repo
+rosettadir = /path/to/rosetta   	# Path to Rosetta bin
 platform = linux 			# can be linux or mac
 buildenv = release			# can be release or debug
 compiler = gcc				# can be gcc or clang
 ```
 
 ## Documentation
+
+starting docs here. 
 
 
 
