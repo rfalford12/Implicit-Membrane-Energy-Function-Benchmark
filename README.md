@@ -38,6 +38,18 @@ conda config --add channels "https://USERNAME:PASSWORD@conda.graylab.jhu.edu"
 conda install pyrosetta
 ```
 
+## Setup
+
+To begin, modify the `config.txt` file to include information about your Rosetta installation, the location of this repository, and the platform. Each variable is described in the example below. 
+
+```
+benchmark = /path/to/benchmark  # Path to this repo
+rosettadir = /path/to/rosetta   # Path to Rosetta bin
+platform = linux 				# can be linux or mac
+buildenv = release				# can be release or debug
+compiler = gcc					# can be gcc or clang
+```
+
 ## Documentation
 
 
