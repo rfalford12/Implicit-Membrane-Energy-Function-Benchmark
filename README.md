@@ -1,4 +1,4 @@
-# Benchmarks for Membrane Protein Modeling Energy Functions
+# Benchmarks for Membrane Protein Energy Functions
 
 This is a set of scientific benchmark tests to fit and evaluate membrane protein modeling energy functions. The test probe an energy function's ability to capture membrane protein orientation, stability, sequence, and structure. The methods are described in detail in the citation below. 
 
