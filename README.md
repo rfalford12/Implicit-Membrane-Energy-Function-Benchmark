@@ -13,7 +13,7 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 ## Prerequisites
 
-The tests use both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
+The test framework requires Python version 3.6 or 3.7. The tests also uses both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
 
 To get Rosetta, obtain a license and download the package at <https://www.rosettacommons.org/software/license-and-download>. To compile the code, navigate to the `Rosetta/main/source/` directory and run the command below. 
 
@@ -29,7 +29,6 @@ To get PyRosetta, install miniconda first. On OSX or Linux, this is:
 wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
 bash Miniconda2-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
 export PATH="$HOME/miniconda/bin:${PATH}""
-
 ```
 
 You can then use conda to install PyRosetta. 
@@ -38,6 +37,8 @@ You can then use conda to install PyRosetta.
 conda config --add channels "https://USERNAME:PASSWORD@conda.graylab.jhu.edu"
 conda install pyrosetta
 ```
+
+## Documentation
 
 
 
