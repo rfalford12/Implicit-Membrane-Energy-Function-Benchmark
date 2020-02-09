@@ -21,7 +21,7 @@ To get Rosetta, obtain a license and download the package at <https://www.rosett
 ./scons.py -j[XX] bin mode=release 
 ```
 
-Here, "XX" is the number of processors you would like to compile with. For most users compiling on a laptop, the recommended number of processors is 1. If you are working on a larger workstation, we recommend scaling between 8-24 processors. More information can be found in the (https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup)[Rosetta Build Documentation]. 
+Here, "XX" is the number of processors you would like to compile with. For most users compiling on a laptop, the recommended number of processors is 1. If you are working on a larger workstation, we recommend scaling between 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
 
 
 
