@@ -6,7 +6,7 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 ## Manifest
 
- - `src/` - Scientific benchmark scripts
+ - `tests/` - Scientific benchmark scripts
  - `targets/` - Experimental and model datasets for testing
  - `analysis/` - Benchmark analysis scripts
  - `LICENSE` - MIT license for benchmark code
