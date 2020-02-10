@@ -28,39 +28,49 @@ def run_fixed_backbone_design_calc( energy_fxn, config, targets, test_name ):
   print( "Performing fixed backbone design on set", targets ) 
 
   # Read list of energy landscape test cases
-  list_of_targets = config.benchmark_path + "targets/" + targets + "/targets.list"
+  list_of_targets = config.benchmark_path + "targets/design/monomer_chains.list"
   with open( list_of_targets, 'rt' ) as f: 
     test_cases = f.readlines()
     test_cases = [ x.strip() for x in test_cases ]
 
   # Generate path to executable
-  executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
+  executable = config.rosetta_path + "fixbb" + "." + config.platform + config.compiler + config.buildenv
 
-  # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/" + energy_fxn + "/" + test_name 
-  if ( not os.path.isdir( outdir ) ): 
-    os.system( "mkdir " + outdir )
-    os.chdir( outdir )
+  # Make a directory for the subset and lipid composition
+  outdir = benchmark + "data/" + energy_fxn + "/" + subset + "_" + lipid_composition + "_" + str(temperature)
+  os.system( "mkdir " + outdir )
+  os.chdir( outdir )
 
-    # For each test case, generate specific arguments, a condor file, and then run
-    for case in test_cases:
+  # For each test case, generate specific arguments, condor files, and then run
+  for case in test_cases:
 
-      # Make a directory for this design case
-      casedir = outdir + "/" + case
-      if ( not os.path.isdir( casedir ) ): 
-        os.system( "mkdir " + casedir )
-        os.chdir( casedir )
+    # Make one directory per case
+    casedir = outdir + "/" + case
+    os.system( "mkdir " + casedir )
+    os.chdir( casedir )
 
-      # Setup case-specific variables (pdbfile, spanfile, xmlargs)
-      pdbfile = targets + "/" + case + "/" + case + ".pdb"
-      spanfile = targets + "/" + case + "/" + case + ".span"
+    # Setup arguments by substitution
+    pdbfile = inputs + "/" + case + "/" + case + "_tr_ignorechain.pdb"
+    spanfile = inputs + "/" + case + "/" + case + "_tr.span"
+    s = Template( " -in:file:s $pdbfile -mp:setup:spanfiles $spanfile -score:weights $sfxn -in:membrane -out:path:all $outdir -in:file:load_PDB_components false -in:ignore_unrecognized_res" )
+    arguments = s.substitute( pdbfile=pdbfile, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir )
+    if ( restore == True ): 
+        arguments = arguments + " -restore_talaris_behavior -restore_lazaridis_imm_behavior"
+    else: 
+      arguments = arguments + " -mp:lipids:composition " + lipid_composition + " -mp:lipids:temperature " + str(temperature) 
 
-      # Default composition is DLPC
-      s = Template( " -in:file:s $pdbfile -mp:setup:spanfiles $spanfile -score:weights $sfxn -in:membrane -out:path:all $outdir -in:file:load_PDB_components false -in:ignore_unrecognized_res" )
-      arguments = s.substitute( pdbfile=pdbfile, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir )
+    # Write arguments and executable to a separate file
+    jobfile = casedir + "/" + case + "_" + lipid_composition + "_" + str(temperature) + "_seqrecov.sh"
+    with open( jobfile, 'a' ) as f: 
+        f.write( "#!/bin/bash\n" )
+        f.write( executable + " " + arguments + "\n" )
+        f.close()
+    os.system( "chmod +x " + jobfile )
 
-      # Write jobfile and submit to the HPC
-      print("Submitting fixed backbone design case:", case ) 
-      jobname = case + "_fixbb_design"
-      jobfile = hpc_util.make_jobfile( casedir, case, executable, arguments )
+    # Generate a condor submission file and submit the job to Jazz
+    print("Submitting fixed backbone design calculation for sequence recovery case:", case) 
+    queue_no = 1
+    high_mem = True 
+    write_and_submit_condor_script( casedir, case, executable, arguments, queue_no, high_mem )
+
 
