@@ -1,4 +1,4 @@
-benchmark = /home/ralford/Implicit-Membrane-Energy-Function-Benchmark/
+benchmark = /home/ralford/research/Implicit-Membrane-Energy-Function-Benchmark/
 rosettadir = /home/ralford/apps/Rosetta/main/source/bin/
 platform = linux
 buildenv = release
