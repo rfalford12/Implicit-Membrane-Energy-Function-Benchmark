@@ -50,8 +50,8 @@ def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name ):
     os.chdir( casedir )
 
     # Setup arguments by substitution
-    pdbfile = inputs + "/" + case + "/" + case + "_tr_ignorechain.pdb"
-    spanfile = inputs + "/" + case + "/" + case + "_tr.span"
+    pdbfile = config.benchmark_path + "/targets/design/" + case + "/" + case + "_tr_ignorechain.pdb"
+    spanfile = config.benchmark_path + "/targets/design/" + case + "/" + case + "_tr.span"
     s = Template( " -in:file:s $pdbfile -mp:setup:spanfiles $spanfile -score:weights $sfxn -in:membrane -out:path:all $outdir -in:file:load_PDB_components false -in:ignore_unrecognized_res" )
     arguments = s.substitute( pdbfile=pdbfile, spanfile=spanfile, sfxn=energy_fxn, outdir=casedir )
     if ( restore == True ): 
