@@ -1,4 +1,3 @@
-targets/
 data/
 *.pyc
 __pycache__
