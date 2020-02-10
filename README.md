@@ -67,12 +67,7 @@ starting docs here.
 
 Drafting headers for python and R scripts
 
-Example for Python
-"""
-@file: 	 atomtyper.py
-@about:  Atom type assignment engine using SMARTS strings.
-@author: Rebecca Alford <ralford3@jhu.edu>, Johns Hopkins University
-"""
+Add notes on cluster usage to this documentation as well as general reliance on supercomputers. 
 
 Example for R
 # @file: 	t01_tilt_angle.R
