@@ -14,7 +14,7 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name ): 
+def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name, restore ): 
   """
   A function to perform fixed backbone design on a set of targets
   
