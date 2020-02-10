@@ -1,0 +1,113 @@
+ERROR: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Is loop structure present: False
+Loop region: N(  24,   26)  C(  26,  28)  Loop(  5,'MGYQS')
+2biwD_8_5 : Anchor RMSD too large: 2.517
+1qd6C_160_5 : Anchor RMSD too large: 2.686
+1qd6D_159_5 : Anchor RMSD too large: 2.681
+0 decoys found
+Extending loop in both direction(s) to length 7
+Loop region: N(  23,   25)  C(  27,  29)  Loop(  7,'VMGYQSM')
+3oduA_33_7 : Anchor RMSD too large: 2.296
+3oduB_32_7 : Anchor RMSD too large: 2.435
+0 decoys found
+Extending loop in both direction(s) to length 9
+Loop region: N(  22,   24)  C(  28,  30)  Loop(  9,'LVMGYQSMT')
+2j7aH_77_9 : Anchor RMSD too large: 2.651
+2j7aK_78_9 : Anchor RMSD too large: 2.625
+2j7aN_78_9 : Anchor RMSD too large: 2.625
+2j7aQ_77_9 : Anchor RMSD too large: 2.641
+2vr0B_78_9 : Anchor RMSD too large: 2.652
+2vr0E_78_9 : Anchor RMSD too large: 2.637
+7prnA_95_9 : Anchor RMSD too large: 2.733
+1bh3A_95_9 : Anchor RMSD too large: 2.756
+1prnA_95_9 : Anchor RMSD too large: 2.764
+2prnA_95_9 : Anchor RMSD too large: 2.757
+5prnA_95_9 : Anchor RMSD too large: 2.754
+6prnA_95_9 : Anchor RMSD too large: 2.759
+8prnA_95_9 : Anchor RMSD too large: 2.759
+1z98M_129_9 : Anchor RMSD too large: 2.415
+3cllA_126_9 : Anchor RMSD too large: 2.414
+3cn5A_121_9 : Anchor RMSD too large: 2.411
+3cn6B_129_9 : Anchor RMSD too large: 2.476
+1orsB_8_9 : Anchor RMSD too large: 2.016
+0 decoys found
+Extending loop in both direction(s) to length 11
+Loop region: N(  21,   23)  C(  29,  31)  Loop( 11,'ILVMGYQSMTD')
+2gifC_909_11 : Anchor RMSD too large: 1.257
+3fsnA_479_11 : Anchor RMSD too large: 2.178
+3fsnB_480_11 : Anchor RMSD too large: 2.196
+0 decoys found
+Extending loop in both direction(s) to length 13
+Loop region: N(  20,   22)  C(  30,  32)  Loop( 13,'VILVMGYQSMTDK')
+2irvA_11_13 : Anchor RMSD too large: 1.946
+2irvB_10_13 : Anchor RMSD too large: 1.902
+2nrfA_12_13 : Anchor RMSD too large: 1.909
+2nrfB_12_13 : Anchor RMSD too large: 2.009
+2o7lA_10_13 : Anchor RMSD too large: 1.963
+2xovA_12_13 : Anchor RMSD too large: 1.948
+2xowA_11_13 : Anchor RMSD too large: 1.916
+2xtuA_12_13 : Anchor RMSD too large: 1.978
+2xtvA_10_13 : Anchor RMSD too large: 1.821
+3b44A_12_13 : Anchor RMSD too large: 1.942
+3b45A_12_13 : Anchor RMSD too large: 1.949
+2oluA_167_13 : Anchor RMSD too large: 1.463
+2olvA_176_13 : Anchor RMSD too large: 1.402
+2olvB_177_13 : Anchor RMSD too large: 1.400
+0 decoys found
+Extending loop in both direction(s) to length 15
+Loop region: N(  19,   21)  C(  31,  33)  Loop( 15,'LVILVMGYQSMTDKY')
+3oduB_32_15 : Anchor RMSD too large: 1.271
+3oduA_33_15 : Anchor RMSD too large: 1.292
+0 decoys found
+Extending loop in both direction(s) to length 17
+Loop region: N(  18,   20)  C(  32,  34)  Loop( 17,'GLVILVMGYQSMTDKYR')
+0 decoys found
+Extending loop in both direction(s) to length 19
+Loop region: N(  17,   19)  C(  33,  35)  Loop( 19,'NGLVILVMGYQSMTDKYRL')
+3l75C_329_19 : Anchor RMSD too large: 1.892
+3l75P_328_19 : Anchor RMSD too large: 1.882
+1ls9A_42_19 : Anchor RMSD too large: 2.849
+0 decoys found
+Extending loop in both direction(s) to length 21
+Loop region: N(  16,   18)  C(  34,  36)  Loop( 21,'GNGLVILVMGYQSMTDKYRLH')
+3oduB_29_21 : Anchor RMSD too large: 1.130
+3oduA_30_21 : Anchor RMSD too large: 1.120
+0 decoys found
+Extending loop in both direction(s) to length 23
+Loop region: N(  15,   17)  C(  35,  37)  Loop( 23,'VGNGLVILVMGYQSMTDKYRLHL')
+2qpeA_117_23 : Anchor RMSD too large: 2.376
+1ehkA_109_23 : Anchor RMSD too large: 2.361
+1xmeA_117_23 : Anchor RMSD too large: 2.391
+3eh5A_117_23 : Anchor RMSD too large: 2.452
+3emnX_234_23 : Anchor RMSD too large: 1.980
+0 decoys found
+Extending loop in both direction(s) to length 25
+Loop region: N(  14,   16)  C(  36,  38)  Loop( 25,'IVGNGLVILVMGYQSMTDKYRLHLS')
+3l75C_326_25 : Anchor RMSD too large: 1.939
+3l75P_325_25 : Anchor RMSD too large: 1.941
+0 decoys found
+Extending loop in both direction(s) to length 27
+Loop region: N(  13,   15)  C(  37,  39)  Loop( 27,'GIVGNGLVILVMGYQSMTDKYRLHLSV')
+3ddlA_19_27 : Anchor RMSD too large: 2.173
+3ddlB_18_27 : Anchor RMSD too large: 2.148
+3oduB_26_27 : Anchor RMSD too large: 1.048
+3oduA_27_27 : Anchor RMSD too large: 1.043
+1orsC_74_27 : Anchor RMSD too large: 1.956
+0 decoys found
+Extending loop in both direction(s) to length 29
+Loop region: N(  12,   14)  C(  38,  40)  Loop( 29,'TGIVGNGLVILVMGYQSMTDKYRLHLSVA')
+3oduA_26_29 : Anchor RMSD too large: 1.100
+2qpeA_114_29 : Anchor RMSD too large: 2.250
+1ehkA_106_29 : Anchor RMSD too large: 2.294
+1xmeA_114_29 : Anchor RMSD too large: 2.324
+3eh5A_114_29 : Anchor RMSD too large: 2.335
+0 decoys found
+ERROR: Cannot extend loop to length 31, due to database limitations
+Is loop structure present: False
+ERROR: Cannot model loop of length 163, due to database limitations
+ERROR: Cannot extend loop to length 165, due to database limitations
+WARNING: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+WARNING: Cannot extend loop to length 31, due to database limitations
+WARNING: Cannot model loop of length 163, due to database limitations
+WARNING: Cannot extend loop to length 165, due to database limitations
+Finished

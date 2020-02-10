@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-06-27 23:50:02
+Total request time: 1.70 seconds.
+##############################################################################
+
+
+Sequence name: 2LCX
+Sequence length: 88 aa.
+Sequence:
+STLPQHARTPLIAAGVIGGLFILVIVGLTFAVYVRRKSIKKKRASTLPQHARTPLIAAGV
+IGGLFILVIVGLTFAVYVRRKSIKKKRA
+
+OCTOPUS predicted topology:
+oooooooooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiiiiiiiMMMMMM
+MMMMMMMMMMMMMMMooooooooooooo

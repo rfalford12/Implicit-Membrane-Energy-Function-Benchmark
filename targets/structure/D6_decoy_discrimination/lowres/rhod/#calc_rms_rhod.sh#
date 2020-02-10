@@ -1,0 +1,1 @@
+1;95;0c ~/apps/Rosetta/main/source/bin/score_jd2.linuxgccrelease -in:file:l rhod_candidates.list -in:file:native RhoD_native.pdb -out:file:scorefile rhod_calculated_rms.txt -score:weights reduced_scores.sc

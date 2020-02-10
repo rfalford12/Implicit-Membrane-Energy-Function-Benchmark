@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-07-05 18:03:53
+Total request time: 1.94 seconds.
+##############################################################################
+
+
+Sequence name: 2M59_A
+Sequence length: 74 aa.
+Sequence:
+EKTNLEIIILVGTAVIAMFFWLLLVIILRTVKRANGGEKTNLEIIILVGTAVIAMFFWLL
+LVIILRTVKRANGG
+
+OCTOPUS predicted topology:
+oooooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiMMMMMMMMMMMMMMMMMM
+MMMooooooooooo

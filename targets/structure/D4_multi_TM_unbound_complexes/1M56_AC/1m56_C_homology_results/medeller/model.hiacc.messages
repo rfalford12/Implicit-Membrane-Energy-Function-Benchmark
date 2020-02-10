@@ -1,0 +1,27 @@
+ERROR: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Is loop structure present: False
+Loop region: N(  19,   21)  C(  21,  23)  Loop(  8,'GSGPWMGL')
+1ppjN_334_8 : Anchor RMSD too large: 2.833
+2a06N_335_8 : Anchor RMSD too large: 2.846
+2fyuA_335_8 : Anchor RMSD too large: 2.816
+2jlnA_243_8 : Anchor RMSD too large: 2.766
+3bz2Z_40_8 : Anchor RMSD too large: 2.900
+3l71A_335_8 : Anchor RMSD too large: 2.861
+3l75A_334_8 : Anchor RMSD too large: 2.842
+3l75N_333_8 : Anchor RMSD too large: 2.850
+2irvA_98_8 : Anchor RMSD too large: 1.664
+2irvB_97_8 : Anchor RMSD too large: 1.987
+2nrfB_99_8 : Anchor RMSD too large: 1.750
+2o7lA_97_8 : Anchor RMSD too large: 1.766
+2xovA_99_8 : Anchor RMSD too large: 1.815
+2xowA_98_8 : Anchor RMSD too large: 1.777
+2xtuA_99_8 : Anchor RMSD too large: 1.809
+2xtvA_97_8 : Anchor RMSD too large: 1.742
+3b44A_99_8 : Anchor RMSD too large: 1.833
+3b45A_99_8 : Anchor RMSD too large: 1.821
+2nrfA_99_8 : Anchor RMSD too large: 1.791
+1fepA_133_8 : Anchor RMSD too large: 1.726
+1m57I_34_8 : DECOY FOUND: anchor rmsd=0.783 score=67
+1 decoys found
+WARNING: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Finished

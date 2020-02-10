@@ -1,0 +1,27 @@
+ERROR: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Is loop structure present: False
+Loop region: N(  25,   27)  C(  27,  29)  Loop(  5,'RTIRP')
+2gmjA_413_5 : Anchor RMSD too large: 2.338
+2gmjB_410_5 : Anchor RMSD too large: 2.331
+1ht8B_45_5 : Anchor RMSD too large: 2.218
+1q4gB_46_5 : Anchor RMSD too large: 2.190
+2aylB_46_5 : Anchor RMSD too large: 2.186
+1e12A_26_5 : DECOY FOUND: anchor rmsd=0.529 score=41
+2jafA_28_5 : DECOY FOUND: anchor rmsd=0.650 score=41
+2jagA_28_5 : DECOY FOUND: anchor rmsd=0.635 score=39
+3 decoys found
+Is loop structure present: False
+Loop region: N(  58,   60)  C(  60,  62)  Loop( 13,'EMPAGHALAGEMV')
+2jagA_66_13 : DECOY FOUND: anchor rmsd=0.174 score=104
+1e12A_64_13 : DECOY FOUND: anchor rmsd=0.266 score=104
+2jafA_66_13 : DECOY FOUND: anchor rmsd=0.166 score=104
+2fyuD_133_13 : Anchor RMSD too large: 1.333
+3 decoys found
+Is loop structure present: False
+Loop region: N( 178,  180)  C( 180, 182)  Loop(  4,'LVQS')
+1e12A_197_4 : DECOY FOUND: anchor rmsd=0.700 score=29
+2jafA_199_4 : DECOY FOUND: anchor rmsd=0.722 score=29
+2jagA_199_4 : DECOY FOUND: anchor rmsd=0.666 score=29
+3 decoys found
+WARNING: Cannot model loop closer than 2 residues to the terminus (need a complete anchor on both sides).
+Finished
