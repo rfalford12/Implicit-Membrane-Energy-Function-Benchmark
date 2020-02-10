@@ -7,12 +7,12 @@
 #@email:    rfalford12@gmail.com                                          
 ###################################################################
 
-import random
+import random, os, sys
 import hpc_util, read_config
 from string import Template
+
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
-
 
 def run_fixed_backbone_design_calc( energy_fxn, config, targets, test_name ): 
   """
