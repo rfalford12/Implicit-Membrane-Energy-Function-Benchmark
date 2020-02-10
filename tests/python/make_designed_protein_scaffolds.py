@@ -37,7 +37,7 @@ def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name ):
   executable = config.rosetta_path + "fixbb" + "." + config.platform + config.compiler + config.buildenv
 
   # Make a directory for the subset and lipid composition
-  outdir = benchmark + "data/" + energy_fxn + "/" + subset + "_" + lipid_composition + "_" + str(temperature)
+  outdir = config.benchmark_path + "data/" + energy_fxn + "/" + subset + "_" + lipid_composition + "_" + str(temperature)
   os.system( "mkdir " + outdir )
   os.chdir( outdir )
 
