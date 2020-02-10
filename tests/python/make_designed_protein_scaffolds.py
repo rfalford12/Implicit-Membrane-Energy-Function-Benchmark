@@ -57,10 +57,10 @@ def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name, rest
     if ( restore == True ): 
         arguments = arguments + " -restore_talaris_behavior -restore_lazaridis_imm_behavior"
     else: 
-      arguments = arguments + " -mp:lipids:composition " + lipid_composition + " -mp:lipids:temperature " + str(temperature) 
+      arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:temperature 37"
 
     # Write arguments and executable to a separate file
-    jobfile = casedir + "/" + case + "_" + lipid_composition + "_" + str(temperature) + "_seqrecov.sh"
+    jobfile = casedir + "/" + case + "_seqrecov.sh"
     with open( jobfile, 'a' ) as f: 
         f.write( "#!/bin/bash\n" )
         f.write( executable + " " + arguments + "\n" )
