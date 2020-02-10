@@ -71,6 +71,6 @@ def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name, rest
     print("Submitting fixed backbone design calculation for sequence recovery case:", case) 
     queue_no = 1
     high_mem = True 
-    write_and_submit_condor_script( casedir, case, executable, arguments, queue_no, high_mem )
+    hpc_util.submit_condor_job( casedir, case, executable, arguments, queue_no, high_mem )
 
 
