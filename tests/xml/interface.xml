@@ -1,0 +1,22 @@
+<ROSETTASCRIPTS>
+ <SCOREFXNS>
+ <ScoreFunction name="f19" weights="franklin2019" />
+ </SCOREFXNS>
+ <RESIDUE_SELECTORS>
+ </RESIDUE_SELECTORS>
+ <TASKOPERATIONS>
+ </TASKOPERATIONS>
+ <FILTERS>
+ </FILTERS>
+ <MOVERS>
+   <AddMembraneMover name="add_memb"/>
+   <InterfaceAnalyzerMover name="interfaces" scorefxn="f19" interface="%%interface%%"/>
+ </MOVERS>
+ <APPLY_TO_POSE>
+ </APPLY_TO_POSE>
+ <PROTOCOLS>
+ <Add mover="add_memb" />
+ <Add mover="interfaces" />
+ </PROTOCOLS>
+ <OUTPUT scorefxn="f19" />
+</ROSETTASCRIPTS>

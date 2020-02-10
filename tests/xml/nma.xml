@@ -1,0 +1,23 @@
+<ROSETTASCRIPTS>
+ <SCOREFXNS>
+ <ScoreFunction name="bn15_cart" weights="ref2015_cart" />
+ </SCOREFXNS>
+ <RESIDUE_SELECTORS>
+ </RESIDUE_SELECTORS>
+ <TASKOPERATIONS>
+ </TASKOPERATIONS>
+ <FILTERS>
+ </FILTERS>
+ <MOVERS>
+ <NormalModeRelax name="nma" cartesian="true" centroid="false"
+scorefxn="bn15_cart" nmodes="5" mix_modes="true" pertscale="1.0"
+randomselect="false" relaxmode="relax" nsample="20"
+cartesian_minimize="false" />
+ </MOVERS>
+ <APPLY_TO_POSE>
+ </APPLY_TO_POSE>
+ <PROTOCOLS>
+ <Add mover="nma" />
+ </PROTOCOLS>
+ <OUTPUT scorefxn="bn15_cart" />
+</ROSETTASCRIPTS>
