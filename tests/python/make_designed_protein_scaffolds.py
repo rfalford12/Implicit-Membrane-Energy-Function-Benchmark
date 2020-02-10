@@ -28,7 +28,7 @@ def run_fixed_backbone_design_calc( energy_fxn, config, targets, test_name ):
   print( "Performing fixed backbone design on set", targets ) 
 
   # Read list of energy landscape test cases
-  list_of_targets = config.benchmark_path + "targets/design/monomer_chains.list"
+  list_of_targets = config.benchmark + "targets/design/monomer_chains.list"
   with open( list_of_targets, 'rt' ) as f: 
     test_cases = f.readlines()
     test_cases = [ x.strip() for x in test_cases ]
