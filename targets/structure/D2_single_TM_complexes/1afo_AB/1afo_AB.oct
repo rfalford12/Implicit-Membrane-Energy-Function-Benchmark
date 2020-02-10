@@ -1,0 +1,16 @@
+##############################################################################
+OCTOPUS result file
+Generated from http://octopus.cbr.su.se/ at 2017-06-27 23:45:32
+Total request time: 12.88 seconds.
+##############################################################################
+
+
+Sequence name: 1AFO
+Sequence length: 80 aa.
+Sequence:
+VQLAHHFSEPEITLIIFGVMAGVIGTILLISYGIRRLIKKVQLAHHFSEPEITLIIFGVM
+AGVIGTILLISYGIRRLIKK
+
+OCTOPUS predicted topology:
+ooooooooooMMMMMMMMMMMMMMMMMMMMMiiiiiiiiiiiiiiiiiiMMMMMMMMMMM
+MMMMMMMMMMoooooooooo
