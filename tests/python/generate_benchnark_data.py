@@ -137,10 +137,10 @@ def main( args ):
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
 
-	# # Test #8 and #9: Sequence Recovery and side chain distribution
-	# if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
+	# Test #8 and #9: Sequence Recovery and side chain distribution
+	if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
 
-	# 	make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery" )
+		make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery" )
 
 	# Test #10: Native structure discrimination
 	if ( "decoy-discrimination" in test_names ): 
