@@ -3,7 +3,7 @@
 
 This module generates data for any of the twelve implicit 
 membrane energy function benchmark tests. This is the first
-step of two for executing and evaluating the scientific tests.
+step of three for executing and evaluating the scientific tests.
 
 Authors: 
 	Rebecca Alford <ralford3@jhu.edu> 
@@ -15,13 +15,10 @@ Example:
 Arguments: 
 	- energy_fxn: Weights file for energy function of interest
 	- which_tests: Run all tests, or specify by comma-separated list
-	- restore_talaris: Restore talaris settings for pre-2015 energy
-	  functions (e.g. mpframework_fa_2007)
 
 Requirements: 
 	- Rosetta release 246 or greater
 	- PyRosetta4 for Python 3.6 or 3.7
-	- KinkFinder
 """
 
 import sys, os, random
@@ -30,6 +27,7 @@ import make_helix_kink_ensembles
 import make_peptide_energy_landscape
 import make_protein_energy_landscape
 import make_asymm_docked_complexes
+import make_designed_protein_scaffolds
 import make_refined_decoys
 import predict_hydrophobic_length
 import predict_ddG
@@ -67,7 +65,6 @@ def main( args ):
 	
 	parser.add_option( '--energy_fxn', '-e', action="store", help="Name of energy function weights file", )
 	parser.add_option( '--which_tests', '-w', action="store", help="Specify tests run (comma separated list)", )
-	parser.add_option( '--restore_talaris', '-r', action="store", help="Restore talaris behavior using tthe flag -restore_talaris_behavior for reference runs", )
 
 	(options, args) = parser.parse_args(args=args[1:])
 	global Options
@@ -80,9 +77,9 @@ def main( args ):
 
 	# Set restore variable based on energy function type
 	restore = True
-	if ( Options.energy_fxn != "franklin2019" or Options.energy_fxn != "ref2015" ): 
+	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" or Options.energy_fxn "ref2015_memb" ): 
 		restore = False 
-
+		
 	# Read path configuration file
 	config = read_config.read_config()
 
@@ -133,63 +130,52 @@ def main( args ):
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
 
-
-	# Test #7: Generate benchamrk data for ddG of mutation predictions
+	# Test #7: ddG of mutation
 	if ( "ddG-of-mutation" in test_names ): 
 
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
 
-	# Test ##: Generate benchmark data for decoy-discrimination tests
+	# Test #8 and #9: Sequence Recovery and side chain distribution
+	if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
+
+		make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery" )
+
+	# Test #10: Native structure discrimination
 	if ( "decoy-discrimination" in test_names ): 
 
 		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "hires", "mp_relax.xml" ) 
 		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "lowres", "mp_relax.xml" )
 
-	# Test ##: Generate benchmark data for docking test
+	# Test #11: Membrane helix kinks
 	if ( "helix-kinks" in test_names ): 
 
 		make_helix_kink_ensembles.run_nma_ensemble_calc( config, "nma.xml")
 
-	# Test ##: Generate benchmark data for side chain distribution test
-	if ( "sc-distribution" in test_names ): 
-
-		path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
-		predict_side_chain_distribution.compute_side_chain_distribution( config, path + "/natives.list", path + "/redesigned_allpath.list" )
-
-	# Test ##: Generate benchmark data for docking test
+	# Test #12: Protein-protein docking
 	if ( "protein-protein-docking" in test_names ): 
 
-		# Substep ##1 - Generate prepacked structures
-		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking" )
-		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
-		#make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
+		# Step 12.1 - Generate prepacked structures
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-		# Substep ##2 - Remove "MEM" from the PDB
-		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True )
-		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
-		#make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
+		# Step 12.2 - Remove "MEM" from the PDB
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True )
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-		# Substep ##3 - Generate 5K docking decoys per target
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
+		# Step 12.3 - Generate 5K docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
 
-		# Substep ##4 - Generate 100 refined native docking decoys per target
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
-		#make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
+		# Step 12.4 - Generate 100 refined native docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
 
-		# Substep ##5 - Analyze docking decoys
-		#make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
-		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
-		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
-
-		# Substep ##6 - Analyze local refine decoys
-		#make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
-		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
-		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
 
 
 if __name__ == "__main__" : main(sys.argv)
