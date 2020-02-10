@@ -77,7 +77,7 @@ def main( args ):
 
 	# Set restore variable based on energy function type
 	restore = True
-	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" or Options.energy_fxn "ref2015_memb" ): 
+	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" ):
 		restore = False 
 		
 	# Read path configuration file
