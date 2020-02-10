@@ -41,6 +41,7 @@ conda install pyrosetta
 
 ```
 TODO: Include prerequisite of KinkFinder for helix kink calculations
+Also include information about cluser ties for bigger tests (no laptop state)
 ```
 
 Finally, the analysis code requires R version 3.0 or greater. You can download R here: https://www.r-project.org/. 
@@ -60,6 +61,35 @@ compiler = gcc				# can be gcc or clang
 ## Documentation
 
 starting docs here. 
+
+
+=== Everything below this line is in DRAFT and part of a TODO list ===
+
+Drafting headers for python and R scripts
+
+Example for Python
+"""
+@file: 	 atomtyper.py
+@about:  Atom type assignment engine using SMARTS strings.
+@author: Rebecca Alford <ralford3@jhu.edu>, Johns Hopkins University
+"""
+
+Example for R
+# @file: 	t01_tilt_angle.R
+# @about: 	Map energies to orientations to find most stable configuration
+# @author: 	Rebecca Alford <ralford3@jhu.edu>, Johns Hopkins University
+
+Ideal interface
+
+# Generate benchmark data
+./generate_test_data.py --energy_fxn franklin2019 --which_tests all --restore_talaris False
+
+	Option explanations
+	--energy_fxn		Energy function to test, referred to by name of weights file in the Rosetta database. Must be present in both Rosetta & PyRosetta
+
+	--which_tests		Include tests to run. Either all, or a comma separated list of one of the following tests given below: 
+
+		TODO: add list, also refactor script to include labels 1-12
 
 
 

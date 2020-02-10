@@ -1,11 +1,28 @@
 #!/usr/bin/env python
-###################################################################
-#@file:         make_benchmark_data.py                                                                                  
-#@description:  Generate data required for membrane efxn benchmark suite                                              
-#@args:			--energy_fxn (wts)                                                
-#@author: 		Rebecca F. Alford                   
-#@email: 		rfalford12@gmail.com                                          
-###################################################################
+""" Master script for generating benchmark data
+
+This module generates data for any of the twelve implicit 
+membrane energy function benchmark tests. This is the first
+step of two for executing and evaluating the scientific tests.
+
+Authors: 
+	Rebecca Alford <ralford3@jhu.edu> 
+
+Example: 
+	$ python generate_benchmark_data.py --energy_fxn franklin2019
+	--which_tests all --restore_talaris False
+
+Arguments: 
+	- energy_fxn: Weights file for energy function of interest
+	- which_tests: Run all tests, or specify by comma-separated list
+	- restore_talaris: Restore talaris settings for pre-2015 energy
+	  functions (e.g. mpframework_fa_2007)
+
+Requirements: 
+	- Rosetta release 246 or greater
+	- PyRosetta4 for Python 3.6 or 3.7
+	- KinkFinder
+"""
 
 import sys, os, random
 import hpc_util, read_config
@@ -22,7 +39,7 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "energy-function-landscape", "helix-kinks", "hydrophobic-length", "peptide-tilt-angle", "protein-protein-docking", "protein-tilt-angle", "sequence-recovery", "symmetric-protein-docking" ]
+all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "tm-peptide-tiolt", "helix-kinks", "hydrophobic-length", "adsorbed-peptide-tilt-angle", "protein-protein-docking", "protein-tilt-angle", "sequence-recovery" ]
 
 def create_outdirs( energy_fxn, config, list_of_tests ): 
 
@@ -45,7 +62,7 @@ def create_outdirs( energy_fxn, config, list_of_tests ):
 def main( args ): 
 
 	# Read options from the command line
-	parser = OptionParser(usage="usage %prog --energy_fxn membrane_v0 --which_tests all --restore false" )
+	parser = OptionParser(usage="usage %prog --energy_fxn franklin2019 --which_tests all --restore_talaris false" )
 	parser.set_description(main.__doc__)
 	
 	parser.add_option( '--energy_fxn', '-e', action="store", help="Name of energy function weights file", )
@@ -83,40 +100,45 @@ def main( args ):
 	# Create directories based on test names and user-specified energy function
 	create_outdirs( Options.energy_fxn, config, test_names )
 
-	# Test ##: Generate benchamrk data for hydrophobic length test
-	if ( "hydrophobic-length" in test_names ): 
-
-		predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
-
-	# Test ##: Generate benchamrk data for peptide tilt and rotation angle test
-	if ( "peptide-tilt-angle" in test_names ): 
+	# Test #1: Tilt angles for transmembrane peptides
+	if ( "tm-peptide-tilt-angle" in test_names ): 
 
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A1_native_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A3_designed_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+
+	# Test #2: Rotation angles for surface adsorbed peptides
+	if ( "adsorbed-peptide-tilt-angle" in test_names ): 
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
-	# Test ##: Generate benchamrk data for protein energy landscape test
+	# Test #3: Orientation of membrane proteins with complex topologies
 	if ( "protein-tilt-angle" in test_names ): 
 
 		make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
 
-	# Test ##: Generate benchamrk data for pH-sensitive insertion
+	# Test #4: Membrane protein hydrophobic thickness
+	if ( "hydrophobic-length" in test_names ): 
+
+		predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
+
+	# Test #5: Stability of transmembrane peptides at neutral pH
+	if ( "ddG-of-insertion" in test_names ): 
+
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+
+	# Test #6: Stability of transmembrane peptides at acidic pH
 	if ( "ddG-of-pH-insertion" in test_names ): 
 
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
 
-	# Test ##: Generate benchamrk data for constant pH insertion
-	if ( "ddG-of-insertion" in test_names ): 
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
-
-	# Test ##: Generate benchamrk data for ddG of mutation predictions
+	# Test #7: Generate benchamrk data for ddG of mutation predictions
 	if ( "ddG-of-mutation" in test_names ): 
 
-		#predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
-		#predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
 		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
 
 	# Test ##: Generate benchmark data for decoy-discrimination tests
