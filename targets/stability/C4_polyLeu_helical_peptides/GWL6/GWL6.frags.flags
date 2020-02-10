@@ -1,9 +1,0 @@
--frags:scoring:config /Users/ralford/research/sfxn-benchmarks/dataset_generation/frags.wghts
--in:file:vall /Users/ralford/research/sfxn-benchmarks/dataset_generation/vall.jul19.2011
--in:file:fasta /Users/ralford/research/sfxn-benchmarks/test_datasets/pH-independent-insert/GWL6/GWL6.fasta
--frags::ss_pred			/Users/ralford/research/sfxn-benchmarks/test_datasets/pH-independent-insert/GWL6/GWL6.ss2 predA
--frags:frag_sizes 4 5
--frags:n_candidates 200
--frags:n_frags	50
--out:file:frag_prefix frags
--frags::bounded_protocol

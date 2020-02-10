@@ -1,5 +1,0 @@
-Universe = vanilla
-Arguments = @/home/ralford/curie-benchmark/test_datasets/pH-independent-insert/GL8/GL8.abinitio.flags
-Executable = /home/ralford/apps/Rosetta/main/source/bin/rosetta_scripts.default.linuxgccrelease
-Log = /home/ralford/curie-benchmark/test_datasets/pH-independent-insert/GL8/GL8.log
-Queue 100
