@@ -77,7 +77,7 @@ def main( args ):
 
 	# Set restore variable based on energy function type
 	restore = True
-	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" ):
+	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" or Options.energy_fxn "ref2015_memb" ): 
 		restore = False 
 		
 	# Read path configuration file
@@ -98,49 +98,49 @@ def main( args ):
 	create_outdirs( Options.energy_fxn, config, test_names )
 
 	# Test #1: Tilt angles for transmembrane peptides
-	if ( "tm-peptide-tilt-angle" in test_names ): 
+	# if ( "tm-peptide-tilt-angle" in test_names ): 
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A1_native_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A3_designed_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A1_native_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A3_designed_tm_ahelices", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
 
-	# Test #2: Rotation angles for surface adsorbed peptides
-	if ( "adsorbed-peptide-tilt-angle" in test_names ): 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+	# # Test #2: Rotation angles for surface adsorbed peptides
+	# if ( "adsorbed-peptide-tilt-angle" in test_names ): 
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "src/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
-	# Test #3: Orientation of membrane proteins with complex topologies
-	if ( "protein-tilt-angle" in test_names ): 
+	# # Test #3: Orientation of membrane proteins with complex topologies
+	# if ( "protein-tilt-angle" in test_names ): 
 
-		make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
+	# 	make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
 
-	# Test #4: Membrane protein hydrophobic thickness
-	if ( "hydrophobic-length" in test_names ): 
+	# # Test #4: Membrane protein hydrophobic thickness
+	# if ( "hydrophobic-length" in test_names ): 
 
-		predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
+	# 	predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
 
-	# Test #5: Stability of transmembrane peptides at neutral pH
-	if ( "ddG-of-insertion" in test_names ): 
+	# # Test #5: Stability of transmembrane peptides at neutral pH
+	# if ( "ddG-of-insertion" in test_names ): 
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "src/xml/make_depth_vs_tilt_energy_landscape.xml" )
 
-	# Test #6: Stability of transmembrane peptides at acidic pH
-	if ( "ddG-of-pH-insertion" in test_names ): 
+	# # Test #6: Stability of transmembrane peptides at acidic pH
+	# if ( "ddG-of-pH-insertion" in test_names ): 
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
+	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "src/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
 
-	# Test #7: ddG of mutation
-	if ( "ddG-of-mutation" in test_names ): 
+	# # Test #7: ddG of mutation
+	# if ( "ddG-of-mutation" in test_names ): 
 
-		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
-		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
-		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
+	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
+	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
+	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
 
-	# Test #8 and #9: Sequence Recovery and side chain distribution
-	if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
+	# # Test #8 and #9: Sequence Recovery and side chain distribution
+	# if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
 
-		make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery" )
+	# 	make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery" )
 
 	# Test #10: Native structure discrimination
 	if ( "decoy-discrimination" in test_names ): 
