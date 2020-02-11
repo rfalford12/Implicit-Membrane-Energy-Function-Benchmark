@@ -35,7 +35,7 @@ def run_nma_ensemble_calc( config, xml ):
 
 	# Generate path to executable
 	executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
-	xml_script =  config.benchmark_path + "src/xml/" + xml
+	xml_script =  config.benchmark_path + "tests/xml/" + xml
 
 	# Change directories to a data analysis dir
 	outdir = config.benchmark_path + "data/" + test_name + "/" + energy_fxn + "/" 
