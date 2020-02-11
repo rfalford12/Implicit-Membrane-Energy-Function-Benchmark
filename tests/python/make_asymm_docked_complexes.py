@@ -52,8 +52,8 @@ def post_process_prepack_pdb( energy_fxn, config, targets, test_name, transforme
       prepack_pdb_title = target_ids[i] + "_tr_0001"
 
     # Generate a string of arguments from the case-specific variables
-    s = Template( "python2 /home/ralford/apps/Rosetta/tools/protein_tools/scripts/clean_pdb.py $title $chains")
-    arguments = s.substitute( title=prepack_pdb_title, chains=partners )
+    s = Template( "python2 $rosetta../../tools/protein_tools/scripts/clean_pdb.py $title $chains")
+    arguments = s.substitute( title=prepack_pdb_title, chains=partners, rosetta=config.rosetta_path )
     os.system( arguments )
 
 def run_prepack_calc( energy_fxn, config, targets, test_name ): 
@@ -115,7 +115,7 @@ def run_prepack_calc( energy_fxn, config, targets, test_name ):
     print("Submitting docking calculations for case:", target_ids[i])
     jobname = target_ids[i] + "_prepack_dock"
     jobfile = hpc_util.make_jobfile( casedir, target_ids[i], executable, arguments )
-    hpc_util.submit_condor_job( casedir, jobname, jobfile, "", 1 )
+    os.system( "bash " + jobfile )
 
 def run_docking_calc( energy_fxn, config, targets, test_name, local_refine, transformed=False ): 
   """
