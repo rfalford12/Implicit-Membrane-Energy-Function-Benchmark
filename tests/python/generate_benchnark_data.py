@@ -132,16 +132,16 @@ def main( args ):
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "tests/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
 
 	# Test #7: ddG of mutation
-	# if ( "ddG-of-mutation" in test_names ): 
+	if ( "ddG-of-mutation" in test_names ): 
 
-	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
-	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
-	# 	predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C1_OmpLA_canonical_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_Moon_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C2_PagP_canonical_ddGs", "3gp6_A.pdb", "3gp6_A.span", "PagP_Marx_Fleming_set.dat" )
+		predict_ddG.run_ddG_of_mutation_calc( config, Options.energy_fxn, "C3_OmpLA_aro_ddGs", "1qd6.pdb", "1qd6.span", "OmpLA_aro_McDonald_Fleming_set.dat" )		
 
 	# # Test #8 and #9: Sequence Recovery and side chain distribution
-	# if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
+	if ( ("sequence-recovery" or "sc-distribution") in test_names ): 
 
-	# 	make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery", restore )
+		make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery", restore )
 
 	# # Test #10: Native structure discrimination
 	# if ( "decoy-discrimination" in test_names ): 
