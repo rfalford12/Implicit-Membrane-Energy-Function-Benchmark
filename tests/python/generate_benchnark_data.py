@@ -37,7 +37,7 @@ from string import Template
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
-all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "tm-peptide-tilt", "helix-kinks", "hydrophobic-length", "adsorbed-peptide-tilt-angle", "protein-protein-docking", "protein-tilt-angle", "sequence-recovery" ]
+all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-pH-insertion", "decoy-discrimination", "tm-peptide-tilt-angle", "helix-kinks", "hydrophobic-length", "adsorbed-peptide-tilt-angle", "protein-protein-docking", "protein-tilt-angle", "sequence-recovery" ]
 
 def create_outdirs( energy_fxn, config, list_of_tests ): 
 
@@ -105,8 +105,8 @@ def main( args ):
 
 	# Test #2: Rotation angles for surface adsorbed peptides
 	if ( "adsorbed-peptide-tilt-angle" in test_names ): 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
+		#make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
 	# Test #3: Orientation of membrane proteins with complex topologies
