@@ -110,7 +110,7 @@ def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutat
     repack_radius = 8.0
 
     # Make output directories
-    outdir = config.benchmark_path + "data/ddG-of-mutation"
+    outdir = config.benchmark_path + "data/" + energy_fxn + "/ddG-of-mutation"
     if ( not os.path.isdir( outdir ) ): 
         os.system( "mkdir " + outdir )
 
