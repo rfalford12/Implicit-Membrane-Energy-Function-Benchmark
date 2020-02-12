@@ -54,7 +54,7 @@ def run_protein_energy_landscape_calc( energy_fxn, restore, config, test_name ):
 	xml_script =  config.benchmark_path + "/src/xml/make_depth_vs_tilt_energy_landscape.xml"
 
 	# Change directories to a data analysis dir
-	outdir = config.benchmark_path + "data/" + test_name + "/" + energy_fxn
+	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name
 	if ( not os.path.isdir( outdir ) ): 
 		os.system( "mkdir " + outdir )
 		os.chdir( outdir )
