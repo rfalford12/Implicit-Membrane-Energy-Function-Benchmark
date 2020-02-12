@@ -1,11 +1,28 @@
 #!/usr/bin/env python
-###################################################################
-#@file:         make_designed_protein_scaffold.py                                                                                   
-#@description:  Generate redesigned protein scaffold                                               
-#@args:     --energy_fxn (wts) --targets (list of targets)                                                          
-#@author:     Rebecca F. Alford                   
-#@email:    rfalford12@gmail.com                                          
-###################################################################
+""" Generate redesigned protein scaffolds
+
+This script runs fixed backbone design on native membrane
+protein structures, required data for the sequence recovery
+and side chain distribution tests (Test 8 and 9). 
+
+Authors: 
+  Rebecca Alford <ralford3@jhu.edu> 
+
+Example: 
+  $ import make_designed_protein_scaffolds
+  $ make_designed_protein_scaffolds.run_fixed_backbone_design_calc( 
+    config, energy_fxn,  targets, test_name, restore )
+
+Arguments: 
+  - config: Container with path to benchmark and rosetta files
+  - energy_fxn: Weights file for energy function of interest
+  - targets: Location of design targets
+  - test_name: Name of test
+  - restore: Use talaris2014 energy function parameters
+
+Requirements: 
+  - Rosetta release 246 or greater
+"""
 
 import random, os, sys
 import hpc_util, read_config
