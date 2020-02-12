@@ -122,7 +122,7 @@ def main( args ):
 	# Test #5: Stability of transmembrane peptides at neutral pH
 	if ( "ddG-of-insertion" in test_names ): 
 
-		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C4_polyLeu_helical_peptides", "tests/xml/make_depth_vs_tilt_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-insertion", "stability/C4_polyLeu_helical_peptides", "tests/xml/make_depth_vs_tilt_energy_landscape.xml" )
 
 	# Test #6: Stability of transmembrane peptides at acidic pH
 	if ( "ddG-of-pH-insertion" in test_names ): 

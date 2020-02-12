@@ -39,15 +39,10 @@ def run_peptide_energy_landscape_calc( energy_fxn, config, test_name, targets, x
 	xml_script =  config.benchmark_path + "/" + xml
 
 	# Change directories to a data analysis dir
-	outdir = config.benchmark_path + "data/" + test_name + "/" + energy_fxn
+	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name
 	if ( not os.path.isdir( outdir ) ): 
 		os.system( "mkdir " + outdir )
 		os.chdir( outdir )
-
-	outdir2 = outdir + "/" + targets.split("/")[1]
-	if ( not os.path.isdir( outdir2 ) ): 
-		os.system( "mkdir " + outdir2 )
-		os.chdir( outdir2 )
 
 	# For each test case, generate specific arguments, a condor file, and then run
 	for case in test_cases:
@@ -61,7 +56,7 @@ def run_peptide_energy_landscape_calc( energy_fxn, config, test_name, targets, x
 		if ( pH_mode ): 
 			arguments = arguments + " -pH_mode true -value_pH " + str(pH)
 
-		casedir = outdir2 + "/" + case
+		casedir = outdir + "/" + case
 		if ( pH_mode ): 
 			casedir = casedir + "_" + str(pH)
 		if ( not os.path.isdir( casedir ) ): 
