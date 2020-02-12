@@ -106,7 +106,7 @@ def main( args ):
 	# Test #2: Rotation angles for surface adsorbed peptides
 	if ( "adsorbed-peptide-tilt-angle" in test_names ): 
 
-		#make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
 	# Test #3: Orientation of membrane proteins with complex topologies
