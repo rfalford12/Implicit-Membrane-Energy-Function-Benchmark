@@ -1,11 +1,29 @@
 #!/usr/bin/env python
-###################################################################
-#@file:         make_protein_energy_landscape.py                                                                                   
-#@description:  Generate orientation-dependent peptide energy map                                                                                                       
-#@author: 		Rebecca F. Alford                   
-#@email: 		rfalford12@gmail.com                                          
-###################################################################
+""" Predict orientation of multi-pass transmembrane proteins
 
+This script runs the MembraneEnergyLandscapeSampler on each target
+in the dataset. The result is a complete mapping of energies to 
+peptide orientation, given as a function of depth and either tilt 
+or rotation angle. This script generates data for Taest 3.
+
+Authors: 
+	Rebecca Alford <ralford3@jhu.edu> 
+
+Example: 
+	$ import make_peptide_energy_landscape
+	$ make_protein_energy_landscape.run_peptide_energy_landscape_calc( 
+	  energy_fxn, config, test_name, targets_dir, xml )
+
+Arguments: 
+	- energy_fxn: Weights file for energy function of interest
+	- config: Container with path to benchmark and rosetta files
+	- test_name: Name of benchmark test
+	- targets_dir: Location of test cases
+	- xml: Path to MembraneEnergyLandscapeSampler XML application
+
+Requirements: 
+	- Rosetta release 246 or greater
+"""
 import random
 import sys, os
 import hpc_util, read_config
