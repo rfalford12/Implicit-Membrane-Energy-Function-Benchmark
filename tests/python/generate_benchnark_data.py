@@ -110,26 +110,26 @@ def main( args ):
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A2_native_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "adsorbed-peptide-tilt-angle", "tilt_angle/A4_designed_surface_ahelices", "tests/xml/make_depth_vs_helix_rot_energy_landscape.xml" )
 
-	# # Test #3: Orientation of membrane proteins with complex topologies
-	# if ( "protein-tilt-angle" in test_names ): 
+	# Test #3: Orientation of membrane proteins with complex topologies
+	if ( "protein-tilt-angle" in test_names ): 
 
-	# 	make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
+		make_protein_energy_landscape.run_protein_energy_landscape_calc( Options.energy_fxn, restore, config, "protein-tilt-angle" )
 
-	# # Test #4: Membrane protein hydrophobic thickness
-	# if ( "hydrophobic-length" in test_names ): 
+	# Test #4: Membrane protein hydrophobic thickness
+	if ( "hydrophobic-length" in test_names ): 
 
-	# 	predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
+		predict_hydrophobic_length.run_hydrophobic_length_calc( Options.energy_fxn, restore, config, "hydrophobic-length" )
 
-	# # Test #5: Stability of transmembrane peptides at neutral pH
-	# if ( "ddG-of-insertion" in test_names ): 
+	# Test #5: Stability of transmembrane peptides at neutral pH
+	if ( "ddG-of-insertion" in test_names ): 
 
-	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-insertion", "stability/C4_polyLeu_helical_peptides", "tests/xml/make_depth_vs_tilt_energy_landscape.xml" )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-insertion", "stability/C4_polyLeu_helical_peptides", "tests/xml/make_depth_vs_tilt_energy_landscape.xml" )
 
-	# # Test #6: Stability of transmembrane peptides at acidic pH
-	# if ( "ddG-of-pH-insertion" in test_names ): 
+	# Test #6: Stability of transmembrane peptides at acidic pH
+	if ( "ddG-of-pH-insertion" in test_names ): 
 
-	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "tests/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
-	# 	make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "tests/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "tests/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 4 )
+		make_peptide_energy_landscape.run_peptide_energy_landscape_calc( Options.energy_fxn, config, "ddG-of-pH-insertion", "stability/C5_pHLIP_helical_peptides", "tests/xml/make_depth_vs_tilt_pH_energy_landscape.xml", True, 8 )
 
 	# Test #7: ddG of mutation
 	# if ( "ddG-of-mutation" in test_names ): 
