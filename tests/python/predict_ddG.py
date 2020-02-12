@@ -1,7 +1,31 @@
 # @file: predict_ddG.py
-# @brief: Calculated the ddG of mutation dependent on membrane depth and pH
-# @notes: Adapted for benchmark and PyRosetta4 from Alford & Koehler Leman et al. 2015
-# @author: Rebcca Alford (ralford3@jhu.edu)
+""" Predict the ddG of mutation
+
+This script computes the energetic cost of single point
+mutations in membrane proteins. To account for the conformational
+change, we repack side chains within 8 Angstroms of the host site.
+This script generates data for Test 7.
+
+Authors: 
+    Rebecca Alford <ralford3@jhu.edu> 
+
+Example: 
+    $ import predict_ddG
+    $ predict_ddG.run_ddG_of_mutation_calc( 
+    config, energy_fxn, targets_dir, native_pdb, 
+    native_span, reference_data )
+        
+Arguments: 
+    - config: Container with path to benchmark and rosetta files
+    - energy_fxn: Weights file for energy function of interest
+    - targets_dir: Name of output data directory
+    - native_pdb: Conformation of the native state
+    - native_span: Transmembrane topology of the native state
+    - reference_data: Text file containing experimental ref data. 
+
+Requirements: 
+    - PyRosetta4 and Python 3.6 or 3.7
+"""
 
 from pyrosetta import *
 from pyrosetta.teaching import *
