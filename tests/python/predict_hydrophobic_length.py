@@ -1,10 +1,27 @@
 #!/usr/bin/env python
-###################################################################
-#@file:         predict_hydrophobic_length.py                                                                                   
-#@description:	Predict the ideal hydrophobic length of membrane proteins                                                                                                     
-#@author: 		Rebecca F. Alford                   
-#@email: 		rfalford12@gmail.com                                          
-###################################################################
+""" Predict hydrophobic length of multi-pass transmembrane proteins
+
+This script finds the energy optimal membrane thickness by calculating
+the score for all thickness values between 0-40 Angstroms. This script 
+generates data for Taest 4.
+
+Authors: 
+	Rebecca Alford <ralford3@jhu.edu> 
+
+Example: 
+	$ import make_peptide_energy_landscape
+	$ predict_hydrophobic_length.run_hydrophobic_length_calc( 
+	  energy_fxn, restore, config, test_name )
+
+Arguments: 
+	- energy_fxn: Weights file for energy function of interest
+	- restore: Use talaris2014 parameters and settings
+	- config: Container with path to benchmark and rosetta files
+	- test_name: Name of benchmark test
+
+Requirements: 
+	- Rosetta release 246 or greater
+"""
 
 import random
 import sys, os
@@ -34,7 +51,7 @@ def run_hydrophobic_length_calc( energy_fxn, restore, config, test_name ):
 	executable = config.rosetta_path + "find_optimal_hydrophobic_thk" + "." + config.platform + config.compiler + config.buildenv
 
 	# Change directories to a data analysis dir
-	outdir = config.benchmark_path + "data/" + test_name + "/" + energy_fxn
+	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name
 	if ( not os.path.isdir( outdir ) ): 
 		os.system( "mkdir " + outdir )
 		os.chdir( outdir )
