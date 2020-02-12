@@ -45,20 +45,18 @@ def create_outdirs( energy_fxn, config, list_of_tests ):
 	datadir = config.benchmark_path + "data/"
 	if ( not os.path.isdir(datadir) ): 
 		os.system( "mkdir " + datadir )
-	os.system( "cd " + datadir )
+	os.chdir( datadir )
 
 	# Create test data directories
-	efxndir = energy_fxn
-	if ( not os.path.isdir(efxndir) ): 
+	efxndir = datadir + energy_fxn
+	if ( not os.path.isdir( efxndir) ): 
 		os.system( "mkdir " + efxndir )
-		os.system( efxndir )
-		
+	os.chdir( efxndir )
+
 	for test in list_of_tests: 
-		testdir = datadir + test + "/"
+		testdir = efxndir + "/" + test 
 		if ( not os.path.isdir(testdir) ): 
 			os.system( "mkdir " + testdir )
-
-
 
 def main( args ): 
 
