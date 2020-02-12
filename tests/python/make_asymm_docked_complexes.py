@@ -40,7 +40,7 @@ def post_process_prepack_pdb( energy_fxn, config, targets, test_name, transforme
   for i in range(0, len(target_ids)): 
 
     # Change directories to a data analysis dir
-    outdir = config.benchmark_path + "/data/protein-protein-docking/" + energy_fxn + "/" + targets + "/" + target_ids[i]
+    outdir = config.benchmark_path + "/data/" + energy_fxn + " /protein-protein-docking/" + targets + "/" + target_ids[i]
     if ( not os.path.isdir( outdir ) ): 
       sys.exit( "Prepacking step was skipped! Cannot clean non-existent prepack structures" )
     os.chdir( outdir )
@@ -80,15 +80,10 @@ def run_prepack_calc( energy_fxn, config, targets, test_name ):
   executable = config.rosetta_path + "docking_prepack_protocol" + "." + config.platform + config.compiler + config.buildenv
 
   # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/protein-protein-docking/" 
+  outdir = config.benchmark_path + "/data/" + energy_fxn + "/protein-protein-docking/" 
   if ( not os.path.isdir( outdir ) ): 
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
-
-  outdir2 = outdir + energy_fxn
-  if ( not os.path.isdir( outdir2 ) ): 
-    os.system( "mkdir " + outdir2 )
-    os.chdir( outdir2 ) 
 
   outdir3 = outdir2 + "/" + targets
   if ( not os.path.isdir( outdir3 ) ): 
@@ -141,7 +136,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name, local_refine, tran
   executable = config.rosetta_path + "mpdocking" + "." + config.platform + config.compiler + config.buildenv
 
   # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/protein-protein-docking/" + energy_fxn + "/" + targets + "/"
+  outdir = config.benchmark_path + "/data/" + energy_fxn + "/protein-protein-docking/" + targets + "/"
   if ( not os.path.isdir( outdir ) ): 
     sys.exit()
 
@@ -207,7 +202,7 @@ def analyze_interfaces( energy_fxn, config, targets, test_name, local_refine, tr
   xml_script = config.benchmark_path + "/src/xml/interface.xml"  
 
   # Change directories to a data analysis dir
-  outdir = config.benchmark_path + "/data/protein-protein-docking/" + energy_fxn + "/" + targets + "/"
+  outdir = config.benchmark_path + "/data/" + energy_fxn + "/protein-protein-docking/"  + targets + "/"
   if ( not os.path.isdir( outdir ) ): 
     sys.exit()
 

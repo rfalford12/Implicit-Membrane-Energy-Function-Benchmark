@@ -38,7 +38,7 @@ def run_refine_decoys_calc( energy_fxn, restore, config, test_name, resolution, 
 	xml_script =  config.benchmark_path + "src/xml/" + xml
 
 	# Change directories to a data analysis dir
-	outdir = config.benchmark_path + "data/" + test_name + "/" + energy_fxn + "/" + resolution + "/"  
+	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name + "/" + resolution + "/"  
 	if ( not os.path.isdir( outdir ) ): 
 		os.system( "mkdir " + outdir )
 		os.chdir( outdir )

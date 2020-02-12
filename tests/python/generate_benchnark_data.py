@@ -143,39 +143,39 @@ def main( args ):
 
 		make_designed_protein_scaffolds.run_fixed_backbone_design_calc( config, Options.energy_fxn,  "targets", "sequence-recovery", restore )
 
-	# # Test #10: Native structure discrimination
-	# if ( "decoy-discrimination" in test_names ): 
+	# Test #10: Native structure discrimination
+	if ( "decoy-discrimination" in test_names ): 
 
-	# 	make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "hires", "mp_relax.xml" ) 
-	# 	make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "lowres", "mp_relax.xml" )
+		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "hires", "mp_relax.xml" ) 
+		make_refined_decoys.run_refine_decoys_calc( Options.energy_fxn, restore, config, "decoy-discrimination", "lowres", "mp_relax.xml" )
 
-	# # Test #11: Membrane helix kinks
-	# if ( "helix-kinks" in test_names ): 
+	# Test #11: Membrane helix kinks
+	if ( "helix-kinks" in test_names ): 
 
-	# 	make_helix_kink_ensembles.run_nma_ensemble_calc( config, "nma.xml")
+		make_helix_kink_ensembles.run_nma_ensemble_calc( config, "nma.xml")
 
-	# # Test #12: Protein-protein docking
-	# if ( "protein-protein-docking" in test_names ): 
+	# Test #12: Protein-protein docking
+	if ( "protein-protein-docking" in test_names ): 
 
-	# 	# Step 12.1 - Generate prepacked structures
-	# 	make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking" )
-	# 	make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
-	# 	make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
+		# Step 12.1 - Generate prepacked structures
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.run_prepack_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-	# 	# Step 12.2 - Remove "MEM" from the PDB
-	# 	make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True )
-	# 	make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
-	# 	make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
+		# Step 12.2 - Remove "MEM" from the PDB
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True )
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking" )
+		make_asymm_docked_complexes.post_process_prepack_pdb( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking" )
 
-	# 	# Step 12.3 - Generate 5K docking decoys per target
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
+		# Step 12.3 - Generate 5K docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
 
-	# 	# Step 12.4 - Generate 100 refined native docking decoys per target
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
-	# 	make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
+		# Step 12.4 - Generate 100 refined native docking decoys per target
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
+		make_asymm_docked_complexes.run_docking_calc( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
 
 
 
