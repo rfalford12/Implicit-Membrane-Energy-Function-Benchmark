@@ -85,7 +85,7 @@ def run_prepack_calc( energy_fxn, config, targets, test_name ):
     os.system( "mkdir " + outdir )
     os.chdir( outdir )
 
-  outdir3 = outdir2 + "/" + targets
+  outdir3 = outdir + "/" + targets
   if ( not os.path.isdir( outdir3 ) ): 
     os.system( "mkdir " + outdir3 )
     os.chdir( outdir3 )
