@@ -54,7 +54,7 @@ def run_fixed_backbone_design_calc( config, energy_fxn, targets, test_name, rest
   executable = config.rosetta_path + "fixbb" + "." + config.platform + config.compiler + config.buildenv
 
   # Make a directory for the subset and lipid composition
-  outdir = config.benchmark_path + "data/sequence-recovery" 
+  outdir = config.benchmark_path + "data/" + energy_fxn + "/sequence-recovery" 
   os.system( "mkdir " + outdir )
   os.chdir( outdir )
 
