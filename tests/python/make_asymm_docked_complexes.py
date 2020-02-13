@@ -40,8 +40,7 @@ def post_process_prepack_pdb( energy_fxn, config, targets, test_name, transforme
   for i in range(0, len(target_ids)): 
 
     # Change directories to a data analysis dir
-    outdir = config.benchmark_path + "/data/" + energy_fxn + " /protein-protein-docking/" + targets + "/" + target_ids[i]
-    print(outdir)
+    outdir = config.benchmark_path + "/data/" + energy_fxn + "/protein-protein-docking/" + targets + "/" + target_ids[i]
     if ( not os.path.isdir( outdir ) ): 
       sys.exit( "Prepacking step was skipped! Cannot clean non-existent prepack structures" )
     os.chdir( outdir )
