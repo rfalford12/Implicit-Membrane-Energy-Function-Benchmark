@@ -23,6 +23,7 @@ def run_nma_ensemble_calc( config, xml ):
 	print( "Generating data for helix kink test...")
 
 	energy_fxn = "ref2015"
+	energy_fxn_store = "franklin2019"
 	test_name = "helix-kinks"
 
 	# Read list of test case IDs and PDBs
@@ -38,7 +39,7 @@ def run_nma_ensemble_calc( config, xml ):
 	xml_script =  config.benchmark_path + "tests/xml/" + xml
 
 	# Change directories to a data analysis dir
-	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name + "/" 
+	outdir = config.benchmark_path + "data/" + energy_fxn_store + "/" + test_name + "/" 
 	if ( not os.path.isdir( outdir ) ): 
 		os.system( "mkdir " + outdir )
 		os.chdir( outdir )
