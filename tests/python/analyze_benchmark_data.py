@@ -78,7 +78,7 @@ def main( args ):
 	if ( "sequence-recovery" in test_names ): 
 
 		# Make list of native and designed PDB files
-		datadir = config.benchmark_path + "/data/" + energy_fxn + "/sequence-recovery/"
+		datadir = config.benchmark_path + "/data/" + Options.energy_fxn + "/sequence-recovery/"
 		os.chdir( datadir )
 		os.system( "ls */*_0001.pdb > designed.list" )
 		with open( "designed.list",'rt' ) as f: 
