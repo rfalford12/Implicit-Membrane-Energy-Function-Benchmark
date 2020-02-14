@@ -69,16 +69,26 @@ The first step performs all PyRosetta modeling calculations, any preparation ste
 
 	```
 	./generate_test_data.py --energy_fxn franklin2019 --which_tests all
-	Options:
-	--energy_fxn		Energy function to test, referred to by name of weights 					file in the Rosetta database. Must be present in both 						Rosetta & PyRosetta
-	--which_tests		Include tests to run. Either all, or a comma separated 						list of one of the following tests given below: 
 	```
 
-When the cluster jobs have completed, run the completion check script for step #1 to ensure that all of the data has been generated and there were no errors for individual jobs. To do so, use the command line below. 
+The `--energy_fxn` flag sets the energy function to test, referred to by the name of the weights file in the Rosetta database (must be present in both Rosetta & PyRosetta). The `--which_tests` flag indicates which tests to be run. This can be `all` or a comma-separated list of the tests as given below. 
 
-	```
-	./check_generate_step_complete.py --energy_fxn franklin2019 --which_tests all
-	```
+TODO fill in the table
+
+| Test                        | #  | Description |
+|-----------------------------|----|-------------|
+| tm-peptide-tilt-angle       | 1  |             |
+| adsorbed-peptide-tilt-angle | 2  |             |
+| protein-tilt-angle          | 3  |             |
+| hydrophobic-length          | 4  |             |
+| ddG-of-insertion            | 5  |             |
+| ddG-of-pH-insertion         | 6  |             |
+| ddG-of-mutation             | 7  |             |
+| sequence-recovery           | 8  |             |
+| sc-distribution             | 9  |             |
+| decoy-discrimination        | 10 |             |
+| helix-kink                  | 11 |             |
+| protein-protein-docking     | 12 |             |
 
 #### Step 2: Post-Process benchmark data
 
@@ -88,4 +98,9 @@ The sequence recovery and structure prediction benchmark tests require an imterm
 	./process_test_data.py --energy_fxn franklin2019 --which_tests all
 	```
 
-#### Step 4: 
+The flags are described in step 1 above. 
+
+#### Step 3: Analyze benchmark data 
+
+Explain/recommend R studio
+
