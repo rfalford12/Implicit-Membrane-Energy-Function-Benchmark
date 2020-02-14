@@ -88,7 +88,7 @@ def main( args ):
 
 		with open( "natives.list", 'wt' ) as f: 
 			basedir = config.benchmark_path + "/targets/design/"
-			for pdb in pdbs: 
+			for pdb in pdbid: 
 				pdbpath = basedir + pdb + "/" + pdb + "_tr_ignorechain.pdb\n"
 				f.write( pdbpath )
 
