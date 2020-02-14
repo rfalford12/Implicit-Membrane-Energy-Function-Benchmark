@@ -1,6 +1,6 @@
 # Benchmarks for Membrane Protein Energy Functions
 
-This is a set of scientific benchmark tests to fit and evaluate membrane protein modeling energy functions. The test probe an energy function's ability to capture membrane protein orientation, stability, sequence, and structure. The methods are described in detail in the citation below. 
+This is a set of scientific benchmark tests for evaluating membrane protein modeling energy functions. The test probe an energy function's ability to capture membrane protein orientation, stability, sequence, and structure. The methods are described in detail in the citation below. 
 
  - Alford RF & Gray JJ (2020) "Diverse scientific benchmarks reveal optimization imperatives for implicit membrane energy functions" _In Preparation_
 
@@ -16,7 +16,7 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 #### System software
 
-The test framework requires Python version 3.6+ and R version 3.6+. Many of the data generation steps also take advantage of high-performance computing resources. The default setup is configured for a conda cluster. The file `hpc_util` includes examples for a SLURM cluster. For other resource management systems, add a custom function to the `hpc_util` file and make default in the `generate_benchamrk_data` script. 
+The test framework requires Python version 3.6+ and R version 3.6+. In addition, the data generation stage takes advantange of high-performance computing resources. the default setup is configured for a conda cluster. We also support SLURM clusters. For other setups, please email the author for assistance. 
 
 #### Molecular modeling software
 
@@ -25,10 +25,10 @@ The tests also uses both the command-line and python interfaces to the Rosetta m
 To get Rosetta, obtain a license and download the package at <https://www.rosettacommons.org/software/license-and-download>. To compile the code, navigate to the `Rosetta/main/source/` directory and run the command below. 
 
 ```
-./scons.py -j[XX] bin mode=release 
+./scons.py -jX bin mode=release 
 ```
 
-Here, "XX" is the number of processors you would like to compile with. For most users compiling on a laptop, the recommended number of processors is 1. If you are working on a larger workstation, we recommend scaling between 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
+Here, "X" is the number of processors to use during compilation. For compilation on a laptop, the recommended number of processors is 1. If you are working on a larger workstation or cluster, we recommend scaling between 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
 
 To get PyRosetta, install miniconda first. On OSX or Linux, this is: 
 
@@ -38,19 +38,14 @@ bash Miniconda2-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
 export PATH="$HOME/miniconda/bin:${PATH}""
 ```
 
-You can then use conda to install PyRosetta. 
+You can then use conda to install PyRosetta, where USERNAME and PASSWORD are your Rosetta license credentials. 
 
 ```
 conda config --add channels "https://USERNAME:PASSWORD@conda.graylab.jhu.edu"
 conda install pyrosetta
 ```
 
-```
-TODO: Include prerequisite of KinkFinder for helix kink calculations
-Also include information about cluser ties for bigger tests (no laptop state)
-```
-
-Finally, the analysis code requires R version 3.0 or greater. You can download R here: https://www.r-project.org/. 
+We also use the KinkFinder package to compute helix kink angles. The KinkFinder package can be downloaded from [Charlotte Deane's lab website](http://opig.stats.ox.ac.uk/resources).
 
 ## Setup
 
