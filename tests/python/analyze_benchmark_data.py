@@ -99,7 +99,7 @@ def main( args ):
 		arguments = s.substitute( natives="natives.list", designed="designed.list", outfile=output_file )
 		if ( restore == False ): 
 			arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:temperature 37"
-	    os.system( executable + arguments )
+		os.system( executable + arguments )
 
 	# Test #9: Side chain distribution calculations
 	if ( "sc-distribution" in test_names ): 
