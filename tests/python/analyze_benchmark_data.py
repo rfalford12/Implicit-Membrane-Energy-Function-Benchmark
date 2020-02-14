@@ -141,7 +141,7 @@ def main( args ):
 		os.chdir( lowres_dir )
 		for target in targets: 
 			os.chdir( target )
-			os.system( "ls decoy*.pdb > decoys.list" )
+			os.system( "ls *.pdb > decoys.list" )
 			os.chdir( "../" )
 
 		# rescore each to calculate the rms and total score
