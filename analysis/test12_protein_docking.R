@@ -1,4 +1,4 @@
-#' Analyze membrane protein-protein docking data (Test #12
+#' Analyze membrane protein-protein docking data (Test #12)
 #' 
 #' Computes analysis for protein-protein docking calculations, such as: 
 #'    - Enrichment of acceptable models in the top 1% and 10% scoring models
