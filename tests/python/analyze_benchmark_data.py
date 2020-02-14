@@ -39,7 +39,7 @@ structure_tests = [ "decoy-discrimination", "helix-kinks", "protein-protein-dock
 def main( args ): 
 
 	# Read options from the command line
-	parser = OptionParser(usage="usage %prog --energy_fxn franklin2019 --which_tests all --restore_talaris false" )
+	parser = OptionParser(usage="usage %prog --energy_fxn franklin2019 --which_tests all" )
 	parser.set_description(main.__doc__)
 	
 	parser.add_option( '--energy_fxn', '-e', action="store", help="Name of energy function weights file", )
@@ -56,7 +56,7 @@ def main( args ):
 
 	# Set restore variable based on energy function type
 	restore = True
-	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" or Options.energy_fxn "ref2015_memb" ): 
+	if ( Options.energy_fxn == "franklin2019" or Options.energy_fxn == "ref2015" ): 
 		restore = False 
 
 	# Read path configuration file
@@ -73,29 +73,67 @@ def main( args ):
 			if name not in all_tests: 
 				sys.exit( "No such test " + name + ". Exiting!" )
 
-	# Begin analysis steps for benchmarks 
-	# this is a giant TODO that needs to be automated for many purposes :)
+
+	# Test #8: Sequence recovery calculation
+	if ( "sequence-recovery" in test_names ): 
+
+		# Make list of native and designed PDB files
+		datadir = config.benchmark_path + "/data/" + energy_fxn + "/sequence-recovery/"
+		os.chdir( datadir )
+		os.system( "ls */*_0001.pdb > designed.list" )
+		with open( "designed.list". 'rb' ) as f: 
+			contents = f.readlines()
+			contents = [ x.strip() for x in contents ]
+			pdbid = [ x.split("/")[0] for x in contents ]
+
+		with open( "natives.list", 'wt' ) as f: 
+			basedir = config.benchmark_path + "/targets/design/"
+			for pdb in pdbs: 
+				pdbpath = basedir + pdb + "/" + pdb + "_tr_ignorechain.pdb\n"
+				f.write( pdbpath )
+
+		# Run mp_seqrecov application
 
 	# Test #9: Side chain distribution calculations
-	# this is going to become an analysis step... 
 	if ( "sc-distribution" in test_names ): 
 
-		path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
-		predict_side_chain_distribution.compute_side_chain_distribution( config, path + "/natives.list", path + "/redesigned_allpath.list" )
+		print("temp")
 
-	# protein-protein docking interfae analysis steps
+		# Check for existence of designed and native lists
+		# Compute side chian distribution
 
-			# Step 12.5 - Analyze docking decoys
+		#path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
+		#predict_side_chain_distribution.compute_side_chain_distribution( config, path + "/natives.list", path + "/redesigned_allpath.list" )
+
+	if ( "decoy-discrimination" in test_names ): 
+
+		print("temp")
+
+		# LIst out all refined PDB files
+		# rescore each to calculate the rms and total score
+		# run score_energy_landscape to compute the decoy discrimination score
+
+	if ( "helix-kinks" in test_names ): 
+
+		print("temp")
+		# ARGH - we are going to need the additional refinement step here... 
+		# rescore all NMA structures
+		# run KinkFinder to calculate the kink angle
+		# run kink processing script to collapse everything into a single file
+
+	if ( "protein-protein-docking" in test_names ): 
+
+		print("temp")
+		# Analyze docking decoys
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", False, True )
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", False  )
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", False  )
 
-		# Step 12.6 - Analyze local refine decoys
+		# Analyze local refine decoys
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D2_single_TM_complexes", "protein-protein-docking", True, True )
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D3_multi_TM_bound_complexes", "protein-protein-docking", True  )
 		make_asymm_docked_complexes.analyze_interfaces( Options.energy_fxn, config, "D4_multi_TM_unbound_complexes", "protein-protein-docking", True  )
 
-	# for decoy discrimination, automate score_energy_landscape step and extrapolate results
 
-	# sequence recovery - measure sequence recovery step
+if __name__ == "__main__" : main(sys.argv)
 

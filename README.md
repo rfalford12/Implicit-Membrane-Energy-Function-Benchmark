@@ -14,6 +14,8 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 ## Prerequisites
 
+### AH - don't tar all of those files, just use the ones you need (I think its a subset of 100 structures each)
+
 The test framework requires Python version 3.6 or 3.7. The tests also uses both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
 
 To get Rosetta, obtain a license and download the package at <https://www.rosettacommons.org/software/license-and-download>. To compile the code, navigate to the `Rosetta/main/source/` directory and run the command below. 
@@ -60,32 +62,31 @@ compiler = gcc				# can be gcc or clang
 
 ## Documentation
 
-starting docs here. 
+The implicit membrane energy function benchmarks involves three steps: (1) data generation, (2) post-processing, and (3) analysis. We will walk through each step below. 
 
+#### Step 1: Generate benchmark data
 
-=== Everything below this line is in DRAFT and part of a TODO list ===
+The first step performs all PyRosetta modeling calculations, any preparation steps for Rosetta applications, and submits calculations to the computing cluster. The generation script takes about 30min to run. Afterward, job completion requires roughly 1K CPU hours for all 12 tests. To run the generation step, use the command line below. 
 
-Drafting headers for python and R scripts
+	```
+	./generate_test_data.py --energy_fxn franklin2019 --which_tests all
+	Options:
+	--energy_fxn		Energy function to test, referred to by name of weights 					file in the Rosetta database. Must be present in both 						Rosetta & PyRosetta
+	--which_tests		Include tests to run. Either all, or a comma separated 						list of one of the following tests given below: 
+	```
 
-Add notes on cluster usage to this documentation as well as general reliance on supercomputers. 
+When the cluster jobs have completed, run the completion check script for step #1 to ensure that all of the data has been generated and there were no errors for individual jobs. To do so, use the command line below. 
 
-Example for R
-# @file: 	t01_tilt_angle.R
-# @about: 	Map energies to orientations to find most stable configuration
-# @author: 	Rebecca Alford <ralford3@jhu.edu>, Johns Hopkins University
+	```
+	./check_generate_step_complete.py --energy_fxn franklin2019 --which_tests all
+	```
 
-Ideal interface
+#### Step 2: Post-Process benchmark data
 
-# Generate benchmark data
-./generate_test_data.py --energy_fxn franklin2019 --which_tests all --restore_talaris False
+The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. To run the post-processing step, run the command line below. 
 
-	Option explanations
-	--energy_fxn		Energy function to test, referred to by name of weights file in the Rosetta database. Must be present in both Rosetta & PyRosetta
+	```
+	./process_test_data.py --energy_fxn franklin2019 --which_tests all
+	```
 
-	--which_tests		Include tests to run. Either all, or a comma separated list of one of the following tests given below: 
-
-		TODO: add list, also refactor script to include labels 1-12
-
-
-
-
+#### Step 4: 
