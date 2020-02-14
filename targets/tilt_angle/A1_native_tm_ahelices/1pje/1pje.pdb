@@ -1,0 +1,228 @@
+HEADER    VIRAL PROTEIN                           02-JUN-03   1PJE              
+TITLE     STRUCTURE OF THE CHANNEL-FORMING TRANS-MEMBRANE DOMAIN OF             
+TITLE    2 VIRUS PROTEIN "U"(VPU) FROM HIV-1                                    
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: VPU PROTEIN;                                               
+COMPND   3 CHAIN: A;                                                            
+COMPND   4 FRAGMENT: TRANS-MEMBRANE DOMAIN;                                     
+COMPND   5 SYNONYM: U ORF PROTEIN;                                              
+COMPND   6 ENGINEERED: YES;                                                     
+COMPND   7 MUTATION: YES                                                        
+SOURCE    MOL_ID: 1;                                                            
+SOURCE   2 ORGANISM_SCIENTIFIC: HUMAN IMMUNODEFICIENCY VIRUS 1;                 
+SOURCE   3 ORGANISM_TAXID: 11676;                                               
+SOURCE   4 GENE: VPU;                                                           
+SOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 
+SOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        
+SOURCE   7 EXPRESSION_SYSTEM_STRAIN: BLR(DE3)PLYSS;                             
+SOURCE   8 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              
+SOURCE   9 EXPRESSION_SYSTEM_PLASMID: PET-31B(+)                                
+KEYWDS    ALPHA-HELIX, VIRAL PROTEIN                                            
+EXPDTA    SOLID-STATE NMR                                                       
+AUTHOR    S.H.PARK,A.A.MRSE,A.A.NEVZOROV,M.F.MESLEH,M.OBLATT-MONTAL,            
+AUTHOR   2 M.MONTAL,S.J.OPELLA                                                  
+REVDAT   2   24-FEB-09 1PJE    1       VERSN                                    
+REVDAT   1   14-OCT-03 1PJE    0                                                
+JRNL        AUTH   S.H.PARK,A.A.MRSE,A.A.NEVZOROV,M.F.MESLEH,                   
+JRNL        AUTH 2 M.OBLATT-MONTAL,M.MONTAL,S.J.OPELLA                          
+JRNL        TITL   THREE-DIMENSIONAL STRUCTURE OF THE CHANNEL-FORMING           
+JRNL        TITL 2 TRANS-MEMBRANE DOMAIN OF VIRUS PROTEIN "U" (VPU)             
+JRNL        TITL 3 FROM HIV-1                                                   
+JRNL        REF    J.MOL.BIOL.                   V. 333   409 2003              
+JRNL        REFN                   ISSN 0022-2836                               
+JRNL        PMID   14529626                                                     
+JRNL        DOI    10.1016/J.JMB.2003.08.048                                    
+REMARK   1                                                                      
+REMARK   2                                                                      
+REMARK   2 RESOLUTION. NOT APPLICABLE.                                          
+REMARK   3                                                                      
+REMARK   3 REFINEMENT.                                                          
+REMARK   3   PROGRAM     : STRUCTURAL FITTING 1.0                               
+REMARK   3   AUTHORS     : NEVZOROV, OPELLA                                     
+REMARK   3                                                                      
+REMARK   3  OTHER REFINEMENT REMARKS: THIS STRUCTURE WAS CALCULATED BY          
+REMARK   3  USING A STRUCTURAL FITTING ALGORITHM THAT FINDS TORSION ANGLES      
+REMARK   3  BETWEEN CONSECUTIVE RESIDUES BASED ON THEIR NMR FREQUENCIES         
+REMARK   4                                                                      
+REMARK   4 1PJE COMPLIES WITH FORMAT V. 3.15, 01-DEC-08                         
+REMARK 100                                                                      
+REMARK 100 THIS ENTRY HAS BEEN PROCESSED BY RCSB ON 03-JUN-03.                  
+REMARK 100 THE RCSB ID CODE IS RCSB019359.                                      
+REMARK 210                                                                      
+REMARK 210 EXPERIMENTAL DETAILS                                                 
+REMARK 210  EXPERIMENT TYPE                : NMR                                
+REMARK 210  TEMPERATURE           (KELVIN) : 293                                
+REMARK 210  PH                             : 7.0                                
+REMARK 210  IONIC STRENGTH                 : NULL                               
+REMARK 210  PRESSURE                       : AMBIENT                            
+REMARK 210  SAMPLE CONTENTS                : COMPLETELY ALIGNED SAMPLE IN       
+REMARK 210                                   GLASS PLATES: 3.5 MG VPU2-30+      
+REMARK 210                                   U-15N, 75 MG LIPID MIXTURE         
+REMARK 210                                   (DOPC:DOPG, 9:1)                   
+REMARK 210                                                                      
+REMARK 210  NMR EXPERIMENTS CONDUCTED      : PISEMA                             
+REMARK 210  SPECTROMETER FIELD STRENGTH    : 700 MHZ                            
+REMARK 210  SPECTROMETER MODEL             : AVANCE                             
+REMARK 210  SPECTROMETER MANUFACTURER      : BRUKER                             
+REMARK 210                                                                      
+REMARK 210  STRUCTURE DETERMINATION.                                            
+REMARK 210   SOFTWARE USED                 : NMRPIPE 2.1, STRUCTURAL            
+REMARK 210                                   FITTING 1.0                        
+REMARK 210   METHOD USED                   : DIRECT STRUCTURAL FITTING OF       
+REMARK 210                                   2D SOLID-STATE NMR DATA            
+REMARK 210                                                                      
+REMARK 210 CONFORMERS, NUMBER CALCULATED   : 100                                
+REMARK 210 CONFORMERS, NUMBER SUBMITTED    : 1                                  
+REMARK 210 CONFORMERS, SELECTION CRITERIA  : MINIMIZED AVERAGE STRUCTURE        
+REMARK 210                                                                      
+REMARK 210 BEST REPRESENTATIVE CONFORMER IN THIS ENSEMBLE : 1                   
+REMARK 210                                                                      
+REMARK 210 REMARK: PISEMA: POLARIZATION INVERSION SPIN EXCHANGE AT THE          
+REMARK 210  MAGIC ANGLE                                                         
+REMARK 217                                                                      
+REMARK 217 SOLID STATE NMR STUDY                                                
+REMARK 217 THE COORDINATES IN THIS ENTRY WERE GENERATED FROM SOLID              
+REMARK 217 STATE NMR DATA. PROTEIN DATA BANK CONVENTIONS REQUIRE THAT           
+REMARK 217 CRYST1 AND SCALE RECORDS BE INCLUDED, BUT THE VALUES ON              
+REMARK 217 THESE RECORDS ARE MEANINGLESS.                                       
+REMARK 465                                                                      
+REMARK 465 MISSING RESIDUES                                                     
+REMARK 465 THE FOLLOWING RESIDUES WERE NOT LOCATED IN THE                       
+REMARK 465 EXPERIMENT. (RES=RESIDUE NAME; C=CHAIN IDENTIFIER;                   
+REMARK 465 SSSEQ=SEQUENCE NUMBER; I=INSERTION CODE.)                            
+REMARK 465     RES C SSSEQI                                                     
+REMARK 465     MET A     1                                                      
+REMARK 465     GLN A     2                                                      
+REMARK 465     PRO A     3                                                      
+REMARK 465     ILE A     4                                                      
+REMARK 465     GLN A     5                                                      
+REMARK 465     ILE A     6                                                      
+REMARK 465     ILE A    26                                                      
+REMARK 465     ILE A    27                                                      
+REMARK 465     GLU A    28                                                      
+REMARK 465     GLY A    29                                                      
+REMARK 465     ARG A    30                                                      
+REMARK 465     GLY A    31                                                      
+REMARK 465     GLY A    32                                                      
+REMARK 465     LYS A    33                                                      
+REMARK 465     LYS A    34                                                      
+REMARK 465     LYS A    35                                                      
+REMARK 465     LYS A    36                                                      
+REMARK 900                                                                      
+REMARK 900 RELATED ENTRIES                                                      
+REMARK 900 RELATED ID: 1PI8   RELATED DB: PDB                                   
+REMARK 900 STRUCTURE OF THE CHANNEL-FORMING TRANS-MEMBRANE DOMAIN OF            
+REMARK 900 VIRUS PROTEIN "U" (VPU) FROM HIV-1-NMR, 4 STRUCTURES                 
+DBREF  1PJE A    1    30  UNP    Q70625   VPU_HV1LW        1     30             
+SEQADV 1PJE GLY A   29  UNP  Q70625    TYR    29 ENGINEERED                     
+SEQADV 1PJE GLY A   31  UNP  Q70625              CLONING ARTIFACT               
+SEQADV 1PJE GLY A   32  UNP  Q70625              CLONING ARTIFACT               
+SEQADV 1PJE LYS A   33  UNP  Q70625              CLONING ARTIFACT               
+SEQADV 1PJE LYS A   34  UNP  Q70625              CLONING ARTIFACT               
+SEQADV 1PJE LYS A   35  UNP  Q70625              CLONING ARTIFACT               
+SEQADV 1PJE LYS A   36  UNP  Q70625              CLONING ARTIFACT               
+SEQRES   1 A   36  MET GLN PRO ILE GLN ILE ALA ILE VAL ALA LEU VAL VAL          
+SEQRES   2 A   36  ALA ILE ILE ILE ALA ILE VAL VAL TRP SER ILE VAL ILE          
+SEQRES   3 A   36  ILE GLU GLY ARG GLY GLY LYS LYS LYS LYS                      
+HELIX    1   1 ILE A    8  VAL A   25  1                                  18    
+CRYST1    1.000    1.000    1.000  90.00  90.00  90.00 P 1           1          
+ORIGX1      1.000000  0.000000  0.000000        0.00000                         
+ORIGX2      0.000000  1.000000  0.000000        0.00000                         
+ORIGX3      0.000000  0.000000  1.000000        0.00000                         
+SCALE1      1.000000  0.000000  0.000000        0.00000                         
+SCALE2      0.000000  1.000000  0.000000        0.00000                         
+SCALE3      0.000000  0.000000  1.000000        0.00000                         
+ATOM      1  CA  ALA A   7      -5.958  11.763   1.211  1.00  0.00           C  
+ATOM      2  C   ALA A   7      -5.441  10.748   0.206  1.00  0.00           C  
+ATOM      3  O   ALA A   7      -5.994   9.660   0.066  1.00  0.00           O  
+ATOM      4  N   ILE A   8      -4.372  11.123  -0.491  1.00  0.00           N  
+ATOM      5  CA  ILE A   8      -3.757  10.268  -1.489  1.00  0.00           C  
+ATOM      6  C   ILE A   8      -2.467   9.669  -0.955  1.00  0.00           C  
+ATOM      7  O   ILE A   8      -2.131   8.525  -1.255  1.00  0.00           O  
+ATOM      8  H   ILE A   8      -3.964  12.033  -0.328  1.00  0.00           H  
+ATOM      9  N   VAL A   9      -1.752  10.460  -0.159  1.00  0.00           N  
+ATOM     10  CA  VAL A   9      -0.498  10.035   0.430  1.00  0.00           C  
+ATOM     11  C   VAL A   9      -0.724   8.873   1.384  1.00  0.00           C  
+ATOM     12  O   VAL A   9      -0.025   7.864   1.326  1.00  0.00           O  
+ATOM     13  H   VAL A   9      -2.085  11.390   0.048  1.00  0.00           H  
+ATOM     14  N   ALA A  10      -1.711   9.034   2.261  1.00  0.00           N  
+ATOM     15  CA  ALA A  10      -2.053   8.018   3.237  1.00  0.00           C  
+ATOM     16  C   ALA A  10      -2.464   6.729   2.544  1.00  0.00           C  
+ATOM     17  O   ALA A  10      -1.880   5.673   2.777  1.00  0.00           O  
+ATOM     18  H   ALA A  10      -2.247   9.890   2.256  1.00  0.00           H  
+ATOM     19  N   LEU A  11      -3.477   6.835   1.690  1.00  0.00           N  
+ATOM     20  CA  LEU A  11      -3.988   5.698   0.950  1.00  0.00           C  
+ATOM     21  C   LEU A  11      -2.886   5.069   0.114  1.00  0.00           C  
+ATOM     22  O   LEU A  11      -2.593   3.883   0.247  1.00  0.00           O  
+ATOM     23  H   LEU A  11      -3.914   7.734   1.545  1.00  0.00           H  
+ATOM     24  N   VAL A  12      -2.282   5.882  -0.748  1.00  0.00           N  
+ATOM     25  CA  VAL A  12      -1.211   5.434  -1.617  1.00  0.00           C  
+ATOM     26  C   VAL A  12      -0.135   4.724  -0.812  1.00  0.00           C  
+ATOM     27  O   VAL A  12       0.273   3.614  -1.145  1.00  0.00           O  
+ATOM     28  H   VAL A  12      -2.572   6.848  -0.808  1.00  0.00           H  
+ATOM     29  N   VAL A  13       0.316   5.384   0.251  1.00  0.00           N  
+ATOM     30  CA  VAL A  13       1.343   4.843   1.120  1.00  0.00           C  
+ATOM     31  C   VAL A  13       0.884   3.530   1.733  1.00  0.00           C  
+ATOM     32  O   VAL A  13       1.539   2.501   1.585  1.00  0.00           O  
+ATOM     33  H   VAL A  13      -0.062   6.294   0.470  1.00  0.00           H  
+ATOM     34  N   ALA A  14      -0.253   3.583   2.423  1.00  0.00           N  
+ATOM     35  CA  ALA A  14      -0.823   2.417   3.068  1.00  0.00           C  
+ATOM     36  C   ALA A  14      -1.284   1.406   2.029  1.00  0.00           C  
+ATOM     37  O   ALA A  14      -0.889   0.243   2.062  1.00  0.00           O  
+ATOM     38  H   ALA A  14      -0.743   4.462   2.507  1.00  0.00           H  
+ATOM     39  N   ILE A  15      -2.123   1.870   1.108  1.00  0.00           N  
+ATOM     40  CA  ILE A  15      -2.653   1.033   0.050  1.00  0.00           C  
+ATOM     41  C   ILE A  15      -1.525   0.346  -0.700  1.00  0.00           C  
+ATOM     42  O   ILE A  15      -1.612  -0.836  -1.025  1.00  0.00           O  
+ATOM     43  H   ILE A  15      -2.408   2.839   1.138  1.00  0.00           H  
+ATOM     44  N   ILE A  16      -0.466   1.105  -0.968  1.00  0.00           N  
+ATOM     45  CA  ILE A  16       0.693   0.597  -1.677  1.00  0.00           C  
+ATOM     46  C   ILE A  16       1.417  -0.441  -0.837  1.00  0.00           C  
+ATOM     47  O   ILE A  16       1.607  -1.578  -1.266  1.00  0.00           O  
+ATOM     48  H   ILE A  16      -0.457   2.071  -0.671  1.00  0.00           H  
+ATOM     49  N   ILE A  17       1.817  -0.033   0.364  1.00  0.00           N  
+ATOM     50  CA  ILE A  17       2.521  -0.904   1.284  1.00  0.00           C  
+ATOM     51  C   ILE A  17       1.796  -2.233   1.419  1.00  0.00           C  
+ATOM     52  O   ILE A  17       2.420  -3.292   1.443  1.00  0.00           O  
+ATOM     53  H   ILE A  17       1.628   0.915   0.656  1.00  0.00           H  
+ATOM     54  N   ALA A  18       0.472  -2.159   1.506  1.00  0.00           N  
+ATOM     55  CA  ALA A  18      -0.364  -3.337   1.640  1.00  0.00           C  
+ATOM     56  C   ALA A  18      -0.307  -4.176   0.373  1.00  0.00           C  
+ATOM     57  O   ALA A  18       0.007  -5.363   0.417  1.00  0.00           O  
+ATOM     58  H   ALA A  18       0.021  -1.255   1.481  1.00  0.00           H  
+ATOM     59  N   ILE A  19      -0.615  -3.538  -0.752  1.00  0.00           N  
+ATOM     60  CA  ILE A  19      -0.608  -4.198  -2.044  1.00  0.00           C  
+ATOM     61  C   ILE A  19       0.746  -4.838  -2.307  1.00  0.00           C  
+ATOM     62  O   ILE A  19       0.830  -6.008  -2.675  1.00  0.00           O  
+ATOM     63  H   ILE A  19      -0.864  -2.560  -0.718  1.00  0.00           H  
+ATOM     64  N   VAL A  20       1.800  -4.052  -2.111  1.00  0.00           N  
+ATOM     65  CA  VAL A  20       3.159  -4.513  -2.319  1.00  0.00           C  
+ATOM     66  C   VAL A  20       3.500  -5.623  -1.339  1.00  0.00           C  
+ATOM     67  O   VAL A  20       4.023  -6.667  -1.724  1.00  0.00           O  
+ATOM     68  H   VAL A  20       1.661  -3.098  -1.808  1.00  0.00           H  
+ATOM     69  N   VAL A  21       3.196  -5.381  -0.067  1.00  0.00           N  
+ATOM     70  CA  VAL A  21       3.457  -6.340   0.989  1.00  0.00           C  
+ATOM     71  C   VAL A  21       2.582  -7.570   0.820  1.00  0.00           C  
+ATOM     72  O   VAL A  21       3.080  -8.690   0.721  1.00  0.00           O  
+ATOM     73  H   VAL A  21       2.767  -4.501   0.184  1.00  0.00           H  
+ATOM     74  N   TRP A  22       1.272  -7.343   0.787  1.00  0.00           N  
+ATOM     75  CA  TRP A  22       0.304  -8.412   0.630  1.00  0.00           C  
+ATOM     76  C   TRP A  22       0.551  -9.170  -0.663  1.00  0.00           C  
+ATOM     77  O   TRP A  22       0.391 -10.387  -0.722  1.00  0.00           O  
+ATOM     78  H   TRP A  22       0.928  -6.398   0.873  1.00  0.00           H  
+ATOM     79  N   SER A  23       0.944  -8.430  -1.696  1.00  0.00           N  
+ATOM     80  CA  SER A  23       1.220  -9.002  -2.999  1.00  0.00           C  
+ATOM     81  C   SER A  23       2.447  -9.899  -2.937  1.00  0.00           C  
+ATOM     82  O   SER A  23       2.436 -11.018  -3.445  1.00  0.00           O  
+ATOM     83  H   SER A  23       1.057  -7.433  -1.580  1.00  0.00           H  
+ATOM     84  N   ILE A  24       3.499  -9.389  -2.306  1.00  0.00           N  
+ATOM     85  CA  ILE A  24       4.745 -10.119  -2.161  1.00  0.00           C  
+ATOM     86  C   ILE A  24       4.508 -11.436  -1.439  1.00  0.00           C  
+ATOM     87  O   ILE A  24       5.070 -12.466  -1.806  1.00  0.00           O  
+ATOM     88  H   ILE A  24       3.441  -8.462  -1.908  1.00  0.00           H  
+ATOM     89  N   VAL A  25       3.668 -11.385  -0.410  1.00  0.00           N  
+ATOM     90  CA  VAL A  25       3.338 -12.555   0.380  1.00  0.00           C  
+ATOM     91  H   VAL A  25       3.238 -10.505  -0.162  1.00  0.00           H  
+TER      92      VAL A  25                                                      
+MASTER       81    0    0    1    0    0    0    6   91    1    0    3          
+END                                                                             
