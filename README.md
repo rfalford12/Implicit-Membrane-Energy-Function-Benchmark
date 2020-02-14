@@ -90,6 +90,8 @@ TODO fill in the table
 | helix-kink                  | 11 |             |
 | protein-protein-docking     | 12 |             |
 
+TODO - also explain the structure of the output directory
+
 #### Step 2: Post-Process benchmark data
 
 The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. To run the post-processing step, run the command line below. 
