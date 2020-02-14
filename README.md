@@ -14,9 +14,13 @@ This is a set of scientific benchmark tests to fit and evaluate membrane protein
 
 ## Prerequisites
 
-### AH - don't tar all of those files, just use the ones you need (I think its a subset of 100 structures each)
+#### System software
 
-The test framework requires Python version 3.6 or 3.7. The tests also uses both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
+The test framework requires Python version 3.6+ and R version 3.6+. Many of the data generation steps also take advantage of high-performance computing resources. The default setup is configured for a conda cluster. The file `hpc_util` includes examples for a SLURM cluster. For other resource management systems, add a custom function to the `hpc_util` file and make default in the `generate_benchamrk_data` script. 
+
+#### Molecular modeling software
+
+The tests also uses both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
 
 To get Rosetta, obtain a license and download the package at <https://www.rosettacommons.org/software/license-and-download>. To compile the code, navigate to the `Rosetta/main/source/` directory and run the command below. 
 
