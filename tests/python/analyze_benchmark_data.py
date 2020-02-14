@@ -104,13 +104,24 @@ def main( args ):
 	# Test #9: Side chain distribution calculations
 	if ( "sc-distribution" in test_names ): 
 
-		print("temp")
-
 		# Check for existence of designed and native lists
-		# Compute side chian distribution
+		datadir = config.benchmark_path + "data/" + Options.energy_fxn + "/sequence-recovery/"
+		os.chdir( datadir )
+		if ( not os.path.isfile( "natives.list") or not os.path.isfile( "designed.list" ) ): 
+			os.system( "ls */*_0001.pdb > designed.list" )
+			with open( "designed.list",'rt' ) as f: 
+				contents = f.readlines()
+				contents = [ x.strip() for x in contents ]
+				pdbid = [ x.split("/")[0] for x in contents ]
 
-		#path = "/home/ralford/Implicit-Membrane-Energy-Function-Benchmark/data/sequence-recovery/franklin2019"
-		#predict_side_chain_distribution.compute_side_chain_distribution( config, path + "/natives.list", path + "/redesigned_allpath.list" )
+			with open( "natives.list", 'wt' ) as f: 
+				basedir = config.benchmark_path + "targets/design/"
+				for pdb in pdbid: 
+					pdbpath = basedir + pdb + "/" + pdb + "_tr_ignorechain.pdb\n"
+					f.write( pdbpath )
+
+		# Run predict side chain distribution script
+		predict_side_chain_distribution.compute_side_chain_distribution( config, datadir + "natives.list", datadir + "/designed.list" )
 
 	if ( "decoy-discrimination" in test_names ): 
 
