@@ -95,7 +95,7 @@ def main( args ):
 		# Run mp_seqrecov application
 		executable = config.rosetta_path + "mp_seqrecov." + config.platform + config.compiler + config.buildenv
 		output_file = Options.energy_fxn + "_seqrecov.txt"
-		s = Template( " -overwrite -native_pdb_list $natives -redesign_pdb_list $designed -seq_recov_filename $seq_recov_filename $outfile -in:ignore_unrecognized_res -read_only_ATOM_entries")
+		s = Template( " -overwrite -native_pdb_list $natives -redesign_pdb_list $designed -seq_recov_filename $outfile -in:ignore_unrecognized_res -read_only_ATOM_entries")
 		arguments = s.substitute( natives="natives.list", designed="designed.list", seq_recov_filename=output_file )
 		if ( restore == False ): 
 			arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:temperature 37"
