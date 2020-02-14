@@ -81,7 +81,7 @@ def main( args ):
 		datadir = config.benchmark_path + "/data/" + energy_fxn + "/sequence-recovery/"
 		os.chdir( datadir )
 		os.system( "ls */*_0001.pdb > designed.list" )
-		with open( "designed.list". 'rt' ) as f: 
+		with open( "designed.list",'rt' ) as f: 
 			contents = f.readlines()
 			contents = [ x.strip() for x in contents ]
 			pdbid = [ x.split("/")[0] for x in contents ]
