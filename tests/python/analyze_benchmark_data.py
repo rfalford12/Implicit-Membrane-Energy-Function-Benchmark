@@ -145,7 +145,29 @@ def main( args ):
 			os.chdir( "../" )
 
 		# rescore each to calculate the rms and total score
-		# run score_energy_landscape to compute the decoy discrimination score
+		executable = config.rosetta_path + "score_jd2" + "." + config.platform + config.compiler + config.buildenv
+		s = Template( "-in:file:l decoys..list -in:file:native $native -mp:setup:spanfiles from_structure -out:file:scorefile $scorefile -in:membrane")
+		for target in targets: 
+
+			# hires
+			targetdir = hires_dir + "/" + target
+			os.chdir( targetdir )
+			output_scores = target + "_hires.sc"
+			native_pdb = config.benchmark_path + "targets/structure/D6_decoy_discrimination/hires/" + target + "/" + target + "_native.pdb"
+			spanfile = config.benchmark_path + "targets/structure/D6_decoy_discrimination/hires/" + target + "/" + target + ".span"
+			arguments = s.substitute( scorefile=output_scores, native=native_pdb )
+			jobname = "rescore_hires_" + target
+			hpc_util.submit_condor_job( targetdir, jobname, executable, arguments, 1 )
+
+			# lowres
+			targetdir = lowres_dir + "/" + target
+			os.chdir( targetdir )
+			output_scores = target + "_lowres.sc"
+			native_pdb = config.benchmark_path + "targets/structure/D6_decoy_discrimination/lowres/" + target + "/" + target + "_native.pdb"
+			spanfile = config.benchmark_path + "targets/structure/D6_decoy_discrimination/lowres/" + target + "/" + target + ".span"
+			arguments = s.substitute( scorefile=output_scores, native=native_pdb )
+			jobname = "rescore_lowres_" + target
+			hpc_util.submit_condor_job( targetdir, jobname, executable, arguments, 1 )
 
 	if ( "helix-kinks" in test_names ): 
 
