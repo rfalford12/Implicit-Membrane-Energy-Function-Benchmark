@@ -146,7 +146,7 @@ def run_docking_calc( energy_fxn, config, targets, test_name, local_refine, tran
     native = config.benchmark_path + "targets/structure/" + targets + "/" + target_ids[i] + "/" + target_pdbs[i]
     spanfile = config.benchmark_path + "targets/structure/" + targets + "/" + target_ids[i] + "/" + target_ids[i] + ".span" 
     partners = target_pdbs[i].split("_")[1][0] + "_" + target_pdbs[i].split("_")[1][1]
-    prepacked = config.benchmark_path + "data/" + energy_fxn + "/protein-protein-docking/" + targets + "/" + target_ids[i] + "/" + target_ids[i] + "_0001_" + target_pdbs[i].split("_")[1] + ".pdb"
+    prepacked = config.benchmark_path + "data/" + energy_fxn + "/protein-protein-docking/" + targets + "/" + target_ids[i] + "/" + target_ids[i] + "_0001_" + target_pdbs[i].split("_")[1]
     if ( transformed ): 
       prepacked = config.benchmark_path + "data/" + energy_fxn + "/protein-protein-docking/" + targets + "/" + target_ids[i] + "/" + target_ids[i] + "_tr_0001_" + target_pdbs[i].split("_")[1] + ".pdb"
 
