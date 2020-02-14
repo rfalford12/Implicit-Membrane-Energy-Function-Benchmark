@@ -146,7 +146,7 @@ def main( args ):
 
 		# rescore each to calculate the rms and total score
 		executable = config.rosetta_path + "score_jd2" + "." + config.platform + config.compiler + config.buildenv
-		s = Template( "-in:file:l decoys..list -in:file:native $native -mp:setup:spanfiles from_structure -out:file:scorefile $scorefile -in:membrane")
+		s = Template( "-in:file:l decoys.list -in:file:native $native -mp:setup:spanfiles from_structure -out:file:scorefile $scorefile -in:membrane")
 		for target in targets: 
 
 			# hires

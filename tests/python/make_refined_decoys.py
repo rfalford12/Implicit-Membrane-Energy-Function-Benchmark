@@ -90,4 +90,64 @@ def run_refine_decoys_calc( energy_fxn, restore, config, test_name, resolution, 
 			jobname = target + "_refine_" + str(i)
 			hpc_util.submit_condor_job( casedir, jobname, executable, arguments, 5 )
 
+def run_refine_kined_structures( energy_fxn, restore, config, test_name, xml ): 
+	"""
+		A function for refining canddiate structures for the decoy discrimination test
+
+		Arguments: 
+			energy_fxn = energy function to use for calculations (typically, name of the weights file)
+			config = path to benchmark, Rosetta executables
+			targets = list of targets
+			test_name = Name of test
+	"""
+
+	print( "Generating data for decoy discrimination test...")
+
+	# Read list of test case IDs and PDBs
+	targets_path = config.benchmark_path + "targets/structure/D5_helix_kinks/"
+	list_of_targets = targets_path + "targets.list"
+
+	with open( list_of_targets, 'rt' ) as f: 
+			targets = f.readlines()
+			targets = [ x.strip() for x in targets ]
+
+	# Generate path to executable
+	executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
+	xml_script =  config.benchmark_path + "tests/xml/" + xml
+
+	# Change directories to a data analysis dir
+	outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name + "/" 
+	if ( not os.path.isdir( outdir ) ): 
+		os.system( "mkdir " + outdir )
+		os.chdir( outdir )
+
+	# Iterate through each target
+	for target in targets:
+
+		print("Submitting refinement calculations for helix kink case:", target)
+
+		# Read the list of decoy lists
+		decoy_list = targets_path + "/" + target + "/models.tr.clean.list"
+
+		# Read general target variables
+		spanfile = targets_path + "/" + target + "/" + target + ".span" 
+		scorefile = target + "_refined.sc"
+		casedir = outdir + "/" + target
+		if ( not os.path.isdir( casedir ) ): 
+			os.system( "mkdir " + casedir )
+			os.chdir( casedir )
+
+		# Generate a string of arguments from the case-specific variables
+		s = Template( " -relax:constrain_relax_to_start_coords -in:file:l $models_list -mp:setup:spanfiles $span -parser:script_vars sfxn_weights=$sfxn -parser:protocol $xml -out:file:scorefile $scorefile -out:path:all $outdir -nstruct $nmodels -run:multiple_processes_writing_to_one_directory ")
+		arguments = s.substitute( models_list=decoy_list, span=spanfile, xml=xml_script, sfxn=energy_fxn, outdir=casedir, nmodels=5, scorefile=scorefile )
+
+		# Restore/lipid composition flags
+		if ( restore ): 
+			arguments = arguments + " -restore_talaris_behavior -restore_lazaridis_imm_behavior "
+		else:
+			arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:has_pore false "
+
+		# Write jobfile and submit to the HPC
+		jobname = target + "_refine"
+		hpc_util.submit_condor_job( casedir, jobname, executable, arguments, 5 )
 
