@@ -151,7 +151,7 @@ def main( args ):
 	# Test #11: Membrane helix kinks
 	if ( "helix-kinks" in test_names ): 
 
-		print( "No generation step required for helix-kinks test")
+		make_refined_decoys.run_refine_kined_structures( Options.energy_fxn, restore, config, "helix-kinks", "mp_relax.xml" )
 
 	# Test #12: Protein-protein docking
 	if ( "protein-protein-docking" in test_names ): 
