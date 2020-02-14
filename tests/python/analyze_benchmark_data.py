@@ -22,7 +22,7 @@ Requirements:
 	- KinkFinder
 """
 
-import sys, os, random, read_config
+import sys, os, random, read_config, hpc_util
 import make_asymm_docked_complexes
 import make_designed_protein_scaffolds
 import make_refined_decoys
@@ -125,9 +125,25 @@ def main( args ):
 
 	if ( "decoy-discrimination" in test_names ): 
 
-		print("temp")
+		# for each target, make a list of pdb decoys
+		targets = [ "brd7", "fmr5", "ltpa", "rhod", "vatp"]
+		datadir = config.benchmark_path + "data/" + Options.energy_fxn + "/decoy-discrimination/"
+		# first hires targets
+		hires_dir = datadir + "hires"
+		os.chdir( hires_dir )
+		for target in targets: 
+			os.chdir( target )
+			os.system( "ls decoy*.pdb > decoys.list" )
+			os.chdir( "../" )
 
-		# LIst out all refined PDB files
+		# then lowres targets
+		lowres_dir = datadir + "lowres"
+		os.chdir( lowres_dir )
+		for target in targets: 
+			os.chdir( target )
+			os.system( "ls *.pdb > decoys.list" )
+			os.chdir( "../" )
+
 		# rescore each to calculate the rms and total score
 		# run score_energy_landscape to compute the decoy discrimination score
 
