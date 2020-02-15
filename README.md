@@ -20,7 +20,7 @@ The test framework requires Python version 3.6+ and R version 3.6+. In addition,
 
 #### Molecular modeling software
 
-The tests also uses both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
+The tests use both the command-line and python interfaces to the Rosetta macromolecular modeling suite. Rosetta is available to academic users for free and to comercial users for a fee. 
 
 To get Rosetta, obtain a license and download the package at <https://www.rosettacommons.org/software/license-and-download>. To compile the code, navigate to the `Rosetta/main/source/` directory and run the command below. 
 
@@ -28,7 +28,7 @@ To get Rosetta, obtain a license and download the package at <https://www.rosett
 ./scons.py -jX bin mode=release 
 ```
 
-Here, "X" is the number of processors to use during compilation. For compilation on a laptop, the recommended number of processors is 1. If you are working on a larger workstation or cluster, we recommend scaling between 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
+Here, "X" is the number of processors to use during compilation. For compilation on a laptop, the recommended number of processors is 1. If you are working on a larger workstation or high performance computing cluster, we recommend scaling up to 8-24 processors. More information can be found in the [Rosetta Build Documentation](https://www.rosettacommons.org/docs/wiki/build_documentation/Build-Documentation#setting-up-rosetta-3_basic-setup). 
 
 To get PyRosetta, install miniconda first. On OSX or Linux, this is: 
 
@@ -65,7 +65,7 @@ The implicit membrane energy function benchmarks involves three steps: (1) data 
 
 #### Step 1: Generate benchmark data
 
-The first step performs all PyRosetta modeling calculations, any preparation steps for Rosetta applications, and submits calculations to the computing cluster. The generation script takes about 30min to run. Afterward, job completion requires roughly 1K CPU hours for all 12 tests. To run the generation step, use the command line below. 
+The first step performs all initial PyRosetta and Rosetta modeling calculations via a computing cluster. The generation script takes about 30min to run. Afterward, job completion requires roughly 1K CPU hours for all 12 tests. To run the generation step, use the command line below. 
 
 	```
 	./generate_test_data.py --energy_fxn franklin2019 --which_tests all
@@ -73,22 +73,20 @@ The first step performs all PyRosetta modeling calculations, any preparation ste
 
 The `--energy_fxn` flag sets the energy function to test, referred to by the name of the weights file in the Rosetta database (must be present in both Rosetta & PyRosetta). The `--which_tests` flag indicates which tests to be run. This can be `all` or a comma-separated list of the tests as given below. 
 
-TODO fill in the table
-
-| Test                        | #  | Description |
-|-----------------------------|----|-------------|
-| tm-peptide-tilt-angle       | 1  |             |
-| adsorbed-peptide-tilt-angle | 2  |             |
-| protein-tilt-angle          | 3  |             |
-| hydrophobic-length          | 4  |             |
-| ddG-of-insertion            | 5  |             |
-| ddG-of-pH-insertion         | 6  |             |
-| ddG-of-mutation             | 7  |             |
-| sequence-recovery           | 8  |             |
-| sc-distribution             | 9  |             |
-| decoy-discrimination        | 10 |             |
-| helix-kink                  | 11 |             |
-| protein-protein-docking     | 12 |             |
+| Test                        | #  | Description 													   |
+|-----------------------------|----|-------------------------------------------------------------------|
+| tm-peptide-tilt-angle       | 1  | Tilt angle of single-span transmembrane peptides           	   |
+| adsorbed-peptide-tilt-angle | 2  | Rotation angle of surface-adsorbed peptides    				   |
+| protein-tilt-angle          | 3  | Tilt angle of multi-pass membrane proteins 					   |
+| hydrophobic-length          | 4  | Hydrophobic thickness of multi-pass membrane proteins             |
+| ddG-of-insertion            | 5  | Energetic cosf of transfering a peptide from water to bilayer     |
+| ddG-of-pH-insertion         | 6  | Energetic cost of pH-dependent water-to-biolayer peptide transfer |
+| ddG-of-mutation             | 7  | Energetic cost of single-point mutations in the membrane          |
+| sequence-recovery           | 8  | Recovery of sequence features after full fixed-backbone redesign  |
+| sc-distribution             | 9  | Depth-dependent distribution of side chains relative to native    |
+| decoy-discrimination        | 10 | Native structure discrimination          						   |
+| helix-kink                  | 11 | Helix kink angle prediction            						   |
+| protein-protein-docking     | 12 | Membrane protein-protein docking           					   |
 
 TODO - also explain the structure of the output directory
 
