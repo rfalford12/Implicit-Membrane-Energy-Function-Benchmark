@@ -15,7 +15,7 @@ categories = [ 'nonpolar', 'special', 'charged', 'charged', 'aromatic', 'special
 
 def read_design_matrix( filename ): 
 
-	with open( filename, 'rb' ) as f: 
+	with open( filename, 'rt' ) as f: 
 		content = f.readlines()
 		content = [ x.strip() for x in content ]
 		content = [ x.split() for x in content ]
