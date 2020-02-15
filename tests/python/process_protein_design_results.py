@@ -228,7 +228,7 @@ def main( args ) :
 	Options = options
 
 	# Make one list of design calc files
-	working_dir = Options.basedir + "data/" + Options.energy_fxn + "/sequence-recovery"
+	working_dir = Options.basedir + "/data/" + Options.energy_fxn + "/sequence-recovery"
 	os.chdir( working_dir )
 	os.system( "ls " + Options.seqrecov_file + " > design_calcs.list" )
 
