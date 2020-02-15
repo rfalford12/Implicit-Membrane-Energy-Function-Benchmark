@@ -230,7 +230,7 @@ def main( argv ) :
 	os.system( "ls " + Options.seqrecov_file + " > design_calcs.list" )
 
 	# Read in all design calculation files
-    design_calc_files = "design_calcs.list"
+	design_calc_files = "design_calcs.list"
 	design_matrices = read_design_calc_files( design_calc_files )
 
 	# Analyze total sequence recovery of designed proteins (per-category)
