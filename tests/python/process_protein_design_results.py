@@ -213,7 +213,7 @@ def compute_divergence_by_aa_class( design_matrix, category ):
 
 	return divergence_by_aa_class
 
-def main( argv ) : 
+def main( args ) : 
 
 	# Read options from the command line
 	parser = OptionParser(usage="usage %prog --energy_fxn franklin2019" )
