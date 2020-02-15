@@ -7,6 +7,9 @@ import sys, os
 import numpy as np
 from collections import defaultdict
 
+from optparse import OptionParser, IndentedHelpFormatter
+_script_path_ = os.path.dirname( os.path.realpath(__file__) )
+
 residues = [ 'A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y' ]
 categories = [ 'nonpolar', 'special', 'charged', 'charged', 'aromatic', 'special', 'charged', 'nonpolar', 'charged', 'nonpolar', 'nonpolar', 'polar', 'special', 'polar', 'charged', 'polar', 'polar', 'nonpolar', 'aromatic', 'aromatic' ]
 
