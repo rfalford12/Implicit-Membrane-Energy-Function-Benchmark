@@ -180,53 +180,83 @@ make.thk.comparison.plot <- function(df) {
   return(r)
 }
 
-# Residual Plots
-s <- ggplot() + 
-  theme_bw() + 
-  background_grid() + 
-  stat_ecdf( data = df, aes( x = abs(depth.residual)), geom = "density", position = "identity", size = 0.35 ) + 
-  stat_ecdf( data = df, aes( x = abs(depth.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) +
-  scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
-  scale_x_continuous( "Depth Residual (Å)", limits = c(0, NA), expand = c(0,0), breaks = c(0, 5, 10) ) + 
-  scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
-  theme( legend.position = "none",
-         text = element_text( size = 7, color = "black" ), 
-         axis.text = element_text( size = 7, color = "black" ), 
-         axis.line = element_blank(), 
-         panel.border = element_rect( color = "black"), 
-         axis.ticks = element_line( size = 0.35 ) )
+#' Make cummulative distribution plot of the depth residuals
+#'
+#' @param df Dataframe with predicted and OPM reference values
+#'
+#' @return Plot object
+#'
+#' @examples
+#' make.cdf.depth.plot(df)
+#' 
+make.cdf.depth.plot <- function(df) {
+  s <- ggplot() + 
+    theme_bw() + 
+    background_grid() + 
+    stat_ecdf( data = df, aes( x = abs(depth.residual)), geom = "density", position = "identity", size = 0.35 ) + 
+    stat_ecdf( data = df, aes( x = abs(depth.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) +
+    scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
+    scale_x_continuous( "Depth Residual (Å)", limits = c(0, NA), expand = c(0,0), breaks = c(0, 5, 10) ) + 
+    scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
+    theme( legend.position = "none",
+           text = element_text( size = 7, color = "black" ), 
+           axis.text = element_text( size = 7, color = "black" ), 
+           axis.line = element_blank(), 
+           panel.border = element_rect( color = "black"), 
+           axis.ticks = element_line( size = 0.35 ) )
+  return(s)
+}
 
-t <- ggplot() + 
-  theme_bw() + 
-  background_grid() + 
-  stat_ecdf( data = df, aes( x = abs(angle.residual)), geom = "density", position = "identity", size = 0.35 ) + 
-  stat_ecdf( data = df, aes( x = abs(angle.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) +
-  scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
-  scale_x_continuous( "Angle Residual (˚)", limits = c(0, NA), breaks = c(0, 5, 10, 15, 20, 25), expand = c(0,0) ) + 
-  scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
-  theme( legend.position = "none",
-         text = element_text( size = 7, color = "black" ), 
-         axis.text = element_text( size = 7, color = "black" ), 
-         axis.line = element_blank(), 
-         panel.border = element_rect( color = "black"), 
-         axis.ticks = element_line( size = 0.35 ) )
+#' Make cummulative distribution plot of the angle residuals
+#'
+#' @param df Dataframe with predicted and OPM reference values
+#'
+#' @return Plot object
+#'
+#' @examples
+#'  make.cdf.angle.plot(df)
+#' 
+make.cdf.angle.plot <- function(df) {
+  t <- ggplot() + 
+    theme_bw() + 
+    background_grid() + 
+    stat_ecdf( data = df, aes( x = abs(angle.residual)), geom = "density", position = "identity", size = 0.35 ) + 
+    stat_ecdf( data = df, aes( x = abs(angle.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) +
+    scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
+    scale_x_continuous( "Angle Residual (˚)", limits = c(0, NA), breaks = c(0, 5, 10, 15, 20, 25), expand = c(0,0) ) + 
+    scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
+    theme( legend.position = "none",
+           text = element_text( size = 7, color = "black" ), 
+           axis.text = element_text( size = 7, color = "black" ), 
+           axis.line = element_blank(), 
+           panel.border = element_rect( color = "black"), 
+           axis.ticks = element_line( size = 0.35 ) )
+  return(t)
+}
 
-u <- ggplot() + 
-  theme_bw() + 
-  background_grid() + 
-  stat_ecdf( data = df2, aes( x = abs(thk.residual)), geom = "density", position = "identity", size = 0.35 ) + 
-  stat_ecdf( data = df2, aes( x = abs(thk.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) + 
-  scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
-  scale_x_continuous( "Thickness Residual (Å)", limits = c(0, NA), expand = c(0,0) ) + 
-  scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
-  theme( legend.position = "none",
-         text = element_text( size = 7, color = "black" ), 
-         axis.text = element_text( size = 7, color = "black" ), 
-         axis.line = element_blank(), 
-         panel.border = element_rect( color = "black"), 
-         axis.ticks = element_line( size = 0.35 ) )
-
-# Make large grid for figure
-orient.and.thk <- plot_grid(q,p,r,s,t,u, ncol = 3, nrow = 2, labels = c("d", "e", "f", "g", "h", "i"), label_size = 9 )
-save_plot( paste( workdir, "orientation_and_thk_plots.pdf", sep = "/"), orient.and.thk, units = "in", base_width = 4.5, base_height = 2.5 )                            
-
+#' Make cummulative distribution plot of the thickness residuals
+#'
+#' @param df Dataframe with predicted and OPM reference values
+#'
+#' @return Plot object
+#'
+#' @examples
+#'  make.cdf.thk.plot(df)
+#' 
+make.cdf.thk.plot <- function(df) {
+  u <- ggplot() + 
+    theme_bw() + 
+    background_grid() + 
+    stat_ecdf( data = df2, aes( x = abs(thk.residual)), geom = "density", position = "identity", size = 0.35 ) + 
+    stat_ecdf( data = df2, aes( x = abs(thk.residual), color = alpha_or_beta ), geom = "density", position = "identity", size = 0.35 ) + 
+    scale_color_manual( values = c("#e41a1c", "#377eb8") ) + 
+    scale_x_continuous( "Thickness Residual (Å)", limits = c(0, NA), expand = c(0,0) ) + 
+    scale_y_continuous( "Frequency", limits = c(0,1.0), expand = c(0,0) ) + 
+    theme( legend.position = "none",
+           text = element_text( size = 7, color = "black" ), 
+           axis.text = element_text( size = 7, color = "black" ), 
+           axis.line = element_blank(), 
+           panel.border = element_rect( color = "black"), 
+           axis.ticks = element_line( size = 0.35 ) )
+  return(u)
+}
