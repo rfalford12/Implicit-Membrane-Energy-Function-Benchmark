@@ -78,28 +78,28 @@ def main( args ):
 	if ( "sequence-recovery" in test_names ): 
 
 		# Make list of native and designed PDB files
-		# datadir = config.benchmark_path + "data/" + Options.energy_fxn + "/sequence-recovery/"
-		# os.chdir( datadir )
-		# os.system( "ls */*_0001.pdb > designed.list" )
-		# with open( "designed.list",'rt' ) as f: 
-		# 	contents = f.readlines()
-		# 	contents = [ x.strip() for x in contents ]
-		# 	pdbid = [ x.split("/")[0] for x in contents ]
+		datadir = config.benchmark_path + "data/" + Options.energy_fxn + "/sequence-recovery/"
+		os.chdir( datadir )
+		os.system( "ls */*_0001.pdb > designed.list" )
+		with open( "designed.list",'rt' ) as f: 
+			contents = f.readlines()
+			contents = [ x.strip() for x in contents ]
+			pdbid = [ x.split("/")[0] for x in contents ]
 
-		# with open( "natives.list", 'wt' ) as f: 
-		# 	basedir = config.benchmark_path + "targets/design/"
-		# 	for pdb in pdbid: 
-		# 		pdbpath = basedir + pdb + "/" + pdb + "_tr_ignorechain.pdb\n"
-		# 		f.write( pdbpath )
+		with open( "natives.list", 'wt' ) as f: 
+			basedir = config.benchmark_path + "targets/design/"
+			for pdb in pdbid: 
+				pdbpath = basedir + pdb + "/" + pdb + "_tr_ignorechain.pdb\n"
+				f.write( pdbpath )
 
-		# # Run mp_seqrecov application
-		# executable = config.rosetta_path + "mp_seqrecov." + config.platform + config.compiler + config.buildenv
+		# Run mp_seqrecov application
+		executable = config.rosetta_path + "mp_seqrecov." + config.platform + config.compiler + config.buildenv
 		output_file = Options.energy_fxn + "_seqrecov.txt"
-		# s = Template( " -overwrite -native_pdb_list $natives -redesign_pdb_list $designed -seq_recov_filename $outfile -in:ignore_unrecognized_res -read_only_ATOM_entries")
-		# arguments = s.substitute( natives="natives.list", designed="designed.list", outfile=output_file )
-		# if ( restore == False ): 
-		# 	arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:temperature 37"
-		# os.system( executable + arguments )
+		s = Template( " -overwrite -native_pdb_list $natives -redesign_pdb_list $designed -seq_recov_filename $outfile -in:ignore_unrecognized_res -read_only_ATOM_entries")
+		arguments = s.substitute( natives="natives.list", designed="designed.list", outfile=output_file )
+		if ( restore == False ): 
+			arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:temperature 37"
+		os.system( executable + arguments )
 
 		# Process the sequence recovery data
 		os.system( "python tests/python/process_protein_design_results.py --energy_fxn " + Options.energy_fxn + " --basedir " + config.benchmark_path + " --seqrecov_file " + output_file )
