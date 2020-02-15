@@ -6,9 +6,9 @@ This is a set of scientific benchmark tests for evaluating membrane protein mode
 
 ## Manifest
 
- - `tests/` - Scientific benchmark scripts
+ - `tests/` - Scientific benchmark scripts for generation, post-processing, and analysis
  - `targets/` - Experimental and model datasets for testing
- - `analysis/` - Benchmark analysis scripts
+ - `example/` - Example for analyzing output data from franklin2019
  - `LICENSE` - MIT license for benchmark code
  - `config.txt` - Path and platform information for Rosetta
 
@@ -90,15 +90,13 @@ The outputs are then organized in a `data/` directory created by the script. The
 
 #### Step 2: Post-Process benchmark data
 
-The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. To run the post-processing step, run the command line below. 
+The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. To run the post-processing step, run the command line below. The flags are described in step #1. 
 
-	```
 	./process_test_data.py --energy_fxn franklin2019 --which_tests all
-	```
-
-The flags are described in step 1 above. 
 
 #### Step 3: Analyze benchmark data 
 
-Explain/recommend R studio
+The final step is to visualize and analyze the results of each benchmark tests. To do so, we provide a package of R scripts for generating the appropriate plots. While R can be run for the command line, we recommend downloading the R studio IDE from (https://rstudio.com/). You can run the example analysis script for `franklin2019` data from the `example/` directory through R studio or with the command line below. 
+
+	Rscript analyze_f19_tests.R 
 
