@@ -219,7 +219,7 @@ def main( args ) :
 	parser = OptionParser(usage="usage %prog --energy_fxn franklin2019" )
 	parser.set_description(main.__doc__)
 	
-	parser.add_option( '--energy-fxn', '-e', action="store", help="Energy function")
+	parser.add_option( '--energy_fxn', '-e', action="store", help="Energy function")
 	parser.add_option( '--seqrecov_file', '-s', action="store", help="Sequence recovery file", )
 	parser.add_option( '--basedir', '-b', action="store", help="config benchmark path")
 
