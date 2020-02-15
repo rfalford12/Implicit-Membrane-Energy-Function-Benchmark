@@ -35,7 +35,7 @@ def read_design_matrix( filename ):
 
 def read_design_calc_files( filename ): 
 
-	with open( filename, 'rb' ) as f: 
+	with open( filename, 'rt' ) as f: 
 		design_calc_list = f.readlines()
 		design_calc_list = [ x.strip() for x in design_calc_list ]
 
