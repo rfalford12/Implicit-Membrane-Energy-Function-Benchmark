@@ -67,9 +67,7 @@ The implicit membrane energy function benchmarks involves three steps: (1) data 
 
 The first step performs all initial PyRosetta and Rosetta modeling calculations via a computing cluster. The generation script takes about 30min to run. Afterward, job completion requires roughly 1K CPU hours for all 12 tests. To run the generation step, use the command line below. 
 
-	```
 	./generate_test_data.py --energy_fxn franklin2019 --which_tests all
-	```
 
 The `--energy_fxn` flag sets the energy function to test, referred to by the name of the weights file in the Rosetta database (must be present in both Rosetta & PyRosetta). The `--which_tests` flag indicates which tests to be run. This can be `all` or a comma-separated list of the tests as given below. 
 
@@ -88,7 +86,7 @@ The `--energy_fxn` flag sets the energy function to test, referred to by the nam
 | helix-kink                  | 11 | Helix kink angle prediction            						   |
 | protein-protein-docking     | 12 | Membrane protein-protein docking           					   |
 
-TODO - also explain the structure of the output directory
+The outputs are then organized in a `data/` directory created by the script. The first subdirectory is the name of the energy function in use (e.g., franklin2019). Then, this folder contains 12 subdirectories for the data output from each test. 
 
 #### Step 2: Post-Process benchmark data
 
