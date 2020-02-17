@@ -128,26 +128,34 @@ def run_refine_kined_structures( energy_fxn, restore, config, test_name, xml ):
 
 		# Read the list of decoy lists
 		decoy_list = targets_path + "/" + target + "/models.tr.clean.list"
+		with open ( decoy_list ) as f: 
+			pdbs = f.readlines()
+			pdbs = [ x.strip() for x in pdbs ]
 
-		# Read general target variables
-		spanfile = targets_path + "/" + target + "/" + target + ".span" 
-		scorefile = target + "_refined.sc"
-		casedir = outdir + "/" + target
-		if ( not os.path.isdir( casedir ) ): 
-			os.system( "mkdir " + casedir )
-			os.chdir( casedir )
+		i = 0
+		for pdb in pdbs: 
 
-		# Generate a string of arguments from the case-specific variables
-		s = Template( " -relax:constrain_relax_to_start_coords -in:file:l $models_list -mp:setup:spanfiles $span -parser:script_vars sfxn_weights=$sfxn -parser:protocol $xml -out:file:scorefile $scorefile -out:path:all $outdir -nstruct $nmodels -run:multiple_processes_writing_to_one_directory ")
-		arguments = s.substitute( models_list=decoy_list, span=spanfile, xml=xml_script, sfxn=energy_fxn, outdir=casedir, nmodels=5, scorefile=scorefile )
+			i = i + 1
 
-		# Restore/lipid composition flags
-		if ( restore ): 
-			arguments = arguments + " -restore_talaris_behavior -restore_lazaridis_imm_behavior "
-		else:
-			arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:has_pore false "
+			# Read general target variables
+			spanfile = targets_path + "/" + target + "/" + target + ".span" 
+			scorefile = target + "_refined_" + str(i) + ".sc"
+			casedir = outdir + "/" + target
+			if ( not os.path.isdir( casedir ) ): 
+				os.system( "mkdir " + casedir )
+				os.chdir( casedir )
 
-		# Write jobfile and submit to the HPC
-		jobname = target + "_refine"
-		hpc_util.submit_condor_job( casedir, jobname, executable, arguments, 5 )
+			# Generate a string of arguments from the case-specific variables
+			s = Template( " -relax:constrain_relax_to_start_coords -in:file:s $models_list -mp:setup:spanfiles $span -parser:script_vars sfxn_weights=$sfxn -parser:protocol $xml -out:file:scorefile $scorefile -out:path:all $outdir -nstruct $nmodels -run:multiple_processes_writing_to_one_directory ")
+			arguments = s.substitute( models_list=pdb, span=spanfile, xml=xml_script, sfxn=energy_fxn, outdir=casedir, nmodels=5, scorefile=scorefile )
+
+			# Restore/lipid composition flags
+			if ( restore ): 
+				arguments = arguments + " -restore_talaris_behavior -restore_lazaridis_imm_behavior "
+			else:
+				arguments = arguments + " -mp:lipids:composition DLPC -mp:lipids:has_pore false "
+
+			# Write jobfile and submit to the HPC
+			jobname = target + "_refine_" + str(i)
+			hpc_util.submit_condor_job( casedir, jobname, executable, arguments, 5 )
 
