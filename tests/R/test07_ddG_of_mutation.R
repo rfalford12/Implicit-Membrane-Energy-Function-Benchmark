@@ -1,14 +1,15 @@
-# @file: plot_ddG_of_mutation.R
-# @author: Rebecca F. Alford (ralford3@jhu.edu)
-# @brief: Compare experimental and predicted ddG of mutation values
-
+#' Analyze ddG of single-point mutation results (Test #7)
+#' 
+#' Computes analysis for ddG of mutation calculastions, including:
+#'    - Correlation between experimentally measured and predicted values
+#'
+#' @author Rebecca Alford <ralford3[at]jhu.edu>
+#' 
 library(cowplot)
 library(viridis)
 library(reshape2)
 library(ggplot2)
 library(stringr)
-
-workdir <- "/Users/ralford/Dropbox/rebecca-research-shared/writing/papers/Membrane-Efxn-Benchmarks/data/ddG-of-mutation"
 
 plot.ddG.of.mutation.by.AA <- function( dir, test.name ) {
   
@@ -82,11 +83,6 @@ plot.ddG.of.mutation.by.depth <- function( dir, test.name ) {
   
   return(y.and.w)
 }
-
-#c1 <- plot.ddG.of.mutation.by.AA(workdir, "C1_OmpLA_canonical_ddGs")
-#c2 <- plot.ddG.of.mutation.by.AA(workdir, "C2_PagP_canonical_ddGs" )
-c3 <- plot.ddG.of.mutation.by.depth(workdir, "C3_OmpLA_aro_ddGs" )
-save_plot( paste( workdir, "C3_OmpLA_aro_ddGs.pdf", sep = "/"), c3, units = "in", base_width = 4, base_height = 2  )
 
 substrRight <- function(x, n){
   substr(x, nchar(x)-n+1, nchar(x))
@@ -182,36 +178,3 @@ plot.ddG.of.mutation.by.depth.v2 <- function( df, test.name ) {
   
   return(y.and.w)
 }
-
-memb.v.exp <- plot.ddG.of.mutation.by.depth.v2(df3, "C3_OmpLA_aro_ddGs") 
-save_plot( paste( workdir, "SI_C3_OmpLA_aro_ddGs.pdf", sep = "/"), memb.v.exp, units = "in", base_width = 4, base_height = 2  )
-
-plot.ddG.of.mutation.by.depth.slide <- function( dir, test.name ) {
-  
-  # Grab list of mutations with experimental data
-  test.path = paste( dir, test.name, sep = "/" )
-  data.file <- list.files( path = test.path, pattern = "*.dat")
-  file.path = paste( test.path, data.file, sep = "/")
-  df <- read.table( file.path, header = T )
-  
-  p <- ggplot( data = df[ which( df$Mut != "P" & df$Mut != "F" & df$Mut != "W" ), ], aes( x = experimental_ddG, y = predicted_ddG, fill = abs(depth), label = Pos) ) + 
-    theme_bw() + 
-    background_grid() + 
-    geom_abline( size = 0.6 ) + 
-    geom_hline( yintercept = 0, color = "gray40", size = 0.35 ) + 
-    geom_vline( xintercept = 0, color = "gray40", size = 0.35 ) + 
-    geom_point( size = 2.5 ) + 
-    geom_label( size = 5, label.size = 0.6 ) + 
-    scale_fill_viridis( "Depth (Å)", breaks = c(0, 4, 8, 12), begin = 0.2 ) + 
-    scale_x_continuous( "Experiment (kcal/mol)", limits = c(-5.5, 2.5), expand = c(0,0) )  +
-    scale_y_continuous( "Predicted (REU)", limits = c(-5, 12), expand = c(0,0) ) + 
-    theme( legend.position = "bottom",  
-           text = element_text( size = 20 ), 
-           axis.text = element_text( size = 20 ), 
-           panel.border = element_rect( size = 1.5 ), 
-           axis.ticks = element_line( size = 1, color = "black" ))
-  return(p)
-}
-
-slidefig <- plot.ddG.of.mutation.by.depth.slide(workdir, "C3_OmpLA_aro_ddGs" )
-save_plot( "~/Desktop/slidefig_ddG.pdf", slidefig, units = "in", base_width = 5, base_height = 5 )

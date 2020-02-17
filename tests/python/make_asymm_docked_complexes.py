@@ -199,7 +199,7 @@ def analyze_interfaces( energy_fxn, config, targets, test_name, local_refine, tr
 
   # Generate path to executable
   executable = config.rosetta_path + "rosetta_scripts" + "." + config.platform + config.compiler + config.buildenv
-  xml_script = config.benchmark_path + "/src/xml/interface.xml"  
+  xml_script = config.benchmark_path + "targets/xml/interface.xml"  
 
   # Change directories to a data analysis dir
   outdir = config.benchmark_path + "/data/" + energy_fxn + "/protein-protein-docking/"  + targets + "/"
