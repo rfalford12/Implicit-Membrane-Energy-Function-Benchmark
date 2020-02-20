@@ -238,6 +238,7 @@ def main( args ):
 			i = 1
 			#for m in (refined_models): 
 			kink_cmd = "python2 " + kink_finder_script + " -f " + refined_models[0] + " -l '" + spanstr + "'"
+			print(kink_cmd)
 			os.system( kink_cmd )
 			os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
 
