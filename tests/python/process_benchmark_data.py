@@ -237,7 +237,7 @@ def main( args ):
 			os.system( "mkdir kink_data" )
 			i = 1
 			for model in refined_models: 
-				os.system( "python " + kink_finder_script + " -f " + model + " -l " + spanstr )
+				os.system( "python2 " + kink_finder_script + " -f " + model + " -l " + spanstr )
 				os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
 
 			# Run kink finder on each model
