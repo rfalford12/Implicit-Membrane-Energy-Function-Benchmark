@@ -219,7 +219,7 @@ def main( args ):
 			os.system( "rm *.in_progress" )
 			os.system( "mkdir metadata" )
 			os.system( "mv *.out metadata/" )
-			os.ssytem( "mv *.err metadata/" )
+			os.system( "mv *.err metadata/" )
 			os.system( "mv *.log metadata/" )
 			os.system( "mkdir scorefiles" )
 			os.system( "mv *.sc scorefiles/" )
