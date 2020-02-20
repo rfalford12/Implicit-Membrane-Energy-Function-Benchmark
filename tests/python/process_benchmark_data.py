@@ -205,7 +205,7 @@ def main( args ):
 			targets = [ x.strip() for x in targets ]
 
 		# Change directories to a data analysis dir
-		outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name + "/" 
+		outdir = config.benchmark_path + "data/" + Options.energy_fxn + "/" + test_name + "/" 
 		if ( not os.path.isdir( outdir ) ): 
 			aya.exit( "Data generation for helix kinks was skipped! Cannot process non-existent data. Exiting!" )
 		os.chdir( outdir )
