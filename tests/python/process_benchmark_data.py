@@ -36,6 +36,29 @@ all_tests = [ "sc-distribution", "ddG-of-insertion", "ddG-of-mutation", "ddG-of-
 sequence_tests = [ "sc-distribution", "sequence-recovery" ]
 structure_tests = [ "decoy-discrimination", "helix-kinks", "protein-protein-docking" ]
 
+def convert_spanfile_to_string( spanfile ): 
+
+	with open( spanfile, 'rt' ) as f: 
+		spans = f.readlines()
+		spans = [ x.strip() for x in spans ]
+
+	# Parse tm regions, skipping the first four header lines
+	span_info = []
+	for tm_span in range(4, len(spans)): 
+		single_span_data = spans[tm_span].split( ' ' )
+		single_span_info = []
+		for entry in single_span_data: 
+			if ( entry != "" ): 
+				single_span_info.append( entry )
+		span_info.append( single_span_info )
+
+	# Convert list of spans into a string that will be used as input for kink finder
+	spanstr = ""
+	for span in span_info: 
+		spanstr = spanstr + span[0] + "-" + span[1] + " "
+
+	return spanstr
+
 def main( args ): 
 
 	# Read options from the command line
@@ -174,11 +197,54 @@ def main( args ):
 
 	if ( "helix-kinks" in test_names ): 
 
-		print("temp")
-		# ARGH - we are going to need the additional refinement step here... 
-		# rescore all NMA structures
-		# run KinkFinder to calculate the kink angle
-		# run kink processing script to collapse everything into a single file
+		# Read list of test case IDs and PDBs
+		targets_path = config.benchmark_path + "targets/structure/D5_helix_kinks/"
+		list_of_targets = targets_path + "targets.list"
+		with open( list_of_targets, 'rt' ) as f: 
+			targets = f.readlines()
+			targets = [ x.strip() for x in targets ]
+
+		# Change directories to a data analysis dir
+		outdir = config.benchmark_path + "data/" + energy_fxn + "/" + test_name + "/" 
+		if ( not os.path.isdir( outdir ) ): 
+			aya.exit( "Data generation for helix kinks was skipped! Cannot process non-existent data. Exiting!" )
+		os.chdir( outdir )
+
+		# Iterate through each target
+		for target in targets:
+
+			# Clean up the directories with refined models
+			casedir = outdir + target 
+			os.chdir( casedir )
+			os.system( "rm *.in_progress" )
+			os.system( "mkdir metadata" )
+			os.system( "mv *.out metadata/" )
+			os.ssytem( "mv *.err metadata/" )
+			os.system( "mv *.log metadata/" )
+			os.system( "mkdir scorefiles" )
+			os.system( "mv *.sc scorefiles/" )
+
+			# Make a list of the refined models
+			os.system( "ls *.pdb > models.list" )
+			with open( "models.list" ) as f: 
+				refined_models = f.readlines()
+				refined_models = [ x.strip() for x in contents ]
+
+			# Conver tthe spanfile from the targets directory to a string format
+			kink_finder_script = config.benchmark_path + "external/kink-finder/Kink_Finder.py"
+			spanfile = config.benchmark_path + "targets/structure/D5_helix_kinks/" + target + "/" + target + ".span"
+			spanstr = convert_spanfile_to_string( spanfile )
+			os.system( "mkdir kink_data" )
+			i = 1
+			for model in refined_models: 
+				os.system( "python " + kink_finder_script + " -f " + model + " -l " + spanstr )
+				os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
+
+			# Run kink finder on each model
+			# will need to re-format the helix definitions here and then run kink finder
+			# on each model, output into a kink files directory
+
+			# then run the process kink data script
 
 	if ( "protein-protein-docking" in test_names ): 
 
