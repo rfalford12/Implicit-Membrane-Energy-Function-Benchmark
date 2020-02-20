@@ -239,7 +239,7 @@ def main( args ):
 			spanstr = convert_spanfile_to_string( spanfile )
 			os.system( "mkdir kink_data" )
 			i = 1
-			for m in (refined_models): 
+			for m in range(0, len(refined_models)): 
 				kink_cmd = "python2 " + kink_finder_script + " -f " + refined_models[m] + " -l '" + spanstr + "'"
 				os.system( kink_cmd )
 				os.system( "mv Output/angles.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
