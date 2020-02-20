@@ -54,8 +54,11 @@ def convert_spanfile_to_string( spanfile ):
 
 	# Convert list of spans into a string that will be used as input for kink finder
 	spanstr = ""
-	for span in span_info: 
-		spanstr = spanstr + span[0] + "-" + span[1] + " "
+	for s in range(0, len(span_info)):
+		if ( s != len(span_info)-1 ) 
+			spanstr = spanstr + span_info[s][0] + "-" + span_info[s][1] + " "
+		else: 
+			spanstr = spanstr + span_info[s][0] + "-" + span_info[s][1] 
 
 	return spanstr
 
@@ -236,11 +239,11 @@ def main( args ):
 			spanstr = convert_spanfile_to_string( spanfile )
 			os.system( "mkdir kink_data" )
 			i = 1
-			#for m in (refined_models): 
-			kink_cmd = "python2 " + kink_finder_script + " -f " + refined_models[0] + " -l '" + spanstr + "'"
-			print(kink_cmd)
-			os.system( kink_cmd )
-			os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
+			for m in (refined_models): 
+				kink_cmd = "python2 " + kink_finder_script + " -f " + refined_models[m] + " -l '" + spanstr + "'"
+				os.system( kink_cmd )
+				os.system( "mv Output/angles.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
+				i = i + 1
 
 			# Run kink finder on each model
 			# will need to re-format the helix definitions here and then run kink finder
