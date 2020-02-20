@@ -228,7 +228,7 @@ def main( args ):
 			os.system( "ls *.pdb > models.list" )
 			with open( "models.list" ) as f: 
 				refined_models = f.readlines()
-				refined_models = [ x.strip() for x in contents ]
+				refined_models = [ x.strip() for x in refined_models ]
 
 			# Conver tthe spanfile from the targets directory to a string format
 			kink_finder_script = config.benchmark_path + "external/kink-finder/Kink_Finder.py"
