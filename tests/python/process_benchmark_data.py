@@ -55,7 +55,7 @@ def convert_spanfile_to_string( spanfile ):
 	# Convert list of spans into a string that will be used as input for kink finder
 	spanstr = ""
 	for s in range(0, len(span_info)):
-		if ( s != len(span_info)-1 ) 
+		if ( s != len(span_info)-1 ):
 			spanstr = spanstr + span_info[s][0] + "-" + span_info[s][1] + " "
 		else: 
 			spanstr = spanstr + span_info[s][0] + "-" + span_info[s][1] 
