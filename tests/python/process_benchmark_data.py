@@ -236,9 +236,9 @@ def main( args ):
 			spanstr = convert_spanfile_to_string( spanfile )
 			os.system( "mkdir kink_data" )
 			i = 1
-			for model in refined_models: 
-				os.system( "python2 " + kink_finder_script + " -f " + model + " -l '" + spanstr + "'")
-				os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
+			#for m in (refined_models): 
+			os.system( "python2 " + kink_finder_script + " -f " + refined_models[0] + " -l '" + spanstr + "'")
+			os.system( "mv kinks.csv kink_data/" + target + "_" + str(i) + ".csv" ) 
 
 			# Run kink finder on each model
 			# will need to re-format the helix definitions here and then run kink finder
