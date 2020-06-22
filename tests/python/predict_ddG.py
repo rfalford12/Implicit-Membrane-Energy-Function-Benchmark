@@ -281,4 +281,42 @@ def convert_array_to_str( array ):
 
     return linestr
 
+def get_energy_components( native_pose, mutated_pose, sfxn, resnum, aa ): 
+
+    # Extract & parse scores
+    tmp_native = native_pose.energies().total_energies().weighted_string_of( sfxn.weights() )
+    tmp_mutant = mutated_pose.energies().total_energies().weighted_string_of( sfxn.weights() )
+    array_native = list(filter( None, tmp_native.split(' ') ))
+    array_mutant = list(filter( None, tmp_mutant.split(' ') ))
+
+    # Pull out only the scores from these arrays
+    native_scores = []
+    for i in range( len(array_native) ): 
+        if ( i % 2 != 0 ): 
+            native_scores.append( float( array_native[i] ) )
+
+    mutant_scores = []
+    for i in range( len(array_mutant) ): 
+        if ( i % 2 != 0 ): 
+            mutant_scores.append( float( array_mutant[i] ) )
+
+    # Make a label for the mutation
+    native_res = native_pose.residue( int( resnum ) ).name1()
+    mut_label = native_res + str(resnum) + aa
+
+    # Calculate ddG of individual components
+    ddGs = []
+    ddGs.append( mut_label )
+    for i in range( len( mutant_scores ) ): 
+        ddG_component = mutant_scores[i] - native_scores[i]
+        ddGs.append( round( ddG_component, 3 ) )
+
+    # Get labels
+    labels = []
+    for i in range( len(array_native) ): 
+        if ( i % 2 == 0 ): 
+            labels.append( array_native[i].translate(':') )
+
+    return labels, ddGs
+
 if __name__ == "__main__" : main(sys.argv)
