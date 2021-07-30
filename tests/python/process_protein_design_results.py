@@ -2,9 +2,10 @@
 # @file: analyze_test4_protein_design.py
 # @brief: Analyze protein design results by calculating sequence recovery and KL divergence
 # @author: Rebecca F. Alford (ralford3@jhu.edu)
-
+# updated by Rituparna Samanta (rituparna@utexas.edu)
 import sys, os
 import numpy as np
+import seqrecov_metrics
 from collections import defaultdict
 
 from optparse import OptionParser, IndentedHelpFormatter
@@ -140,8 +141,11 @@ def compute_total_divergence( design_matrix, category ):
 	category_native = "No.native" + category
 	n_designed = np.array( design_matrix[ category_designed ] )
 	n_native = np.array( design_matrix[ category_native ] )
-	n_designed[ n_designed == 0 ] = 0.00001
-	n_native[ n_native == 0 ] = 0.00001
+	n_designed[ np.where(n_designed == 0)[0] ] = n_native[np.where(n_designed == 0)[0]]
+	n_native[ np.where(n_native == 0)[0] ] = n_designed[ np.where(n_native == 0)[0] ]
+	#n_designed[ n_designed == 0 ] = 0.00001
+	#n_native[ n_native == 0 ] = 0.00001
+	#eleminating the divide by zero error
 	divided = np.log( np.divide( n_native, n_designed ) )
 	return np.round( -np.sum( divided ), 3 )
 
@@ -174,10 +178,12 @@ def compute_divergence_by_aa_subset( design_matrix, category, subset ):
 	for aa in subset: 
 		aa_designed = design_matrix[ category_designed ][ aa_to_index( design_matrix, aa ) ]
 		aa_native = design_matrix[ category_native ][ aa_to_index( design_matrix, aa ) ]
-		if ( aa_designed == 0 ): 
-			aa_designed = 0.00001
+		if ( aa_designed == 0 ):
+			aa_designed = aa_native 
+			#aa_designed = 0.00001
 		if ( aa_native == 0 ): 
-			aa_native = 0.00001
+			aa_native = aa_designed
+			#aa_native = 0.00001
 		divergence += -np.log( aa_native/aa_designed )
 
 	return np.round( divergence, 3 )
@@ -228,7 +234,7 @@ def main( args ) :
 	Options = options
 
 	# Make one list of design calc files
-	working_dir = Options.basedir + "data/" + Options.energy_fxn + "/sequence-recovery"
+	working_dir = Options.basedir + "data/" + Options.energy_fxn + "/sequence-recovery_fa1.5"
 	os.chdir( working_dir )
 	os.system( "ls " + Options.seqrecov_file + " > design_calcs.list" )
 
@@ -316,6 +322,15 @@ def main( args ) :
 
 			for class_key in overall_div: 
 				f.write( class_key + " " + str(overall_div[class_key]) + " " + str(buried_div[class_key]) + " " + str(surface_div[class_key]) + " " + str(lipid_facing_div[class_key]) + " " + str(interfacial_div[class_key]) + " " + str(aqueous_div[class_key]) + " " + key + "\n" )
+	# Using the sequence recovery statistics, calculate Naa, Dkl and Rseq
+	file_name = Options.energy_fxn + '_seqrecov.txt'
+	seqdata = seqrecov_metrics.read_sequence_data( file_name )
+	non_random_recov = seqrecov_metrics.compute_non_random_recovered_fraction( seqdata )
+	print(non_random_recov)
+	recov = seqrecov_metrics.compute_sequence_recovery( seqdata )
+	print(recov)
+	kl_divergence = seqrecov_metrics.compute_kl_divergence( seqdata )
+	print(kl_divergence)
 
 if __name__ == "__main__" : main(sys.argv)
 

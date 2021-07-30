@@ -4,11 +4,11 @@
 This script computes the energetic cost of single point
 mutations in membrane proteins. To account for the conformational
 change, we repack side chains within 8 Angstroms of the host site.
-This script generates data for Test 7.
+This script generates data for Test 7. 
 
 Authors: 
     Rebecca Alford <ralford3@jhu.edu> 
-
+    updated Rituparna Samanta <rituparna@utexas.edu>
 Example: 
     $ import predict_ddG
     $ predict_ddG.run_ddG_of_mutation_calc( 
@@ -30,7 +30,6 @@ Requirements:
 from pyrosetta import *
 from pyrosetta.teaching import *
 from string import Template
-
 from optparse import OptionParser, IndentedHelpFormatter
 _script_path_ = os.path.dirname( os.path.realpath(__file__) )
 
@@ -40,6 +39,7 @@ import random
 import pyrosetta.rosetta.protocols.membrane
 from pyrosetta.rosetta.utility import vector1_bool
 from pyrosetta.rosetta.core.chemical import aa_from_oneletter_code
+from pyrosetta.rosetta.core.scoring import *
 from pyrosetta.rosetta.protocols.minimization_packing import PackRotamersMover
 from pyrosetta.rosetta.core.pose import PDBInfo
 from pyrosetta.rosetta.core.chemical import VariantType
@@ -49,7 +49,7 @@ from pyrosetta.rosetta.core.pack.task import TaskFactory
 classification = {'A': "nonpolar", 'C' : "special", 'D' : "n-charged", 'E' : "n-charged", \
                          'F' : "aromatic", 'G' : "special", 'H' : "p-charged", 'I' : "nonpolar", \
                          'K' : "p-charged", 'L' : "nonpolar", 'M' : "nonpolar", 'N' : "polar", \
-                         'P' : "special", 'Q' : "nonpolar", 'R' : "p-charged", 'S' : "nonpolar", \
+                         'P' : "special", 'Q' : "polar", 'R' : "p-charged", 'S' : "polar", \
                          'T' : "polar", 'V' : "nonpolar", 'W' : "aromatic", 'Y' : "aromatic" }
 
 # @brief Replace the residue at <resid> in <pose> with <new_res> and allows
@@ -57,7 +57,7 @@ classification = {'A': "nonpolar", 'C' : "special", 'D' : "n-charged", 'E' : "n-
 def mutate_residue( pose, mutant_position, mutant_aa, pack_radius, pack_scorefxn ):
 
     if pose.is_fullatom() == False:
-        IOError( 'mutate_residue only works with fullatom poses' )
+       IOError( 'mutate_residue only works with fullatom poses' )
 
     test_pose = Pose()
     test_pose.assign( pose )
@@ -82,25 +82,25 @@ def mutate_residue( pose, mutant_position, mutant_aa, pack_radius, pack_scorefxn
     # to do this, construct a Vector1 of booleans indicating which amino acid
     #    (by its numerical designation, see above) to allow
     for i in range( 1 , 21 ):
-        # in Python, logical expression are evaluated with priority, thus the
-        #    line below appends to aa_bool the truth (True or False) of the
-        #    statement i == mutant_aa
-        aa_bool.append( i == mutant_aa )
+      # in Python, logical expression are evaluated with priority, thus the
+      #    line below appends to aa_bool the truth (True or False) of the
+      #    statement i == mutant_aa
+       aa_bool.append( i == mutant_aa )
 
     # modify the mutating residue's assignment in the PackerTask using the
     #    Vector1 of booleans across the proteogenic amino acids
-    task.nonconst_residue_task( mutant_position
-        ).restrict_absent_canonical_aas( aa_bool )
+    task.nonconst_residue_task( mutant_position).restrict_absent_canonical_aas( aa_bool )
 
     # prevent residues from packing by setting the per-residue "options" of
     #    the PackerTask
     center = pose.residue( mutant_position ).nbr_atom_xyz()
     for i in range( 1, pose.total_residue() + 1 ):
         dist = center.distance_squared( test_pose.residue( i ).nbr_atom_xyz() );
-        # only pack the mutating residue and any within the pack_radius
+       # only pack the mutating residue and any within the pack_radius
         if i != mutant_position and dist > pow( float( pack_radius ), 2 ) :
-            task.nonconst_residue_task( i ).prevent_repacking()
-
+           task.nonconst_residue_task( i ).prevent_repacking()
+        elif i != mutant_position and dist <= pow( float( pack_radius ), 2 ) :
+            task.nonconst_residue_task( i ).restrict_to_repacking()
     # apply the mutation and pack nearby residues
     packer = PackRotamersMover( pack_scorefxn , task )
     packer.apply( test_pose )
@@ -108,11 +108,10 @@ def mutate_residue( pose, mutant_position, mutant_aa, pack_radius, pack_scorefxn
     return test_pose
 
 def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutation_list ): 
-
+    
     # Initialize Pyrosetta with const options
     option_string = "-run:constant_seed -in:ignore_unrecognized_res"
-    option_string = option_string + " -mp:lipids:temperature 37.0 -mp:lipids:composition DLPC -mp:lipids:has_pore false -ex1 -ex2 -ex1aro -ex2aro"
-
+    
     init( extra_options=option_string )
 
     # Append base path to pdb, spanfile, and mutation_list
@@ -121,14 +120,28 @@ def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutat
     mutation_list = config.benchmark_path + "targets/stability/" + testname + "/" + mutation_list 
 
     # Read database file including mutations (space delimited)
-    # Expected header format: Nat Pos Mut PDb Spanfile pH exp_ddG double_mut
+    # Expected header format: Nat Pos Mut PDB Spanfile pH exp_ddG double_mut
     with open( mutation_list, 'r' ) as f:
         content = f.readlines()
     content = [ x.strip() for x in content ]
     mutation_list = [ x.split(' ') for x in content ]
 
     # Create an energy function
-    sfxn = create_score_function( energy_fxn )
+    sfxn = ScoreFunction()
+    #this is for default score function
+    if( energy_fxn == "franklin2019" ):
+        option_string = option_string + " -mp:lipids:temperature 37.0 -mp:lipids:composition DLPC -mp:lipids:has_pore true -ex1 -ex2 -ex1aro -ex2aro"
+        sfxn = create_score_function( energy_fxn )
+        sfxn.set_weight(fa_water_to_bilayer, 1.5)
+    elif( energy_fxn == "score12" or energy_fxn == "score07"):
+        score_file = config.benchmark_path + "tests/python/" + energy_fxn + ".wts"
+        option_string = option_string + "-ex1 -ex2 -ex1aro -ex2aro"# -restore_pre_talaris_2013_behavior"
+        #-mp:lipids:temperature 37.0 -mp:lipids:composition DLPC -mp:lipids:has_pore true
+        #"-score:weights" + score_file +
+        sfxn = create_score_function( score_file )
+    else:
+	    option_string = option_string + "-ex1 -ex2 -ex1aro -ex2aro"
+	    sfxn = create_score_function( energy_fxn )
 
     # Set the repack radius from the option system
     repack_radius = 8.0
@@ -173,7 +186,10 @@ def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutat
         else:
             native_res = pose.residue( int( entry[1] ) ).name1()
             repacked_native = mutate_residue( pose, int( entry[1] ), native_res, repack_radius, sfxn )
-
+        
+        print("before mutation:" + pose.residue( int( entry[1] ) ).name() )
+        print("after mutation:" + repacked_native.residue( int( entry[1] ) ).name() )
+ 
         # Calculate the ddG of mutation for the given position
         ddG_of_mutation = compute_ddG( repacked_native, sfxn, int( entry[1] ), entry[2], repack_radius, targetdir )
         print(ddG_of_mutation)
@@ -188,10 +204,12 @@ def run_ddG_of_mutation_calc( config, energy_fxn, testname, pdb, spanfile, mutat
         output = outstr.substitute( native=entry[0], pos=entry[1], mutant=entry[2], exp_val=entry[6], predicted=ddG_of_mutation, rsd_class=rsd_class, depth=round(depth,3))
         f.write( output + "\n" )
 
+
     f.close()
 
 ## @brief Compute ddG of mutation in a protein at specified residue and AA position
 def compute_ddG( pose, sfxn, resnum, aa, repack_radius, targetdir ):
+    import time
 
     # Score the native pose and grab the native AA
     native_score = sfxn( pose )
@@ -201,8 +219,14 @@ def compute_ddG( pose, sfxn, resnum, aa, repack_radius, targetdir ):
     mutated_pose = mutate_residue( pose, resnum, aa, repack_radius, sfxn )
     mutant_score = sfxn( mutated_pose )
     
+    file_name = targetdir + "/output_"+ str( resnum ) + aa +"_pose.pdb"
+    print("before mutation:" + pose.residue( resnum ).name() )
+    print("after mutation:" + mutated_pose.residue( resnum ).name() )
+    #time.sleep(15)
+    mutated_pose.dump_pdb(file_name)
+    
     print_ddG_breakdown( pose, mutated_pose, sfxn, resnum, aa, targetdir + "/breakdown.sc" )
-
+    print_ddG_breakdown( pose, pose, sfxn, resnum, aa, targetdir + "/breakdown_native.sc" )
     # Calculate the ddG in place
     ddG = round( mutant_score - native_score, 3 )
     return ddG
@@ -243,7 +267,8 @@ def print_ddG_breakdown( native_pose, mutated_pose, sfxn, resnum, aa, fn ):
         ddG_component = mutant_scores[i] - native_scores[i]
         ddGs.append( round( ddG_component, 3 ) )
 
-    ddGs_str = convert_array_to_str( ddGs ) 
+    ddGs_str = convert_array_to_str( ddGs )
+    
     with open( fn, 'a' ) as f:
         f.write( ddGs_str + "\n" )
     f.close()
