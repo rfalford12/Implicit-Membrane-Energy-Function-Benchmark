@@ -2,7 +2,7 @@
 
 This is a set of scientific benchmark tests for evaluating membrane protein modeling energy functions. The test probe an energy function's ability to capture membrane protein orientation, stability, sequence, and structure. The methods are described in detail in the citation below. 
 
- - Alford RF & Gray JJ (2020) "Diverse scientific benchmarks reveal optimization imperatives for implicit membrane energy functions" _In Preparation_
+ - Alford RF, Samanta R & Gray JJ, "Diverse Scientific Benchmarks for Implicit Membrane Energy Functions", J. Chem. Theory Comput. 2021
 
 ## Manifest
 
@@ -74,7 +74,7 @@ The `--energy_fxn` flag sets the energy function to test, referred to by the nam
 | Test                        | #  | Description 													   |
 |-----------------------------|----|-------------------------------------------------------------------|
 | tm-peptide-tilt-angle       | 1  | Tilt angle of single-span transmembrane peptides           	   |
-| adsorbed-peptide-tilt-angle | 2  | Rotation angle of surface-adsorbed peptides    				   |
+| adsorbed-peptide-tilt-angle | 2  | Tilt angle of surface-adsorbed peptides    				   |
 | protein-tilt-angle          | 3  | Tilt angle of multi-pass membrane proteins 					   |
 | hydrophobic-length          | 4  | Hydrophobic thickness of multi-pass membrane proteins             |
 | ddG-of-insertion            | 5  | Energetic cosf of transfering a peptide from water to bilayer     |
@@ -90,7 +90,13 @@ The outputs are then organized in a `data/` directory created by the script. The
 
 #### Step 2: Post-Process benchmark data
 
-The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. To run the post-processing step, run the command line below. The flags are described in step #1. 
+For test 1-3 and 5-6, the data files are generated in multiple turns to save time, which later needs to be combined for further 
+analysis. It can be done using the following command line (flags are descreibed previously).
+	
+	./combiningfiles.py --energy_fxn franklin2019 --which_tests all
+ 
+The sequence recovery and structure prediction benchmark tests require an imtermediate post-processing step before final data analysis. 
+To run the post-processing step, run the command line below. The flags are described in step #1. 
 
 	./process_test_data.py --energy_fxn franklin2019 --which_tests all
 
