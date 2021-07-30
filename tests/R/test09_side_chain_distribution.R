@@ -38,8 +38,7 @@ read.sc.distribution.data <- function( native.file, design.file ) {
 #' @example get.auc(df, "A")
 #' 
 get.auc <- function(df, aa) {
-  
-  d <- density.default(df$zcoord[which(df$AA == aa & df$src == "native")], n = 512, cut = 3 )
+   d <- density.default(df$zcoord[which(df$AA == aa & df$src == "native")], n = 512, cut = 3 )
   xx <- d$x
   dx <- xx[2L] - xx[1L]
   yy <- d$y

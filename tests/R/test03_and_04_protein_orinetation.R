@@ -4,7 +4,7 @@
 #'   - Cummulative distribution of residuals for tilt, depth, and thickness
 #'   - Comparison of OPM reference and predicted values
 #'
-#' @author Rebecca Alford <ralford3[at]jhu.edu> and updated by RituparnaSamanta <rsamant2[at]jhu.edu>
+#' @author Rebecca Alford <ralford3[at]jhu.edu> and updated by Rituparna Samanta <rsamant2[at]jhu.edu>
 #' 
 
 library(ggplot2)
@@ -183,7 +183,7 @@ compute.and.output.residuals <- function( df ) {
   #center of the membrane and 180 degrees. a protein at x degrees and depth = y is same as at 180-x degrees and depth = -y. 
   #Rosetta calculated center of the protein for rotation whereas OPM of the TM section. 
  
-   df$depth.res <- ( abs(df$opm.depth) - abs(df$best.depth + df$opm.delcenter) )
+  df$depth.res <- ( abs(df$opm.depth) - abs(df$best.depth + df$opm.delcenter) )
   
   df$depth.res_prev <- ( abs(df$opm.depth) - abs(df$depth_prev + df$opm.delcenter) )
  

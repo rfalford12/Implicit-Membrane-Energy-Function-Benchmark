@@ -1,5 +1,6 @@
+#'Analyze transmembrane and surface-adsorbed peptide orientation and prediction
+#' @brief: Compare experimental and predicted tilt angle (minimum over rotation angle) and depth (zcoord)
 #' @author RituparnaSamanta <rsamant2[at]jhu.edu> and Rebecca Alford <ralford3[at]jhu.edu> 
-# @brief: Compare experimental and predicted tilt angle (minimum over rotation angle) and depth (zcoord)
 
 library(nnet)
 library(viridis)
