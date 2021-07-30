@@ -2,7 +2,7 @@
 """ Master script for combininig all files into one file
 and generating a energy landscape as a function of depth and tilt 
 angle  minimized  over rotation (/azimuthal) angle. 
-This module is used for tests 1,2,3 and 5. 
+This module is used for tests 1,2,3,5 and 6. 
 
 Authors: 
 	Rituparna Samanta <rsamanta@utexas.edu> 
@@ -130,7 +130,7 @@ def main( args ):
        # check that all names are valid
        for name in test_names: 
            if name not in all_sub_tests: 
-                  sys.exit( "No such test " + name + ". Exiting! or not among the tests 1-3 and 5" )
+                  sys.exit( "No such test " + name + ". Exiting! or not among the tests 1-3 and 5-6" )
             
            else:
                   
