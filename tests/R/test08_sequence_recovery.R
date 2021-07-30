@@ -5,14 +5,15 @@
 #'    - KL Divergence
 #'    - Amino acid composition
 #'
-#' @author Rebecca Alford <ralford3[at]jhu.edu>
+#' @author Rebecca Alford <ralford3[at]jhu.edu> updated by Rituparna Samanta <rsamant2[at]jhu.edu>
 #' 
-
+library(expss)
 library(cowplot)
 library(reshape2)
 library(ggrepel)
 library(viridisLite)
 library(viridis)
+
 
 #' Compute the fraction of amino acid types with recovery rates above random
 #' or the general background probability of 0.05 (1 in 20)
@@ -23,7 +24,7 @@ library(viridis)
 #'
 #' @examples
 #' frac.aa.recov.above.rand (d, "f19f)
-#'
+#'Input is per_amino_acid_recovery.dat
 frac.aa.recov.above.rand <- function( per.aa.rates, efxn ) {
   
   overall.frac <- count_if( gt(0.05), per.aa.rates$overall[which( per.aa.rates$efxn == efxn)] )/20
@@ -84,9 +85,10 @@ make.sequence.recovery.plot <- function(df) {
 #'
 #' @examples
 #' plot.aa.divergence(df)
-#'
+#'per_amino_acid_divergence.dat
 plot.aa.divergence <- function( df ) {
-  p <- ggplot( df[ which( overall.df$variable == "overall" & df$efxn != "m19_all_DLPC" & df$efxn != "r15_all_DLPC" ), ], aes( x = residue, y = value, fill = category ) ) + 
+  df <- df[ order(df$category), ]
+  p <- ggplot( df[ which( df$efxn != "m19_all_DLPC" & df$efxn != "r15_all_DLPC" ), ], aes( x = residue, y = overall, fill = category ) ) + 
     geom_hline( yintercept = 0, color = "black", size = 0.25 ) + 
     geom_bar( stat = "identity", color = "black", size = 0.15) + 
     scale_fill_brewer( palette = "Pastel1" ) + 
@@ -129,3 +131,14 @@ make.aa.distribution.pie <- function(df) {
          axis.ticks = element_blank()  )
   return(p)
 } 
+
+workdir <- "/path-to-/sequence-recovery"
+file.name <- paste( workdir, "per_amino_acid_recovery.dat", sep = "/")
+sub.df <-read.table( file.name, header = T)
+recovery.df <- frac.aa.recov.above.rand(sub.df, "franklin2019_seqrecov")
+file.name2 <- paste( workdir, "per_amino_acid_divergence.dat", sep = "/" )
+diverse.df <- read.table( file.name2, header=T )
+
+p4 <- plot.aa.divergence( diverse.df)
+a1.grid <- plot_grid( p4, ncol = 1, nrow = 1, labels = c("a"), label_size = 9 )
+save_plot( paste( workdir, "amminoacid_divergence.png", sep = "/"), a1.grid, units = "in", base_width = 4, base_height = 4 )
