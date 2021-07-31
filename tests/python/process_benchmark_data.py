@@ -3,13 +3,13 @@
 
 This module analyzes data from tests that probe sequence and 
 structure features. This is the second step of three for executing
-and evaluating the scientific testds. 
+and evaluating the scientific tests. 
 
 Authors: 
 	Rebecca Alford <ralford3@jhu.edu> 
 
 Example: 
-	$ python analyze_benchmark_data.py --energy_fxn franklin2019
+	$ python process_benchmark_data.py --energy_fxn franklin2019
 	--which_tests all --restore_talaris False
 
 Arguments: 
@@ -128,7 +128,8 @@ def main( args ):
 		os.system( executable + arguments )
 
 		# Process the sequence recovery data
-		os.system( "python tests/python/process_protein_design_results.py --energy_fxn " + Options.energy_fxn + " --basedir " + config.benchmark_path + " --seqrecov_file " + output_file )
+		os.system( "python3 process_protein_design_results.py --energy_fxn " + Options.energy_fxn + " --basedir " + config.benchmark_path + " --seqrecov_file " + output_file )
+	#python3 process_protein_design_results.py --energy_fxn "franklin2019" --basedir "/home/rsamant2/Implicit-Membrane-Energy-Function-Benchmark-master/" --seqrecov_file "franklin2019_seqrecov.txt"
 
 	# Test #9: Side chain distribution calculations
 	if ( "sc-distribution" in test_names ): 
@@ -158,8 +159,8 @@ def main( args ):
 		targets = [ "brd7", "fmr5", "ltpa", "rhod", "vatp"]
 		datadir = config.benchmark_path + "data/" + Options.energy_fxn + "/decoy-discrimination/"
 		# first hires targets
-		hires_dir = datadir + "hires"
-		os.chdir( hires_dir )
+		highres_dir = datadir + "highres"
+		os.chdir( highres_dir )
 		for target in targets: 
 			os.chdir( target )
 			os.system( "ls decoy*.pdb > decoys.list" )
@@ -179,13 +180,13 @@ def main( args ):
 		for target in targets: 
 
 			# hires
-			targetdir = hires_dir + "/" + target
+			targetdir = highres_dir + "/" + target
 			os.chdir( targetdir )
-			output_scores = target + "_hires.sc"
-			native_pdb = config.benchmark_path + "targets/structure/D6_decoy_discrimination/hires/" + target + "/" + target + "_native.pdb"
-			spanfile = config.benchmark_path + "targets/structure/D6_decoy_discrimination/hires/" + target + "/" + target + ".span"
+			output_scores = target + "_highres.sc"
+			native_pdb = config.benchmark_path + "targets/structure/D6_decoy_discrimination/highres/" + target + "/" + target + "_native.pdb"
+			spanfile = config.benchmark_path + "targets/structure/D6_decoy_discrimination/highres/" + target + "/" + target + ".span"
 			arguments = s.substitute( scorefile=output_scores, native=native_pdb )
-			jobname = "rescore_hires_" + target
+			jobname = "rescore_highres_" + target
 			hpc_util.submit_condor_job( targetdir, jobname, executable, arguments, 1 )
 
 			# lowres
